@@ -4,8 +4,8 @@
     "specifiers": {
       "jsr:@jcayzac/utils-text@^0.2.0": "jsr:@jcayzac/utils-text@0.2.0",
       "npm:@shikijs/core@^1.13.0": "npm:@shikijs/core@1.13.0",
-      "npm:hast@^1.0.0": "npm:hast@1.0.0",
-      "npm:unist@^0.0.1": "npm:unist@0.0.1"
+      "npm:@types/hast@^3.0.4": "npm:@types/hast@3.0.4",
+      "npm:@types/unist@^3.0.3": "npm:@types/unist@3.0.3"
     },
     "jsr": {
       "@jcayzac/utils-text@0.2.0": {
@@ -28,14 +28,6 @@
       "@types/unist@3.0.3": {
         "integrity": "sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==",
         "dependencies": {}
-      },
-      "hast@1.0.0": {
-        "integrity": "sha512-vFUqlRV5C+xqP76Wwq2SrM0kipnmpxJm7OfvVXpB35Fp+Fn4MV+ozr+JZr5qFvyR1q/U+Foim2x+3P+x9S1PLA==",
-        "dependencies": {}
-      },
-      "unist@0.0.1": {
-        "integrity": "sha512-bnzuF8b6d47WubA4a5yLqFbuZz/v/NS6eRwUIdOaDmsqzwTlyv8yS1g3M7ISdtBQrigPD3qKK87Cu7zhEfCF3A==",
-        "dependencies": {}
       }
     }
   },
@@ -44,8 +36,8 @@
     "dependencies": [
       "jsr:@jcayzac/utils-text@^0.2.0",
       "npm:@shikijs/core@^1.13.0",
-      "npm:hast@^1.0.0",
-      "npm:unist@^0.0.1"
+      "npm:@types/hast@^3.0.4",
+      "npm:@types/unist@^3.0.3"
     ]
   }
 }

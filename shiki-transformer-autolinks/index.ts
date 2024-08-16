@@ -1,6 +1,6 @@
 import type { ShikiTransformer, ShikiTransformerContextCommon } from '@shikijs/core'
+import type { Element, ElementContent, Node, Text } from 'rehype'
 import type { Position } from 'unist'
-import type { ElementContent, Node, Text } from 'hast'
 import { RegExpUtils } from '@jcayzac/utils-text'
 
 interface Meta {
@@ -27,7 +27,9 @@ function makeNode<T extends Node>(node: T, position: Position | undefined, offse
 	if (start.offset !== undefined)
 		end.offset = start.offset + span
 
-	node.position = {
+	// deno-lint-ignore no-explicit-any
+	const damn = node as any
+	damn.position = {
 		start,
 		end,
 	}
@@ -94,7 +96,7 @@ function transformer(): ShikiTransformer {
 				}
 
 				// Add the link.
-				children.unshift(makeNode({
+				children.unshift(makeNode<Element>({
 					type: 'element',
 					tagName: 'a',
 					properties: {
