@@ -5,6 +5,6 @@
   "exports": "./index.ts",
   "imports": {
     "@deno/kv": "npm:@deno/kv@^0.8.1",
-    "@jcayzac/utils-digest": "jsr:@jcayzac/utils-digest@^0.1.1"
+    "@jcayzac/utils-digest": "jsr:@jcayzac/utils-digest@^0.1.4"
   }
 }
