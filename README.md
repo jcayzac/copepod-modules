@@ -35,9 +35,6 @@ See the `README` file in each of the module, or the docs published on [jsr.io](j
 
 ## Like it? Buy me a coffee!
 
-If you like anything here, consider buying me a coffee using one of the following methods:
+If you like anything here, consider buying me a coffee using one of the following platforms:
 
-- [GitHub](https://github.com/sponsors/jcayzac)
-- [Ko-Fi](https://ko-fi.com/jcayzac)
-- Revolut: `@julienswap`
-- Wise: `@julienc375`
+[GitHub Sponsors](https://github.com/sponsors/jcayzac) ・ [Revolut](https://revolut.me/julienswap) ・ [Wise](https://wise.com/pay/me/julienc375) ・ [Ko-Fi](https://ko-fi.com/jcayzac) ・ [PayPal](https://paypal.me/jcayzac)

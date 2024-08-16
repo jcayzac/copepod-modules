@@ -1,4 +1,4 @@
-# `@jcayzac/utils-digest`
+# `@jcayzac/astro-build-cache`
 
 This module provides a single utility function that computes the SHA-256 digest of a buffer and returns it as a hexadecimal string.
 
@@ -8,19 +8,19 @@ This module is published on the [JSR registry](https://jsr.io/). To install it, 
 
 ```sh
 # deno
-deno add @jcayzac/utils-digest
+deno add @jcayzac/astro-build-cache
 
 # pnpm
-pnpm dlx jsr add @jcayzac/utils-digest
+pnpm dlx jsr add @jcayzac/astro-build-cache
 
 # bun
-bunx jsr add @jcayzac/utils-digest
+bunx jsr add @jcayzac/astro-build-cache
 
 # npm
-npx jsr add @jcayzac/utils-digest
+npx jsr add @jcayzac/astro-build-cache
 
 # yarn
-yarn dlx jsr add @jcayzac/utils-digest
+yarn dlx jsr add @jcayzac/astro-build-cache
 ```
 
 For more information, see the [JSR documentation](https://jsr.io/docs/using-packages).
