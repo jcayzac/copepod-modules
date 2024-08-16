@@ -1,8 +1,7 @@
-import type { ShikiTransformer } from 'shiki'
-import type { ShikiTransformerContextCommon } from '@shikijs/core'
+import type { ShikiTransformer, ShikiTransformerContextCommon } from '@shikijs/core'
 import type { Position } from 'unist'
 import type { ElementContent, Node, Text } from 'hast'
-import * as textutils from '@local/text-utils'
+import { RegExpUtils } from '@jcayzac/utils-text'
 
 interface Meta {
 	linkTitles: Map<string, string>
@@ -36,6 +35,9 @@ function makeNode<T extends Node>(node: T, position: Position | undefined, offse
 	return node
 }
 
+/**
+ * A Shiki transformer that automatically turns URLs into links.
+ */
 function transformer(): ShikiTransformer {
 	return {
 		name: 'autolinks',
@@ -43,7 +45,7 @@ function transformer(): ShikiTransformer {
 		preprocess(code: string) {
 			const linkTitles = new Map<string, string>()
 
-			for (const [_, title, url] of textutils.regex.all(/\[([^\]]+)\]\(([^)]+)\)/g, code)) {
+			for (const [_, title, url] of RegExpUtils.all(/\[([^\]]+)\]\(([^)]+)\)/g, code)) {
 				linkTitles.set(url, title)
 			}
 			meta(this).linkTitles = linkTitles
@@ -54,7 +56,7 @@ function transformer(): ShikiTransformer {
 			// We want spans with onle one child, a text node.
 			if (span.children.length !== 1)
 				return
-			let child = span.children[0]
+			let child = span.children[0] as Text
 			if (child.type !== 'text')
 				return
 
@@ -63,7 +65,7 @@ function transformer(): ShikiTransformer {
 
 			// Find all URLs in the text node.
 			const found: { href: string, index: number }[] = []
-			for (const { 0: value, index } of textutils.regex.all(/https?:\/\/\S+/g, child.value)) {
+			for (const { 0: value, index } of RegExpUtils.all(/https?:\/\/\S+/g, child.value)) {
 				// If the URL ends with punctuation, keep it outside the link unless it's a /
 				const last = value[value.length - 1]
 				const hasPunctuation = (last !== '/' && /\p{P}/u.test(last))

@@ -1,0 +1,11 @@
+{
+	"name": "@jcayzac/shiki-transformer-autolinks",
+	"version": "0.1.0",
+	"exports": "./index.ts",
+  "imports": {
+    "@jcayzac/utils-text": "jsr:@jcayzac/utils-text@^0.2.0",
+    "@shikijs/core": "npm:@shikijs/core@^1.13.0",
+    "hast": "npm:hast@^1.0.0",
+    "unist": "npm:unist@^0.0.1"
+  }
+}

@@ -1,0 +1,44 @@
+# `@jcayzac/shiki-transformer-autolinks`
+
+A transformer for [Shiki](https://shiki.style/) that automatically turns URLs into links.
+
+## Motivation
+
+When you are editing code in an IDE, URLs are often clickable. Whether it's a link to reference documentation in a code comment or a link to an image passed as the `src` attribute of an HTML `<img>` element, you nay want to visit the link.
+
+Wouldn't it be nice if code rendered by Shiki also had clickable URLs? This is what this transformer does.
+
+## Features
+
+- Anything that looks like a URL starting with `https://` is turned into a clickable link. If the URL ends with punctuation, the punctuation is not part of the generated link.
+- For Markdown markup, the transformer also looks for a title. This means that the link generated for e.g. `[Some title](https://example.com)` has a `title` attribute set to `Some title`.
+- The generated links are keyboard-navigable.
+
+## Installation
+
+This module is published on the [JSR registry](https://jsr.io/). To install it, run:
+
+```sh
+# deno
+deno add @jcayzac/shiki-transformer-autolinks
+
+# pnpm
+pnpm dlx jsr add @jcayzac/shiki-transformer-autolinks
+
+# bun
+bunx jsr add @jcayzac/shiki-transformer-autolinks
+
+# npm
+npx jsr add @jcayzac/shiki-transformer-autolinks
+
+# yarn
+yarn dlx jsr add @jcayzac/shiki-transformer-autolinks
+```
+
+For more information, see the [JSR documentation](https://jsr.io/docs/using-packages).
+
+## Like it? Buy me a coffee!
+
+If you like anything here, consider buying me a coffee using one of the following platforms:
+
+[GitHub Sponsors](https://github.com/sponsors/jcayzac) ・ [Revolut](https://revolut.me/julienswap) ・ [Wise](https://wise.com/pay/me/julienc375) ・ [Ko-Fi](https://ko-fi.com/jcayzac) ・ [PayPal](https://paypal.me/jcayzac)
