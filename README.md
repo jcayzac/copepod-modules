@@ -4,7 +4,9 @@ This is a collection of modules I use in my projects. I'm publishing them here s
 
 ## Installation
 
-Modules are published on the [JSR registry](https://jsr.io/).
+Modules are published on the [JSR registry](https://jsr.io/@jcayzac).
+
+> **Note:** That's not true for all packages, at the moment. I'm working on it.
 
 I'm not a node person. I think node was nice in the middle ages of internet. I'm a [deno](https://deno.land/) person now. That's why you won't find any of these on the NPM registry: I can't be bothered to use medieval tools like esbuild to transpile typescript and publish my code.
 
