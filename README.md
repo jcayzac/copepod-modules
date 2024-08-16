@@ -4,29 +4,27 @@ This is a collection of modules I use in my projects. I'm publishing them here s
 
 ## Installation
 
-Modules are published on the [JSR registry](https://jsr.io/@jcayzac).
+Modules are available on both the [NPM](https://npmjs.com/) and [JSR](https://jsr.io/) registries.
 
-> **Note:** That's not true for all packages, at the moment. I'm working on it.
+> **Note:** That's not true for all packages, at the moment. Many are still not published. I'm working on it.
 
-I'm not a node person. I think node was nice in the middle ages of internet. I'm a [deno](https://deno.land/) person now. That's why you won't find any of these on the NPM registry: I can't be bothered to use medieval tools like esbuild to transpile typescript and publish my code.
-
-Fortunately, you don't have to care about what I like or not. You can still use the modules as you would use any other module. You just have to use the `jsr` command to pull them:
+To install a module, run:
 
 ```sh
 # deno
 deno add @jcayzac/<module-name>
 
 # pnpm
-pnpm dlx jsr add @jcayzac/<module-name>
+pnpm add @jcayzac/<module-name>
 
 # bun
-bunx jsr add @jcayzac/<module-name>
+bunx add @jcayzac/<module-name>
 
 # npm
-npx jsr add @jcayzac/<module-name>
+npx add @jcayzac/<module-name>
 
 # yarn
-yarn dlx jsr add @jcayzac/<module-name>
+yarn jsr add @jcayzac/<module-name>
 ```
 
 For more information, see the [JSR documentation](https://jsr.io/docs/using-packages).

@@ -1,7 +1,15 @@
+#!/usr/bin/env -S deno run -A
 import { ensureDir } from 'jsr:@std/fs'
 
 if (import.meta.main) {
   const [packageName, packageVersion] = Deno.args
+  if (!packageName || !packageVersion) {
+    console.error(`Usage: ${new URL(Deno.mainModule).pathname} <package-name> <package-version>`)
+    Deno.exit(1)
+  }
+
+  console.info(`Looking up ${packageName} v${packageVersion} on jsr.io…`)
+
   const [_, scope, name] = /^@([^/]+)\/(.+)$/.exec(packageName) ?? []
 
   const { versions } = await fetch(`https://npm.jsr.io/@jsr/${scope}__${name}`).then((res) => res.json())
@@ -65,12 +73,15 @@ if (import.meta.main) {
 
   await Deno.writeTextFile('./npm/package.json', JSON.stringify(packageJson, null, 2))
 
-  const npm = await new Deno.Command(`npm`, {
-    cwd: './npm',
-    args: ['publish'],
-  }).spawn().output()
+  // deno-lint-ignore no-constant-condition
+  if (false) {
+    const npm = await new Deno.Command(`npm`, {
+      cwd: './npm',
+      args: ['publish'],
+    }).spawn().output()
 
-  if (!npm.success) {
-    throw new Error('Failed to publish to npm')
+    if (!npm.success) {
+      throw new Error('Failed to publish to npm')
+    }
   }
 }

@@ -1,6 +1,6 @@
 {
 	"name": "@jcayzac/shiki-transformer-autolinks",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"exports": "./index.ts",
   "description": "A Shiki transformer that adds autolinks to the rendered HTML",
   "imports": {
