@@ -4,15 +4,16 @@ A transformer for [Shiki](https://shiki.style/) that automatically turns URLs in
 
 ## Motivation
 
-When you are editing code in an IDE, URLs are often clickable. Whether it's a link to reference documentation in a code comment or a link to an image passed as the `src` attribute of an HTML `<img>` element, you nay want to visit the link.
+When you are editing code in an IDE, URLs are often clickable. Whether it's a link to reference documentation in a code comment or a link to an image passed as the `src` attribute of an HTML `<img>` element, you may want to visit the link.
 
-Wouldn't it be nice if code rendered by Shiki also had clickable URLs? This is what this transformer does.
+Wouldn't it be nice if code rendered by Shiki also had clickable URLs? This is what this transformer enables.
 
 ## Features
 
 - Anything that looks like a URL starting with `https://` is turned into a clickable link. If the URL ends with punctuation, the punctuation is not part of the generated link.
 - For Markdown markup, the transformer also looks for a title. This means that the link generated for e.g. `[Some title](https://example.com)` has a `title` attribute set to `Some title`.
-- The generated links are keyboard-navigable.
+- The generated links are keyboard-navigable, and use `target="_blank" rel="nofollow noreferrer"`.
+- They're easy to style: just target `code :any-link` in your CSS!
 
 ## Installation
 

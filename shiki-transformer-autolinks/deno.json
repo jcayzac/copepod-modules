@@ -1,6 +1,6 @@
 {
 	"name": "@jcayzac/shiki-transformer-autolinks",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"exports": "./index.ts",
   "imports": {
     "@jcayzac/utils-text": "jsr:@jcayzac/utils-text@^0.2.0",
