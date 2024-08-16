@@ -1,0 +1,6 @@
+{
+	"name": "@jcayzac/utils-text",
+	"version": "0.2.4",
+	"keywords": ["regex", "regexp", "regular expression", "regular expressions"],
+	"exports": "./index.ts"
+}

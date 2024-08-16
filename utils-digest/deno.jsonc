@@ -1,0 +1,6 @@
+{
+	"name": "@jcayzac/utils-digest",
+	"version": "0.1.4",
+	"keywords": ["digest", "buffer", "uint8array", "sha-256", "sha256", "hex", "hexadecimal"],
+	"exports": "./index.ts"
+}

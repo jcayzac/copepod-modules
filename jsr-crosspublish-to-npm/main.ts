@@ -2,16 +2,19 @@
 import { ensureDir } from 'jsr:@std/fs'
 
 if (import.meta.main) {
+  const program = new URL(Deno.mainModule)
+  const root = new URL('..', program)
+
   const [packageName, packageVersion] = Deno.args
   if (!packageName || !packageVersion) {
-    console.error(`Usage: ${new URL(Deno.mainModule).pathname} <package-name> <package-version>`)
+    console.error(`Usage: ${program.pathname} <package-name> <package-version>`)
     Deno.exit(1)
   }
 
-  console.info(`Looking up ${packageName} v${packageVersion} on jsr.io…`)
-
   const [_, scope, name] = /^@([^/]+)\/(.+)$/.exec(packageName) ?? []
+  const { keywords } = await fetch(new URL(`./${name}/deno.jsonc`, root)).then((res) => res.json())
 
+  console.info(`Looking up ${packageName} v${packageVersion} on jsr.io…`)
   const { versions } = await fetch(`https://npm.jsr.io/@jsr/${scope}__${name}`).then((res) => res.json())
   const { description, dist: { tarball: tarballUrl } } = versions[packageVersion]
 
@@ -27,7 +30,18 @@ if (import.meta.main) {
     }
   })()
 
-  await Deno.remove('./npm', { recursive: true })
+  try {
+    await Deno.remove('./npm', { recursive: true })
+  }
+  catch (e) {
+    if (e instanceof Deno.errors.NotFound) {
+      // Ignore
+    }
+    else {
+      throw e
+    }
+  }
+
   await ensureDir('./npm')
   await Deno.writeFile(tarball.path, new Uint8Array(await blob.arrayBuffer()))
 
@@ -47,6 +61,7 @@ if (import.meta.main) {
     description,
     author: `Julien Cayzac`,
     license: 'MIT',
+    keywords: keywords ?? [],
     repository: {
       type: 'git',
       url: `https://github.com/jcayzac/copepod-modules.git`,
