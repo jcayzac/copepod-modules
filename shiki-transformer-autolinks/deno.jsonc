@@ -1,10 +1,10 @@
 {
   "name": "@jcayzac/shiki-transformer-autolinks",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "exports": "./index.ts",
   "keywords": ["shiki", "transformer", "autolinks", "@shikijs/transformers"],
   "imports": {
-    "@jcayzac/utils-text": "jsr:@jcayzac/utils-text@^0.2.0",
+    "@jcayzac/utils-text": "npm:@jcayzac/utils-text@^0.2.0",
     "@shikijs/core": "npm:@shikijs/core@^1.13.0",
     "rehype": "npm:@types/hast@^3.0.4",
     "unist": "npm:@types/unist@^3.0.3"

@@ -20,7 +20,7 @@ import { transformerMetaWordHighlight } from '@shikijs/transformers'
 import { JSDOM } from 'jsdom'
 import theme from '@local/shiki-theme-token'
 import token from '@local/shiki-transformer-token'
-import autolinks from '@local/shiki-transformer-autolinks'
+import autolinks from '@jcayzac/shiki-transformer-autolinks'
 
 const langs: Set<BuiltinLanguage> = new Set([
 	'ansi' as BuiltinLanguage,
