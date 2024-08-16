@@ -1,4 +1,4 @@
-import { escape as escapeXml } from '@local/xml-utils'
+import { escape as escapeXml } from '@jcayzac/utils-xml'
 import type { Entry } from './entry'
 
 interface Props {
