@@ -1,5 +1,5 @@
 import { type Kv, openKv } from '@deno/kv'
-import digest from '@local/utils-digest'
+import digest from '@jcayzac/utils-digest'
 
 export class Cache {
 	private readonly ready: Promise<Kv>
