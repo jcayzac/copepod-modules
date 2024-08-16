@@ -76,6 +76,7 @@ if (import.meta.main) {
     dependencies: Object.fromEntries(Object.entries(packageJson.dependencies ?? {}).map(([packageName, version]) => {
       let remappedName = packageName
 
+			// eslint-disable-next-line regexp/no-super-linear-backtracking
       const [_, scope, name] = /^@jsr\/([^/]+?)__(.+)$/.exec(packageName) ?? []
       if (name) {
         remappedName = `@${scope}/${name}`
