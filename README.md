@@ -31,7 +31,7 @@ For more information, see the [JSR documentation](https://jsr.io/docs/using-pack
 
 ## Usage
 
-See the `README` file in each of the module, or the docs published on <jsr.io>.
+See the `README` file in each of the module, or the docs published on [jsr.io](jsr.io).
 
 ## Like it? Buy me a coffee!
 
