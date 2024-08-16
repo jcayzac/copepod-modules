@@ -20,10 +20,10 @@ export class Cache {
 	}
 
 	/**
-	 * Return a cache value, possibly generating it if it didn't already exist.
+	 * Return a value, possibly generating it if it didn't already exist.
 	 * 
-	 * @param keyable Anything that can be JSON-serialized. Should contain add any relevant dependency (e.g. options used when generating the value).
-	 * @param generator Asynchronous function that generates the value if it doesn't already exist.
+	 * @param keyable Anything that can be serialized to JSON. Should contain every relevant dependencies (e.g. options used when generating the value).
+	 * @param generator Asynchronous function that generates the value if it didn't already exist in the cache.
 	 * @returns The cached value.
 	 */
 	// deno-lint-ignore no-explicit-any

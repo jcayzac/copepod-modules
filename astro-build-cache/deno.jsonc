@@ -1,6 +1,6 @@
 {
   "name": "@jcayzac/astro-build-cache",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "exports": "./index.ts",
   "imports": {
     "@deno/kv": "npm:@deno/kv@^0.8.1",
