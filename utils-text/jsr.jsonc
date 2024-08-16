@@ -1,0 +1,5 @@
+{
+	"name": "@jcayzac/utils-text",
+	"version": "0.2.0",
+	"exports": "./index.ts"
+}
