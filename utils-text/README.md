@@ -4,26 +4,22 @@ This module provides small text utilities. See [here](https://jsr.io/@jcayzac/ut
 
 ## Installation
 
-This module is published on the [JSR registry](https://jsr.io/). To install it, run:
-
 ```sh
 # deno
 deno add @jcayzac/utils-text
 
 # pnpm
-pnpm dlx jsr add @jcayzac/utils-text
+pnpm add @jcayzac/utils-text
 
 # bun
-bunx jsr add @jcayzac/utils-text
+bunx add @jcayzac/utils-text
 
 # npm
-npx jsr add @jcayzac/utils-text
+npx add @jcayzac/utils-text
 
 # yarn
-yarn dlx jsr add @jcayzac/utils-text
+yarn add @jcayzac/utils-text
 ```
-
-For more information, see the [JSR documentation](https://jsr.io/docs/using-packages).
 
 ## Like it? Buy me a coffee!
 

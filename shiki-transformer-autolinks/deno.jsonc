@@ -2,6 +2,7 @@
 	"name": "@jcayzac/shiki-transformer-autolinks",
 	"version": "0.1.1",
 	"exports": "./index.ts",
+  "description": "A Shiki transformer that adds autolinks to the rendered HTML",
   "imports": {
     "@jcayzac/utils-text": "jsr:@jcayzac/utils-text@^0.2.0",
     "@shikijs/core": "npm:@shikijs/core@^1.13.0",

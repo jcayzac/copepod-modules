@@ -1,0 +1,6 @@
+{
+  "imports": {
+    "@std/archive": "jsr:@std/archive@^0.225.0",
+    "@std/fs": "jsr:@std/fs@^1.0.1"
+  }
+}

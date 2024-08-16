@@ -1,5 +1,6 @@
 {
 	"name": "@jcayzac/utils-digest",
 	"version": "0.1.1",
-	"exports": "./index.ts"
+	"exports": "./index.ts",
+	"description": "Computes the SHA-256 digest of a buffer and returns it as a hexadecimal string."
 }
