@@ -3,7 +3,7 @@
 The modules below that are checked have been published to the JSR and NPM registries.
 
 - [x] astro-build-cache
-- [ ] astro-classlist
+- [x] astro-classlist
 - [ ] astro-image-service
 - [ ] atom-feeds
 - [ ] rehype-reading-stats

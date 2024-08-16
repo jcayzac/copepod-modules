@@ -1,0 +1,9 @@
+{
+  "name": "@jcayzac/astro-classlist",
+  "version": "0.1.0",
+  "keywords": ["astro", "astro-component", "astro-components", "astro-utils"],
+  "exports": "./index.ts",
+  "imports": {
+    "astro": "npm:astro@^4.14.2"
+  }
+}
