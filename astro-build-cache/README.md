@@ -1,6 +1,25 @@
 # `@jcayzac/astro-build-cache`
 
-This module provides a single utility function that computes the SHA-256 digest of a buffer and returns it as a hexadecimal string.
+This module provides a simple build cache for artifacts you may be generating during an [Astro](https://astro.build/) build.
+
+As with Astro's own build artifacts, the cache is stored under `node_modules/.astro` where it can be easily ignored by version control systems and cached by cloud providers.
+
+```sh
+$ ls -1 node_modules/.astro/
+assets
+build-cache.development     # dev cache
+build-cache.development-shm
+build-cache.development-wal
+build-cache.production      # prod cache
+build-cache.production-shm
+build-cache.production-wal
+bundle
+chunks
+content
+data-store.json
+```
+
+To clear the cache, simply delete `node_modules/.astro/build-cache.*`.
 
 ## Installation
 
@@ -28,11 +47,34 @@ For more information, see the [JSR documentation](https://jsr.io/docs/using-pack
 ## Usage
 
 ```ts
-import digest from '@jcayzac/utils-digest'
+import { Cache } from '@jcayzac/astro-build-cache'
 
-const buffer = new TextEncoder().encode('Hello, World!')
-console.log(await digest(buffer))
-// dffd6021bb2bd5b0af676290809ec3a53191dd81c7f70a4b28688a362182986f
+// Create a cache instance. Name is optional. Values are scoped by name.
+const { cached } = new Cache('name')
+
+// Now you can get values, with cache support, from anywhere.
+const value = cached<Uint8Array>(
+  // keyable material
+  {
+    format: 'png',
+    options,
+    fonts,
+    element: serializeJsx(node),
+  },
+  // generator
+  async () =>
+  new Resvg(
+    (await satori(node, options)),
+    {
+      fitTo: {
+          mode: 'width',
+          value: options.width,
+      },
+    },
+  )
+    .render()
+    .asPng(),
+)
 ```
 
 ## Like it? Buy me a coffee!

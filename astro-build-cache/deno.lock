@@ -1,0 +1,48 @@
+{
+  "version": "3",
+  "packages": {
+    "specifiers": {
+      "jsr:@jcayzac/utils-digest@^0.1.1": "jsr:@jcayzac/utils-digest@0.1.1",
+      "npm:@deno/kv@^0.8.1": "npm:@deno/kv@0.8.1"
+    },
+    "jsr": {
+      "@jcayzac/utils-digest@0.1.1": {
+        "integrity": "a493e80c58e5c67661ba677f951489f4e584e484edf9f8ec4931e9802e86d18c"
+      }
+    },
+    "npm": {
+      "@deno/kv-darwin-arm64@0.8.1": {
+        "integrity": "sha512-q1FldAFYVxBAapSsNRaI4wkI97K7UWy+5JTQ/1JN9AdVFPEFhopUB7dRzV19wqzRsRzcHY23U+BDKp9U23np/w==",
+        "dependencies": {}
+      },
+      "@deno/kv-darwin-x64@0.8.1": {
+        "integrity": "sha512-4DtOBHT3/bJQJCJkbvugbDxrMneCQcRtVXYzQ65uDqzUKEJVMxINS1Fc0j0Xmtg6xEZfbjnGamXrLaQ1kRNFvA==",
+        "dependencies": {}
+      },
+      "@deno/kv-linux-x64-gnu@0.8.1": {
+        "integrity": "sha512-XF/bRZgKtUvJmLDMjz/QSS9lMt5hL1e8+sRXh7ffKjkvDJL4dK88ZjOpW2G+C71G0SruqcNy1oYSXqQ+LVw3dw==",
+        "dependencies": {}
+      },
+      "@deno/kv-win32-x64-msvc@0.8.1": {
+        "integrity": "sha512-d3CA3Hp0vZNOKj4lcgppiArQCbVbxV/GBHl14En/8MDkScOInuy5R1hw+0mW7Y+4DekWl2LlfZZaaz+/mYEiwQ==",
+        "dependencies": {}
+      },
+      "@deno/kv@0.8.1": {
+        "integrity": "sha512-bS50xRWgYU3TiSHE2Lwznl2xTlkD/EkZ5HuqYT0wD8YdnRLhMnm8MgUf2Wf+mKw92JI5zCSHsJI3C3ahQKYs6A==",
+        "dependencies": {
+          "@deno/kv-darwin-arm64": "@deno/kv-darwin-arm64@0.8.1",
+          "@deno/kv-darwin-x64": "@deno/kv-darwin-x64@0.8.1",
+          "@deno/kv-linux-x64-gnu": "@deno/kv-linux-x64-gnu@0.8.1",
+          "@deno/kv-win32-x64-msvc": "@deno/kv-win32-x64-msvc@0.8.1"
+        }
+      }
+    }
+  },
+  "remote": {},
+  "workspace": {
+    "dependencies": [
+      "jsr:@jcayzac/utils-digest@^0.1.1",
+      "npm:@deno/kv@^0.8.1"
+    ]
+  }
+}
