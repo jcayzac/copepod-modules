@@ -11,7 +11,9 @@ Shiki is great, but it can be daunting to create a new theme from scratch, or ev
 
 Sure, you can use the experimental [CSS Variables Theme](https://shiki.style/guide/theme-colors#css-variables-theme), which lets you specify a color palette using CSS variables. But that theme uses a very reduced grammar, internally, so the result is not as good as the built-in themes.
 
-This theme gives up on styling completely, and instead replaces color values with grammar token names, which [`@jcayzac/shiki-transformer-token`](https://www.npmjs.com/package/@jcayzac/shiki-transformer-token) then transforms into `[data-token]` attributes in the produces HTML. This gives you complete flexibility on how you want to style your code, not limited to the CSS variables that Shiki supports, and not just colors.
+This theme gives up on styling completely, and instead replaces color values with grammar token names, which [`@jcayzac/shiki-transformer-token`](https://www.npmjs.com/package/@jcayzac/shiki-transformer-token) then transforms into `[data-token]` attributes in the produced HTML.
+
+This gives you complete flexibility on how to style your code, not limited to the CSS variables that Shiki supports, nor just to colors either.
 
 ## Installation
 
@@ -61,11 +63,14 @@ const rendered = highlighter.codeToHtml(code, {
 }
 ```
 
-In your CSS, you can then style the `[data-token]` attributes as you see fit. [Here is a sample stylesheet](https://github.com/jcayzac/copepod-modules/blob/main/packages/shiki-theme-token/sample.css).
+In your CSS, you can then style elements based on the `[data-token]` attribute's value as you see fit. [Here is a sample stylesheet](https://github.com/jcayzac/copepod-modules/blob/main/packages/shiki-theme-token/sample.css). You can apply any style you want, including backgrounds, transitions and whatnot.
 
 ## What tokens are supported?
 
 The full TextMate grammar isn't supported, only [a fairly opinionated subset](https://github.com/jcayzac/copepod-modules/blob/main/packages/shiki-theme-token/src/index.ts#L35-L113). Feel free to [open an issue](https://github.com/jcayzac/copepod-modules/issues/new/choose) if you need tokens that aren't supported yet!
+
+> [!TIP]
+> You can inspect tokens in Visual Studio Code by selecting `> Developer: Inspect Editor Tokens and Scopes` in the command palette.
 
 ## Like it? Buy me a coffee!
 
