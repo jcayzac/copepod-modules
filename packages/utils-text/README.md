@@ -1,6 +1,6 @@
 # `@jcayzac/utils-text`
 
-This module provides small text utilities. See [here](https://jsr.io/@jcayzac/utils-text/doc) for API documentation.
+This module provides small text utilities.
 
 ## Installation
 
