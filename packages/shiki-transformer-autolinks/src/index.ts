@@ -1,5 +1,5 @@
 import type { ShikiTransformer, ShikiTransformerContextCommon } from '@shikijs/core'
-import type { Element, ElementContent, Node, Text } from 'rehype'
+import type { Element, ElementContent, Node, Text } from 'hast'
 import type { Position } from 'unist'
 import { RegExpUtils } from '@jcayzac/utils-text'
 

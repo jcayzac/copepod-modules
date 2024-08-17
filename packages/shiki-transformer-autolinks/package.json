@@ -1,19 +1,24 @@
 {
-	"name": "@jcayzac/utils-xml",
+	"name": "@jcayzac/shiki-transformer-autolinks",
 	"type": "module",
-	"version": "0.1.5",
-	"description": "Small utilities for XML.",
+	"version": "0.2.3",
+	"description": "A transformer for Shiki that automatically turns URLs into links.",
 	"author": "Julien Cayzac",
 	"license": "MIT",
 	"funding": "https://github.com/sponsors/jcayzac",
-	"homepage": "https://github.com/jcayzac/copepod-modules/tree/main/utils-xml#readme",
+	"homepage": "https://github.com/jcayzac/copepod-modules/tree/main/shiki-transformer-autolinks#readme",
 	"repository": {
 		"type": "git",
 		"url": "github:jcayzac/copepod-modules",
-		"directory": "packages/utils-xml"
+		"directory": "packages/shiki-transformer-autolinks"
 	},
 	"bugs": "https://github.com/jcayzac/copepod-modules/issues",
-	"keywords": ["xml"],
+	"keywords": [
+		"shiki",
+		"transformer",
+		"autolinks",
+		"@shikijs/transformers"
+	],
 	"sideEffects": false,
 	"publishConfig": {
 		"access": "public",
@@ -35,5 +40,16 @@
 		"prepublishOnly": "npm run build",
 		"lint": "eslint .",
 		"check": "tsc --noEmit"
+	},
+	"peerDependencies": {
+		"@shikijs/core": "^1.13.0"
+	},
+	"dependencies": {
+		"@jcayzac/utils-text": "workspace:^"
+	},
+	"devDependencies": {
+		"@shikijs/core": "^1.13.0",
+		"@types/hast": "^3.0.4",
+		"@types/unist": "^3.0.3"
 	}
 }
