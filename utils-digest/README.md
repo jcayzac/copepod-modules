@@ -4,12 +4,7 @@ This module provides a single utility function that computes the SHA-256 digest 
 
 ## Installation
 
-This module is available on both the [NPM](https://npmjs.com/) and [JSR](https://jsr.io/) registries. To install it, run:
-
 ```sh
-# deno
-deno add @jcayzac/utils-digest
-
 # pnpm
 pnpm add @jcayzac/utils-digest
 
@@ -21,6 +16,9 @@ npx add @jcayzac/utils-digest
 
 # yarn
 yarn add @jcayzac/utils-digest
+
+# deno
+deno add npm:@jcayzac/utils-digest
 ```
 
 ## Usage

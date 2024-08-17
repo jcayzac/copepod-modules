@@ -1,6 +1,6 @@
 # Publication Status
 
-The modules below that are checked have been published to the JSR and NPM registries.
+The modules below that are checked have been published.
 
 - [x] astro-build-cache
 - [x] astro-classlist

@@ -4,12 +4,7 @@ This module provides small text utilities. See [here](https://jsr.io/@jcayzac/ut
 
 ## Installation
 
-This module is available on both the [NPM](https://npmjs.com/) and [JSR](https://jsr.io/) registries. To install it, run:
-
 ```sh
-# deno
-deno add @jcayzac/utils-text
-
 # pnpm
 pnpm add @jcayzac/utils-text
 
@@ -21,6 +16,9 @@ npx add @jcayzac/utils-text
 
 # yarn
 yarn add @jcayzac/utils-text
+
+# deno
+deno add npm:@jcayzac/utils-text
 ```
 
 ## Like it? Buy me a coffee!

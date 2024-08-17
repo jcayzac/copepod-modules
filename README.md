@@ -4,16 +4,13 @@ This is a collection of modules I use in my projects. I'm publishing them here s
 
 ## Installation
 
-Modules are available on both the [NPM](https://npmjs.com/) and [JSR](https://jsr.io/) registries.
+Modules are available on the [NPM](https://npmjs.com/) registry.
 
 > **Note:** That's not true for all packages, at the moment. Many are still not published. I'm working on it.
 
 To install a module, run:
 
 ```sh
-# deno
-deno add @jcayzac/<module-name>
-
 # pnpm
 pnpm add @jcayzac/<module-name>
 
@@ -25,13 +22,14 @@ npx add @jcayzac/<module-name>
 
 # yarn
 yarn jsr add @jcayzac/<module-name>
-```
 
-For more information, see the [JSR documentation](https://jsr.io/docs/using-packages).
+# deno
+deno add npm:@jcayzac/<module-name>
+```
 
 ## Usage
 
-See the `README` file in each of the module, or the docs published on [jsr.io](jsr.io).
+See the `README` file in each of the module.
 
 ## Like it? Buy me a coffee!
 

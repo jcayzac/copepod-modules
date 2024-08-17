@@ -23,12 +23,7 @@ To clear the cache, simply delete `node_modules/.astro/build-cache.*`.
 
 ## Installation
 
-This module is available on both the [NPM](https://npmjs.com/) and [JSR](https://jsr.io/) registries. To install it, run:
-
 ```sh
-# deno
-deno add @jcayzac/astro-build-cache
-
 # pnpm
 pnpm add @jcayzac/astro-build-cache
 
@@ -40,6 +35,9 @@ npx add @jcayzac/astro-build-cache
 
 # yarn
 yarn add @jcayzac/astro-build-cache
+
+# deno
+deno add npm:@jcayzac/astro-build-cache
 ```
 
 ## Usage

@@ -4,12 +4,7 @@ This module provides small utilities for XML. See [here](https://jsr.io/@jcayzac
 
 ## Installation
 
-This module is available on both the [NPM](https://npmjs.com/) and [JSR](https://jsr.io/) registries. To install it, run:
-
 ```sh
-# deno
-deno add @jcayzac/utils-xml
-
 # pnpm
 pnpm add @jcayzac/utils-xml
 
@@ -21,6 +16,9 @@ npx add @jcayzac/utils-xml
 
 # yarn
 yarn add @jcayzac/utils-xml
+
+# deno
+deno add npm:@jcayzac/utils-xml
 ```
 
 ## Like it? Buy me a coffee!
