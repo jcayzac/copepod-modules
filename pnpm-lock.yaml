@@ -33,6 +33,15 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0(typescript@5.5.4)
 
+  packages/astro-build-cache:
+    dependencies:
+      '@deno/kv':
+        specifier: ^0.8.1
+        version: 0.8.1
+      '@jcayzac/utils-digest':
+        specifier: workspace:^
+        version: link:../utils-digest
+
   packages/astro-classlist:
     devDependencies:
       astro:
@@ -238,6 +247,33 @@ packages:
     resolution: {integrity: sha512-0MhX9/B4iL6Re04jPrttDm+BsP8y6mS7byuv0BvXgdXhbV5PdlsHt55dvNsuBCPZ7xq1oTAOOuotR9NFbQyMSA==}
     bundledDependencies:
       - is-unicode-supported
+
+  '@deno/kv-darwin-arm64@0.8.1':
+    resolution: {integrity: sha512-q1FldAFYVxBAapSsNRaI4wkI97K7UWy+5JTQ/1JN9AdVFPEFhopUB7dRzV19wqzRsRzcHY23U+BDKp9U23np/w==}
+    engines: {node: '>= 18'}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@deno/kv-darwin-x64@0.8.1':
+    resolution: {integrity: sha512-4DtOBHT3/bJQJCJkbvugbDxrMneCQcRtVXYzQ65uDqzUKEJVMxINS1Fc0j0Xmtg6xEZfbjnGamXrLaQ1kRNFvA==}
+    engines: {node: '>= 18'}
+    cpu: [x64]
+    os: [darwin]
+
+  '@deno/kv-linux-x64-gnu@0.8.1':
+    resolution: {integrity: sha512-XF/bRZgKtUvJmLDMjz/QSS9lMt5hL1e8+sRXh7ffKjkvDJL4dK88ZjOpW2G+C71G0SruqcNy1oYSXqQ+LVw3dw==}
+    engines: {node: '>= 18'}
+    cpu: [x64]
+    os: [linux]
+
+  '@deno/kv-win32-x64-msvc@0.8.1':
+    resolution: {integrity: sha512-d3CA3Hp0vZNOKj4lcgppiArQCbVbxV/GBHl14En/8MDkScOInuy5R1hw+0mW7Y+4DekWl2LlfZZaaz+/mYEiwQ==}
+    engines: {node: '>= 18'}
+    cpu: [x64]
+    os: [win32]
+
+  '@deno/kv@0.8.1':
+    resolution: {integrity: sha512-bS50xRWgYU3TiSHE2Lwznl2xTlkD/EkZ5HuqYT0wD8YdnRLhMnm8MgUf2Wf+mKw92JI5zCSHsJI3C3ahQKYs6A==}
 
   '@emnapi/runtime@1.2.0':
     resolution: {integrity: sha512-bV21/9LQmcQeCPEg3BDFtvwL6cwiTMksYNWQQ4KOxCZikEGalWtenoZ0wCiukJINlGCIi2KXx01g4FoH/LxpzQ==}
@@ -3870,6 +3906,25 @@ snapshots:
       '@clack/core': 0.3.4
       picocolors: 1.0.1
       sisteransi: 1.0.5
+
+  '@deno/kv-darwin-arm64@0.8.1':
+    optional: true
+
+  '@deno/kv-darwin-x64@0.8.1':
+    optional: true
+
+  '@deno/kv-linux-x64-gnu@0.8.1':
+    optional: true
+
+  '@deno/kv-win32-x64-msvc@0.8.1':
+    optional: true
+
+  '@deno/kv@0.8.1':
+    optionalDependencies:
+      '@deno/kv-darwin-arm64': 0.8.1
+      '@deno/kv-darwin-x64': 0.8.1
+      '@deno/kv-linux-x64-gnu': 0.8.1
+      '@deno/kv-win32-x64-msvc': 0.8.1
 
   '@emnapi/runtime@1.2.0':
     dependencies:
