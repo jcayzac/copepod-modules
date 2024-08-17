@@ -6,7 +6,7 @@
  * other transformers may add extra styles.
  */
 
-import type { ShikiTransformer } from 'shiki'
+import type { ShikiTransformer } from '@shikijs/core'
 import type { Element, Node } from 'hast'
 
 function transformer(): ShikiTransformer {

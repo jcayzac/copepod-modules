@@ -1,6 +1,9 @@
 # `@jcayzac/shiki-transformer-token`
 
-TODO
+This [Shiki transformer](https://shiki.style/guide/transformers) is to be used together with [`@jcayzac/shiki-transformer-token`](https://www.npmjs.com/package/@jcayzac/shiki-transformer-token).
+
+> [!WARNING]
+> Used alone, this transformer is non-functional, as it will pollute your output with useless HTML attributes.
 
 ## Installation
 
@@ -20,6 +23,10 @@ yarn add @jcayzac/shiki-transformer-token
 # deno
 deno add npm:@jcayzac/shiki-transformer-token
 ```
+
+## Usage
+
+See [the theme's documentation](https://github.com/jcayzac/copepod-modules/blob/main/packages/astro-theme-token/README.md#usage).
 
 ## Like it? Buy me a coffee!
 
