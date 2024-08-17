@@ -3,7 +3,7 @@
 This is a special theme for [Shiki](https://shiki.style) to use together with [`@jcayzac/shiki-transformer-token`](https://www.npmjs.com/package/@jcayzac/shiki-transformer-token).
 
 > [!WARNING]
-> Used alone, this theme is non-functional, as it replaces color values with grammar token names and will generate invalid CSS.
+> Used alone, this theme is non-functional, as it replaces color values with grammar token names and will generate invalid CSS. It **MUST** be used together with the transformer.
 
 ## Motivation
 
