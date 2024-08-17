@@ -70,6 +70,18 @@ importers:
         specifier: ^3.0.3
         version: 3.0.3
 
+  packages/shiki-transformer-token:
+    devDependencies:
+      '@shikijs/core':
+        specifier: ^1.13.0
+        version: 1.13.0
+      '@types/hast':
+        specifier: ^3.0.4
+        version: 3.0.4
+      '@types/unist':
+        specifier: ^3.0.3
+        version: 3.0.3
+
   packages/utils-digest: {}
 
   packages/utils-text: {}

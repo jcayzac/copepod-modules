@@ -1,0 +1,53 @@
+{
+	"name": "@jcayzac/shiki-transformer-token",
+	"type": "module",
+	"version": "0.1.0",
+	"description": "Shiki transformer to enable more semantic styling.",
+	"author": "Julien Cayzac",
+	"license": "MIT",
+	"funding": "https://github.com/sponsors/jcayzac",
+	"homepage": "https://github.com/jcayzac/copepod-modules/tree/main/shiki-transformer-token#readme",
+	"repository": {
+		"type": "git",
+		"url": "github:jcayzac/copepod-modules",
+		"directory": "packages/shiki-transformer-token"
+	},
+	"bugs": "https://github.com/jcayzac/copepod-modules/issues",
+	"keywords": [
+		"shiki",
+		"transformer",
+		"shiki-transformer",
+		"semantic",
+		"unstyled"
+	],
+	"sideEffects": false,
+	"publishConfig": {
+		"access": "public",
+		"exports": {
+			".": {
+				"types": "./dist/index.d.ts",
+				"import": "./dist/index.mjs"
+			}
+		},
+		"module": "./dist/index.mjs",
+		"types": "./dist/index.d.ts"
+	},
+	"main": "./src/index.ts",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "unbuild --minify --sourcemap",
+		"prepublishOnly": "npm run build",
+		"lint": "eslint .",
+		"check": "tsc --noEmit"
+	},
+	"peerDependencies": {
+		"@shikijs/core": "^1.13.0"
+	},
+	"devDependencies": {
+		"@shikijs/core": "^1.13.0",
+		"@types/hast": "^3.0.4",
+		"@types/unist": "^3.0.3"
+	}
+}
