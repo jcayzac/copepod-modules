@@ -1,0 +1,49 @@
+{
+	"name": "@jcayzac/astro-build-cache",
+	"type": "module",
+	"version": "0.1.4",
+	"description": "Persistent build cache for artifacts you generate during an SSG Astro build (social images, etc).",
+	"author": "Julien Cayzac",
+	"license": "MIT",
+	"funding": "https://github.com/sponsors/jcayzac",
+	"homepage": "https://github.com/jcayzac/copepod-modules/tree/main/astro-classlist#readme",
+	"repository": {
+		"type": "git",
+		"url": "github:jcayzac/copepod-modules",
+		"directory": "packages/astro-classlist"
+	},
+	"bugs": "https://github.com/jcayzac/copepod-modules/issues",
+	"keywords": [
+		"astro",
+		"cache",
+		"build",
+		"static",
+		"SSG"
+	],
+	"sideEffects": false,
+	"publishConfig": {
+		"access": "public",
+		"exports": {
+			".": {
+				"types": "./dist/index.d.ts",
+				"import": "./dist/index.mjs"
+			}
+		},
+		"module": "./dist/index.mjs",
+		"types": "./dist/index.d.ts"
+	},
+	"main": "./src/index.ts",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "unbuild --minify --sourcemap",
+		"prepublishOnly": "npm run build",
+		"lint": "eslint .",
+		"check": "tsc --noEmit"
+	},
+	"dependencies": {
+		"@deno/kv": "^0.8.1",
+		"@jcayzac/utils-digest": "workspace:^"
+	}
+}
