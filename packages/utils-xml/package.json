@@ -1,0 +1,44 @@
+{
+	"name": "@jcayzac/utils-xml",
+	"type": "module",
+	"version": "0.1.4",
+	"description": "Small utilities for XML.",
+	"author": "Julien Cayzac",
+	"license": "MIT",
+	"funding": "https://github.com/sponsors/jcayzac",
+	"homepage": "https://github.com/jcayzac/copepod-modules/tree/main/utils-xml#readme",
+	"repository": {
+		"type": "git",
+		"url": "github:jcayzac/copepod-modules",
+		"directory": "packages/utils-xml"
+	},
+	"bugs": "https://github.com/jcayzac/copepod-modules/issues",
+	"keywords": ["xml"],
+	"sideEffects": false,
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.mjs"
+		}
+	},
+	"main": "./dist/index.mjs",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
+	"typesVersions": {
+		"*": {
+			"*": [
+				"./dist/*",
+				"./dist/index.d.ts"
+			]
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "unbuild --minify --sourcemap",
+		"prepublishOnly": "npm run build",
+		"lint": "eslint .",
+		"check": "tsc --noEmit"
+	}
+}

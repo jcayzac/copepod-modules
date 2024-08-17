@@ -1,6 +1,0 @@
-{
-	"name": "@jcayzac/utils-xml",
-	"version": "0.1.2",
-	"keywords": ["xml"],
-	"exports": "./index.ts"
-}
