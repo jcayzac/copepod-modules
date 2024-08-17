@@ -1,12 +1,12 @@
 {
 	"name": "@jcayzac/astro-classlist",
 	"type": "module",
-	"version": "0.1.4",
+	"version": "0.1.5",
 	"description": "Helper for Astro components to coerce `class:list` into an array of strings.",
 	"author": "Julien Cayzac",
 	"license": "MIT",
 	"funding": "https://github.com/sponsors/jcayzac",
-	"homepage": "https://github.com/jcayzac/copepod-modules/tree/main/astro-classlist#readme",
+	"homepage": "https://github.com/jcayzac/copepod-modules/tree/main/packages/astro-classlist#readme",
 	"repository": {
 		"type": "git",
 		"url": "github:jcayzac/copepod-modules",

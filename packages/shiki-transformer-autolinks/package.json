@@ -1,12 +1,12 @@
 {
 	"name": "@jcayzac/shiki-transformer-autolinks",
 	"type": "module",
-	"version": "0.2.4",
+	"version": "0.2.5",
 	"description": "A transformer for Shiki that automatically turns URLs into links.",
 	"author": "Julien Cayzac",
 	"license": "MIT",
 	"funding": "https://github.com/sponsors/jcayzac",
-	"homepage": "https://github.com/jcayzac/copepod-modules/tree/main/shiki-transformer-autolinks#readme",
+	"homepage": "https://github.com/jcayzac/copepod-modules/tree/main/packages/shiki-transformer-autolinks#readme",
 	"repository": {
 		"type": "git",
 		"url": "github:jcayzac/copepod-modules",

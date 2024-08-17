@@ -1,12 +1,12 @@
 {
 	"name": "@jcayzac/utils-xml",
 	"type": "module",
-	"version": "0.1.6",
+	"version": "0.1.7",
 	"description": "Small utilities for XML.",
 	"author": "Julien Cayzac",
 	"license": "MIT",
 	"funding": "https://github.com/sponsors/jcayzac",
-	"homepage": "https://github.com/jcayzac/copepod-modules/tree/main/utils-xml#readme",
+	"homepage": "https://github.com/jcayzac/copepod-modules/tree/main/packages/utils-xml#readme",
 	"repository": {
 		"type": "git",
 		"url": "github:jcayzac/copepod-modules",

@@ -1,12 +1,12 @@
 {
 	"name": "@jcayzac/astro-build-cache",
 	"type": "module",
-	"version": "0.1.4",
+	"version": "0.1.5",
 	"description": "Persistent build cache for artifacts you generate during an SSG Astro build (social images, etc).",
 	"author": "Julien Cayzac",
 	"license": "MIT",
 	"funding": "https://github.com/sponsors/jcayzac",
-	"homepage": "https://github.com/jcayzac/copepod-modules/tree/main/astro-classlist#readme",
+	"homepage": "https://github.com/jcayzac/copepod-modules/tree/main/packages/astro-classlist#readme",
 	"repository": {
 		"type": "git",
 		"url": "github:jcayzac/copepod-modules",

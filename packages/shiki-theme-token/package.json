@@ -1,12 +1,12 @@
 {
 	"name": "@jcayzac/shiki-theme-token",
 	"type": "module",
-	"version": "0.1.2",
+	"version": "0.1.3",
 	"description": "Special theme for Shiki. Style grammar tokens directly with CSS.",
 	"author": "Julien Cayzac",
 	"license": "MIT",
 	"funding": "https://github.com/sponsors/jcayzac",
-	"homepage": "https://github.com/jcayzac/copepod-modules/tree/main/shiki-theme-token#readme",
+	"homepage": "https://github.com/jcayzac/copepod-modules/tree/main/packages/shiki-theme-token#readme",
 	"repository": {
 		"type": "git",
 		"url": "github:jcayzac/copepod-modules",

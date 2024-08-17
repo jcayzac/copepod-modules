@@ -1,12 +1,12 @@
 {
 	"name": "@jcayzac/shiki-transformer-token",
 	"type": "module",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "Shiki transformer to enable more semantic styling.",
 	"author": "Julien Cayzac",
 	"license": "MIT",
 	"funding": "https://github.com/sponsors/jcayzac",
-	"homepage": "https://github.com/jcayzac/copepod-modules/tree/main/shiki-transformer-token#readme",
+	"homepage": "https://github.com/jcayzac/copepod-modules/tree/main/packages/shiki-transformer-token#readme",
 	"repository": {
 		"type": "git",
 		"url": "github:jcayzac/copepod-modules",
