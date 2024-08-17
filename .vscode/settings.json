@@ -3,11 +3,11 @@
 	"files.exclude": {
 		"**/.DS_Store": true,
 		"**/Thumbs.db": true,
-		".coverage": true,
-		".coverage.lcov": true,
+		"**/.coverage": true,
+		"**/.coverage.lcov": true,
 		".git": true,
-		"dist": true,
-		"node_modules": true
+		"**/dist": true,
+		"**/node_modules": true
 	},
 	"[markdown]": {
 		"editor.scrollbar.vertical": "hidden",
