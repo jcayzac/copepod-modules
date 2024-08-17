@@ -48,6 +48,12 @@ importers:
         specifier: ^4.14.2
         version: 4.14.2(@types/node@22.4.0)(rollup@4.20.0)(typescript@5.5.4)
 
+  packages/shiki-theme-token:
+    devDependencies:
+      shiki:
+        specifier: ^1.13.0
+        version: 1.13.0
+
   packages/shiki-transformer-autolinks:
     dependencies:
       '@jcayzac/utils-text':
