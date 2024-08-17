@@ -17,12 +17,7 @@ Wouldn't it be nice if code rendered by Shiki also had clickable URLs? This is w
 
 ## Installation
 
-This module is available on both the [NPM](https://npmjs.com/) and [JSR](https://jsr.io/) registries. To install it, run:
-
 ```sh
-# deno
-deno add @jcayzac/shiki-transformer-autolinks
-
 # pnpm
 pnpm add @jcayzac/shiki-transformer-autolinks
 
@@ -34,6 +29,9 @@ npx add @jcayzac/shiki-transformer-autolinks
 
 # yarn
 yarn add @jcayzac/shiki-transformer-autolinks
+
+# deno
+deno add npm:@jcayzac/shiki-transformer-autolinks
 ```
 
 ## Like it? Buy me a coffee!

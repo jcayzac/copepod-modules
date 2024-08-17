@@ -1,8 +1,8 @@
 {
 	"name": "@jcayzac/utils-text",
 	"type": "module",
-	"version": "0.2.5",
-	"description": "Small utilities for text.",
+	"version": "0.2.6",
+	"description": "Small utilities for XML.",
 	"author": "Julien Cayzac",
 	"license": "MIT",
 	"funding": "https://github.com/sponsors/jcayzac",
@@ -15,23 +15,18 @@
 	"bugs": "https://github.com/jcayzac/copepod-modules/issues",
 	"keywords": ["regex", "regexp", "regular expression", "regular expressions"],
 	"sideEffects": false,
-	"exports": {
-		".": {
-			"types": "./dist/index.d.ts",
-			"import": "./dist/index.mjs"
-		}
+	"publishConfig": {
+		"access": "public",
+		"exports": {
+			".": {
+				"types": "./dist/index.d.ts",
+				"import": "./dist/index.mjs"
+			}
+		},
+		"module": "./dist/index.mjs",
+		"types": "./dist/index.d.ts"
 	},
-	"main": "./dist/index.mjs",
-	"module": "./dist/index.mjs",
-	"types": "./dist/index.d.ts",
-	"typesVersions": {
-		"*": {
-			"*": [
-				"./dist/*",
-				"./dist/index.d.ts"
-			]
-		}
-	},
+	"main": "./src/index.ts",
 	"files": [
 		"dist"
 	],
