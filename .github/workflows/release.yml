@@ -18,8 +18,6 @@ jobs:
           echo "Package: ${GITHUB_REF_NAME%@*}"
           echo "Version: ${GITHUB_REF_NAME#*@}"
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       - shell: bash
         run: |
           set -eu -o pipefail
@@ -32,7 +30,7 @@ jobs:
           node-version: lts/*
           registry-url: https://registry.npmjs.org/
       - run: pnpm install
-      - run: pnpm publish -r --filter "${GITHUB_REF_NAME%@*}" --access public
+      - run: pnpm publish -r --no-git-checks --filter "${GITHUB_REF_NAME%@*}" --access public --force
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
