@@ -61,11 +61,11 @@ const rendered = highlighter.codeToHtml(code, {
 }
 ```
 
-In your CSS, you can then style the `[data-token]` attributes as you see fit. [Here is a sample stylesheet](https://github.com/jcayzac/copepod-modules/blob/main/shiki-theme-token/sample.css).
+In your CSS, you can then style the `[data-token]` attributes as you see fit. [Here is a sample stylesheet](https://github.com/jcayzac/copepod-modules/blob/main/packages/shiki-theme-token/sample.css).
 
 ## What tokens are supported?
 
-The full TextMate grammar isn't supported, only [a fairly opinionated subset](https://github.com/jcayzac/copepod-modules/blob/main/shiki-theme-token/src/index.ts#L35-L113). Feel free to [open an issue](https://github.com/jcayzac/copepod-modules/issues/new/choose) if you need tokens that aren't supported yet!
+The full TextMate grammar isn't supported, only [a fairly opinionated subset](https://github.com/jcayzac/copepod-modules/blob/main/packages/shiki-theme-token/src/index.ts#L35-L113). Feel free to [open an issue](https://github.com/jcayzac/copepod-modules/issues/new/choose) if you need tokens that aren't supported yet!
 
 ## Like it? Buy me a coffee!
 
