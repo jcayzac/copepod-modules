@@ -1,0 +1,38 @@
+name: Release
+permissions:
+  id-token: write
+  contents: write
+on:
+  push:
+    tags:
+      # Must be "package-name@version"
+      - '*'
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash
+        run: |
+          set -eu -o pipefail
+          echo "Release Tag: ${GITHUB_REF_NAME}"
+          echo "Package: ${GITHUB_REF_NAME%@*}"
+          echo "Version: ${GITHUB_REF_NAME#*@}"
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - shell: bash
+        run: |
+          set -eu -o pipefail
+          [ -d "packages/${GITHUB_REF_NAME%@*}" ] && echo "Package '${GITHUB_REF_NAME%@*}' exists"
+          [ -f "packages/${GITHUB_REF_NAME%@*}/package.json" ] && echo '…and has a package.json'
+          [[ $(jq -r '.version' < "packages/${GITHUB_REF_NAME%@*}/package.json") == "${GITHUB_REF_NAME#*@}" ]] && echo '…and the version matches the tag'
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          registry-url: https://registry.npmjs.org/
+      - run: pnpm install
+      - run: pnpm publish -r --filter "${GITHUB_REF_NAME%@*}" --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true

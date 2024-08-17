@@ -14,9 +14,8 @@ export interface ClassListStaticFunctions {
 	 * This is useful when you want to accept a `class:list` prop and pass it
 	 * to a component, while adding your own classes too.
 	 */
-	toArray(classList: ClassList): string[]
+	toArray: (classList: ClassList) => string[]
 }
-
 
 /**
  * A utility object for working with the `class:list` attribute.
@@ -32,23 +31,23 @@ export const ClassList: ClassListStaticFunctions = {
 		if (typeof classList === 'string') {
 			return [classList]
 		}
-	
+
 		if (Array.isArray(classList)) {
 			return classList
 		}
-	
+
 		if (classList !== null || classList !== undefined) {
 			if ((classList as any)[Symbol.iterator] !== undefined) {
 				return [...(classList as Iterable<any>)].map(classList => classList.toString())
 			}
-	
+
 			if (typeof classList === 'object') {
 				return Object.entries(classList)
 					.filter(([_, v]) => !!v)
 					.map(([k]) => k)
 			}
 		}
-	
+
 		return []
-	}	
+	},
 }

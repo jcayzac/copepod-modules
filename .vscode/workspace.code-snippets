@@ -1,0 +1,27 @@
+{
+	"Updated": {
+		"scope": "markdown,mdx",
+		"prefix": "now",
+		"description": "The current date",
+		"body": [
+			"$CURRENT_YEAR-$CURRENT_MONTH-${CURRENT_DATE}T$CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND.000$CURRENT_TIMEZONE_OFFSET"
+		]
+	},
+	"Frontmatter": {
+		"scope": "markdown,mdx",
+		"prefix": "---",
+		"description": "Adds the frontmatter block for an articles",
+		"body": [
+			"---",
+			"title: $1",
+			"description:",
+			"category: ${2|finance,software,home,people|}",
+			"tags:",
+			"slug: ${TM_FILENAME_BASE}",
+			"published: $CURRENT_YEAR-$CURRENT_MONTH-${CURRENT_DATE}T$CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND.000$CURRENT_TIMEZONE_OFFSET",
+			"updated:",
+			"draft: true",
+			"---"
+		]
+	}
+}

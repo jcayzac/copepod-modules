@@ -6,7 +6,7 @@ const MODE = env.NODE_ENV === 'production' ? 'production' : 'development'
 
 /**
  * A simple cache for Astro build artifacts, using sqlite3 files stored in `node_modules/.astro/build-cache.<mode>`.
- * 
+ *
  * Read-only caches are supported.
  */
 export class Cache {
@@ -21,7 +21,7 @@ export class Cache {
 
 	/**
 	 * Return a value, possibly generating it if it didn't already exist.
-	 * 
+	 *
 	 * @param keyable Anything that can be serialized to JSON. Should contain every relevant dependencies (e.g. options used when generating the value).
 	 * @param generator Asynchronous function that generates the value if it didn't already exist in the cache.
 	 * @returns The cached value.

@@ -1,0 +1,20 @@
+{
+	"name": "copepod-modules",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+		"prepare": "git config core.hooksPath .githooks",
+		"build": "unbuild",
+		"lint": "eslint"
+	},
+	"devDependencies": {
+		"@antfu/eslint-config": "^2.26.0",
+		"@types/node": "^22.4.0",
+		"bumpp": "^9.5.1",
+		"eslint": "^9.9.0",
+		"lint-staged": "^15.2.9",
+		"pnpm": "^9.7.1",
+		"typescript": "^5.5.4",
+		"unbuild": "^2.0.0"
+	}
+}

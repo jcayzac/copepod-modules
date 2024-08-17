@@ -1,0 +1,93 @@
+{
+	// VISUAL STUFF
+	"files.exclude": {
+		"**/.DS_Store": true,
+		"**/Thumbs.db": true,
+		".coverage": true,
+		".coverage.lcov": true,
+		".git": true,
+		"dist": true,
+		"node_modules": true
+	},
+	"[markdown]": {
+		"editor.scrollbar.vertical": "hidden",
+		"editor.inlayHints.enabled": "offUnlessPressed",
+		"editor.fontSize": 16,
+		"editor.lineHeight": 21,
+		"editor.wordWrap": "wordWrapColumn",
+		"editor.wordWrapColumn": 70,
+		"editor.lineNumbers": "off",
+		"editor.minimap.enabled": false
+	},
+
+	"breadcrumbs.enabled": false,
+	"editor.tabSize": 2,
+	"editor.indentSize": "tabSize",
+	"editor.detectIndentation": true,
+	"editor.language.brackets": [["{", "}"], ["[", "]"], ["(", ")"]],
+	"editor.minimap.enabled": false,
+	"zenMode.centerLayout": true,
+	"zenMode.hideActivityBar": true,
+	"zenMode.hideStatusBar": true,
+	"zenMode.silentNotifications": true,
+	"zenMode.fullScreen": false,
+	"zenMode.showTabs": "none",
+	"zenMode.hideLineNumbers": true,
+
+	// CODE COMPLETION
+	"editor.tabCompletion": "on",
+
+	// NPM
+	"npm.packageManager": "pnpm",
+	"npm.enableRunFromFolder": true,
+
+	// ESLINT SETTINGS COPIED FROM https://github.com/antfu/eslint-config?tab=readme-ov-file#vs-code-support-auto-fix-on-save
+
+	// Disable the default formatter, use eslint instead
+	"prettier.enable": false,
+	"editor.formatOnSave": false,
+
+	// Auto fix
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit",
+		"source.organizeImports": "never"
+	},
+
+	// Silent the stylistic rules in you IDE, but still auto fix them
+	"eslint.rules.customizations": [
+		{ "rule": "style/*", "severity": "off", "fixable": true },
+		{ "rule": "format/*", "severity": "off", "fixable": true },
+		{ "rule": "*-indent", "severity": "off", "fixable": true },
+		{ "rule": "*-spacing", "severity": "off", "fixable": true },
+		{ "rule": "*-spaces", "severity": "off", "fixable": true },
+		{ "rule": "*-order", "severity": "off", "fixable": true },
+		{ "rule": "*-dangle", "severity": "off", "fixable": true },
+		{ "rule": "*-newline", "severity": "off", "fixable": true },
+		{ "rule": "*quotes", "severity": "off", "fixable": true },
+		{ "rule": "*semi", "severity": "off", "fixable": true }
+	],
+
+	// Enable eslint for all supported languages
+	"eslint.validate": [
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"vue",
+		"html",
+		"markdown",
+		"json",
+		"jsonc",
+		"yaml",
+		"toml",
+		"xml",
+		"gql",
+		"graphql",
+		"astro",
+		"css",
+		"less",
+		"scss",
+		"pcss",
+		"postcss"
+	]
+}

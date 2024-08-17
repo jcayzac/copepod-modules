@@ -1,10 +1,10 @@
 {
-  "name": "@jcayzac/astro-build-cache",
-  "version": "0.1.3",
-  "keywords": ["astro", "cache", "build"],
-  "exports": "./index.ts",
-  "imports": {
-    "@deno/kv": "npm:@deno/kv@^0.8.1",
-    "@jcayzac/utils-digest": "npm:@jcayzac/utils-digest@^0.1.4"
-  }
+	"name": "@jcayzac/astro-build-cache",
+	"version": "0.1.3",
+	"keywords": ["astro", "cache", "build"],
+	"exports": "./index.ts",
+	"imports": {
+		"@deno/kv": "npm:@deno/kv@^0.8.1",
+		"@jcayzac/utils-digest": "npm:@jcayzac/utils-digest@^0.1.4"
+	}
 }

@@ -1,0 +1,9 @@
+{
+	"recommendations": [
+		"DavidAnson.vscode-markdownlint",
+		"dbaeumer.vscode-eslint",
+		"YoavBls.pretty-ts-errors",
+		"yzhang.markdown-all-in-one"
+	],
+	"unwantedRecommendations": []
+}
