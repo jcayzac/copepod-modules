@@ -1,0 +1,202 @@
+---
+/*
+
+MIT License
+
+Copyright (c) 2024 Julien Cayzac
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+*/
+
+code {
+  /* ANSI colors */
+  [data-token="terminal.ansiBlack"] { color: light-dark(#24292f, #000); }
+  [data-token="terminal.ansiRed"] { color: light-dark(#cf222e, #c6341b); }
+  [data-token="terminal.ansiGreen"] { color: light-dark(#116329, #6fa430); }
+  [data-token="terminal.ansiYellow"] { color: light-dark(#4d2d00, #c9ae38); }
+  [data-token="terminal.ansiBlue"] { color: light-dark(#0969da, #4f78ae); }
+  [data-token="terminal.ansiMagenta"] { color: light-dark(#8250df, #83668b); }
+  [data-token="terminal.ansiCyan"] { color: light-dark(#1b7c83, #46a4a8); }
+  [data-token="terminal.ansiWhite"] { color: light-dark(#6e7781, #dbded8); }
+  [data-token="terminal.ansiBrightBlack"] { color: light-dark(#57606a, #686966); }
+  [data-token="terminal.ansiBrightRed"] { color: light-dark(#a40e26, #f44336); }
+  [data-token="terminal.ansiBrightGreen"] { color: light-dark(#1a7f37, #a9e15d); }
+  [data-token="terminal.ansiBrightYellow"] { color: light-dark(#633c01, #f9eb77); }
+  [data-token="terminal.ansiBrightBlue"] { color: light-dark(#3192aa, #8caed4); }
+  [data-token="terminal.ansiBrightMagenta"] { color: light-dark(#a475f9, #b595b4); }
+  [data-token="terminal.ansiBrightCyan"] { color: light-dark(#218bff, #73e2e6); }
+  [data-token="terminal.ansiBrightWhite"] { color: light-dark(#8c959f, #f1f1ef); }
+
+  /* TYPES */
+  [data-token="meta.var.expr storage.type"],
+  [data-token="storage.type.function"],
+  [data-token="storage.type.interface"],
+  [data-token="storage.type.class"],
+  [data-token="storage.type.property"],
+  [data-token="storage.type.type"],
+  [data-token="storage.type"],
+  [data-token="entity.other.attribute-name.class"] {
+    color: light-dark(#0e6bcf, #14E5D4);
+  }
+
+  /* TYPE NAMES */
+  [data-token="entity.name.type"],
+  [data-token="support.type"],
+  [data-token="support.class"],
+  [data-token="entity.other.inherited-class"],
+  [data-token="meta.property-list entity.name.tag.css"],
+  [data-token="meta.property-name.css"],
+  [data-token="keyword.type"],
+  [data-token="keyword.other.type"],
+  [data-token="comment.block.documentation"],
+  [data-token="punctuation.definition.block.tag.jsdoc"] {
+    color: light-dark(#6f1dcd, #A95EFF);
+  }
+
+  /* CONSTANTS */
+  [data-token="constant.numeric"],
+  [data-token="keyword.other.unit"],
+  [data-token="variable.other.object"],
+  [data-token="variable.language.this"],
+  [data-token="support.constant"],
+  [data-token="support.constant.property-value"],
+  [data-token="support.constant.property-value.css"],
+  [data-token="constant.language.undefined"],
+  [data-token="constant.language.null"] {
+    color: light-dark(#ce4003, #FF7135);
+  }
+
+  /* VARIABLES */
+  [data-token="variable"],
+  [data-token="meta.class variable.object.property"] {
+    color: light-dark(#d20d59, #FF478D);
+  }
+
+  /* FUNCTIONS */
+  [data-token="entity.name.function"],
+  [data-token="entity.name.tag"],
+  [data-token="entity.name.tag.nesting.selector.css"],
+  [data-token="punctuation.definition.tag"],
+  [data-token="meta.class storage.type"],
+  [data-token="meta.method.declaration"],
+  [data-token="support.function"],
+  [data-token="entity.name.tag.reference.scss"],
+  [data-token="markup.italic"],
+  [data-token="markup.bold"],
+  [data-token="markup.underline.link"],
+  [data-token="markup.underline.link.image"] {
+    color: light-dark(#0067ac, #28A9FF);
+  }
+
+  /* CONTROL */
+  [data-token="keyword.control"],
+  [data-token="keyword.control.at-rule"],
+  [data-token="keyword.control.export"],
+  [data-token="keyword.operator.expression"],
+  [data-token="keyword.operator.new"],
+  [data-token="storage.modifier"],
+  [data-token="storage.type.function.arrow"],
+  [data-token="entity.name.section"],
+  [data-token="entity.other.attribute-name"],
+  [data-token="punctuation.definition.keyword"],
+  [data-token="punctuation.definition.heading"],
+  [data-token="meta.var.expr"] {
+    color: light-dark(#9a6813, #FFB638);
+  }
+
+  /* STRINGS */
+  [data-token="punctuation.definition.string.begin"],
+  [data-token="punctuation.definition.string.end"],
+  [data-token="string.other.link"],
+  [data-token="string.quoted.single"],
+  [data-token="string.template"],
+  [data-token="string"] {
+    color: light-dark(#116329, #42DD76);
+  }
+
+  /* PROPERTIES */
+  [data-token="variable.object.property"],
+  [data-token="meta.object-literal.key"],
+  [data-token="support.type.property-name"],
+  [data-token="meta.jsx.children"] {
+    color: light-dark(#24292f, #EEE);
+  }
+
+  /* MODIFIERS */
+  [data-token="entity.other.attribute-name.pseudo-class"],
+  [data-token="entity.other.attribute-name.pseudo-element"],
+  [data-token="markup.fenced_code.block.markdown punctuation"],
+  [data-token="fenced_code.block.language"] {
+    color: light-dark(#a102c1, #E66DFF);
+  }
+
+  /* INERT */
+  [data-token="keyword.operator"],
+  [data-token="punctuation"],
+  [data-token="punctuation.separator"],
+  [data-token="punctuation.definition.parameters"],
+  [data-token="punctuation.definition.block"],
+  [data-token="punctuation.accessor"],
+  [data-token="comment"],
+  [data-token="punctuation.definition.comment"],
+  [data-token="punctuation.section.property-list.begin.bracket.curly.css"],
+  [data-token="punctuation.section.property-list.end.bracket.curly.css"] {
+    color: light-dark(#4c4c70, #8281b6);
+  }
+
+  /* ITALICS */
+  [data-token="comment"],
+  [data-token="storage.modifier"],
+  [data-token="meta.var.expr storage.type"],
+  [data-token="storage.type.function"],
+  [data-token="storage.type.interface"],
+  [data-token="storage.type.class"],
+  [data-token="storage.type.property"],
+  [data-token="storage.type.type"],
+  [data-token="storage.type"],
+  [data-token="entity.other.attribute-name.class"],
+  [data-token="entity.other.attribute-name.pseudo-class"],
+  [data-token="markup.italic"] {
+    font-style: italic;
+  }
+
+  /* BOLD */
+  [data-token="markup.bold"] {
+    font-weight: bold;
+  }
+
+  /* MARKDOWN HEADINGS */
+  [data-token="punctuation.definition.heading"],
+  [data-token="entity.name.section"] {
+    font-variant: small-caps;
+    text-decoration: underline;
+    text-underline-position: below;
+    text-underline-offset: 0.125em;
+    text-decoration-thickness: 0.125em;
+  }
+
+  /* @jcayzac/shiki-transformer-autolinks */
+  [data-token] :any-link {
+    text-decoration-color: currentcolor;
+    text-decoration-thickness: .0625em;
+    text-underline-offset: initial;
+    text-underline-position: below;
+  }
+}
