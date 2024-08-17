@@ -1,0 +1,50 @@
+{
+	"name": "@jcayzac/astro-classlist",
+	"type": "module",
+	"version": "0.1.4",
+	"description": "Helper for Astro components to coerce `class:list` into an array of strings.",
+	"author": "Julien Cayzac",
+	"license": "MIT",
+	"funding": "https://github.com/sponsors/jcayzac",
+	"homepage": "https://github.com/jcayzac/copepod-modules/tree/main/astro-classlist#readme",
+	"repository": {
+		"type": "git",
+		"url": "github:jcayzac/copepod-modules",
+		"directory": "packages/astro-classlist"
+	},
+	"bugs": "https://github.com/jcayzac/copepod-modules/issues",
+	"keywords": [
+		"astro",
+		"astro-component",
+		"astro-components",
+		"astro-utils"
+	],
+	"sideEffects": false,
+	"publishConfig": {
+		"access": "public",
+		"exports": {
+			".": {
+				"types": "./dist/index.d.ts",
+				"import": "./dist/index.mjs"
+			}
+		},
+		"module": "./dist/index.mjs",
+		"types": "./dist/index.d.ts"
+	},
+	"main": "./src/index.ts",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "unbuild --minify --sourcemap",
+		"prepublishOnly": "npm run build",
+		"lint": "eslint .",
+		"check": "tsc --noEmit"
+	},
+	"peerDependencies": {
+		"astro": "^4.14.2"
+	},
+	"devDependencies": {
+		"astro": "^4.14.2"
+	}
+}

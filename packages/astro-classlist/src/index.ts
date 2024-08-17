@@ -3,7 +3,7 @@ import type { AstroBuiltinAttributes } from 'astro'
 /**
  * The type of the `class:list` attribute.
  */
-export type ClassList = AstroBuiltinAttributes['class:list']
+export type ClassList = string[]
 
 /**
  * A utility object for working with the `class:list` attribute.
@@ -14,7 +14,7 @@ export interface ClassListStaticFunctions {
 	 * This is useful when you want to accept a `class:list` prop and pass it
 	 * to a component, while adding your own classes too.
 	 */
-	toArray: (classList: ClassList) => string[]
+	toArray: (classList: AstroBuiltinAttributes['class:list']) => ClassList
 }
 
 /**
@@ -27,7 +27,7 @@ export const ClassList: ClassListStaticFunctions = {
 	 * This is useful when you want to accept a `class:list` prop and pass it
 	 * to a component, while adding your own classes too.
 	 */
-	toArray(classList: ClassList): string[] {
+	toArray(classList: AstroBuiltinAttributes['class:list']): ClassList {
 		if (typeof classList === 'string') {
 			return [classList]
 		}
