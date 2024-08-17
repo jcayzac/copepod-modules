@@ -26,7 +26,7 @@ deno add npm:@jcayzac/shiki-transformer-token
 
 ## Usage
 
-See [the theme's documentation](https://github.com/jcayzac/copepod-modules/blob/main/packages/astro-theme-token/README.md#usage).
+See [the theme's documentation](https://github.com/jcayzac/copepod-modules/blob/main/packages/shiki-theme-token/README.md#usage).
 
 ## Like it? Buy me a coffee!
 
