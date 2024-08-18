@@ -1,0 +1,50 @@
+{
+	"name": "@jcayzac/astro-image-service",
+	"type": "module",
+	"version": "1.0.0",
+	"description": "A drop-in replacement for Astro's default image service, with art direction support.",
+	"author": "Julien Cayzac",
+	"license": "MIT",
+	"funding": "https://github.com/sponsors/jcayzac",
+	"homepage": "https://github.com/jcayzac/copepod-modules/tree/main/packages/astro-image-service#readme",
+	"repository": {
+		"type": "git",
+		"url": "github:jcayzac/copepod-modules",
+		"directory": "packages/astro-image-service"
+	},
+	"bugs": "https://github.com/jcayzac/copepod-modules/issues",
+	"keywords": [
+		"astro",
+		"astro-component",
+		"image",
+		"image-service",
+		"cover",
+		"sharp",
+		"transform",
+		"art-direction"
+	],
+	"sideEffects": false,
+	"publishConfig": {
+		"access": "public",
+		"exports": {
+			".": {
+				"types": "./dist/index.d.ts",
+				"import": "./dist/index.mjs"
+			}
+		},
+		"module": "./dist/index.mjs",
+		"types": "./dist/index.d.ts"
+	},
+	"main": "./src/index.ts",
+	"files": [
+		"dist"
+	],
+	"peerDependencies": {
+		"astro": "^4.14.2",
+		"sharp": "^0.33.5"
+	},
+	"devDependencies": {
+		"astro": "^4.14.2",
+		"sharp": "^0.33.5"
+	}
+}
