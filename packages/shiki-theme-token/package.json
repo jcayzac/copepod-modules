@@ -38,7 +38,7 @@
 		"sample.css"
 	],
 	"scripts": {
-		"build": "unbuild --minify --sourcemap",
+		"build": "unbuild",
 		"prepublishOnly": "npm run build",
 		"lint": "eslint .",
 		"check": "tsc --noEmit"

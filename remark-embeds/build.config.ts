@@ -6,7 +6,11 @@ export default defineBuildConfig({
 	],
 	declaration: true,
 	clean: true,
+	sourcemap: true,
 	rollup: {
 		emitCJS: false,
+		esbuild: {
+			minify: true,
+		},
 	},
 })
