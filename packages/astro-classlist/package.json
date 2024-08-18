@@ -35,12 +35,6 @@
 	"files": [
 		"dist"
 	],
-	"scripts": {
-		"build": "unbuild",
-		"prepublishOnly": "npm run build",
-		"lint": "eslint .",
-		"check": "tsc --noEmit"
-	},
 	"peerDependencies": {
 		"astro": "^4.14.2"
 	},

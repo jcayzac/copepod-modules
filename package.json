@@ -5,8 +5,10 @@
 	"packageManager": "pnpm@9.7.1",
 	"scripts": {
 		"prepare": "git config core.hooksPath .githooks",
-		"build": "unbuild",
-		"lint": "eslint"
+		"build": "pnpm m exec mkdist --format=esm -d --ext=mjs --minify --target=esnext --cwd",
+		"lint": "eslint",
+		"test": "pnpm m run --if-present test",
+		"check": "pnpm m exec tsc --noEmit"
 	},
 	"devDependencies": {
 		"@antfu/eslint-config": "^2.26.0",
@@ -16,7 +18,6 @@
 		"lint-staged": "^15.2.9",
 		"mkdist": "^1.5.4",
 		"pnpm": "^9.7.1",
-		"typescript": "^5.5.4",
-		"unbuild": "^2.0.0"
+		"typescript": "^5.5.4"
 	}
 }

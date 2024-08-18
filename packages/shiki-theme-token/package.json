@@ -37,12 +37,6 @@
 		"dist",
 		"sample.css"
 	],
-	"scripts": {
-		"build": "unbuild",
-		"prepublishOnly": "npm run build",
-		"lint": "eslint .",
-		"check": "tsc --noEmit"
-	},
 	"devDependencies": {
 		"shiki": "^1.13.0"
 	}
