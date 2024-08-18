@@ -34,12 +34,6 @@
 	"files": [
 		"dist"
 	],
-	"scripts": {
-		"build": "mkdist --format=esm -d --ext=mjs --minify --target=esnext .",
-		"prepublishOnly": "npm run build",
-		"lint": "eslint .",
-		"check": "tsc --noEmit"
-	},
 	"dependencies": {
 		"hast-util-parse-selector": "^4.0.0",
 		"hast-util-select": "^6.0.2",
