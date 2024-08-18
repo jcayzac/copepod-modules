@@ -1,0 +1,52 @@
+{
+	"name": "@jcayzac/rehype-wrap-all",
+	"type": "module",
+	"version": "0.0.0",
+	"private": true,
+	"description": "TBA",
+	"author": "Julien Cayzac",
+	"license": "MIT",
+	"funding": "https://github.com/sponsors/jcayzac",
+	"homepage": "https://github.com/jcayzac/copepod-modules/tree/main/packages/rehype-wrap-all#readme",
+	"repository": {
+		"type": "git",
+		"url": "github:jcayzac/copepod-modules",
+		"directory": "packages/rehype-wrap-all"
+	},
+	"bugs": "https://github.com/jcayzac/copepod-modules/issues",
+	"keywords": [
+		"rehype",
+		"rehype-plugin"
+	],
+	"sideEffects": false,
+	"publishConfig": {
+		"access": "public",
+		"exports": {
+			".": {
+				"types": "./dist/index.d.ts",
+				"import": "./dist/index.mjs"
+			}
+		},
+		"module": "./dist/index.mjs",
+		"types": "./dist/index.d.ts"
+	},
+	"main": "./src/index.ts",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "mkdist --format=esm -d --ext=mjs --minify --target=esnext .",
+		"prepublishOnly": "npm run build",
+		"lint": "eslint .",
+		"check": "tsc --noEmit"
+	},
+	"dependencies": {
+		"hast-util-parse-selector": "^4.0.0",
+		"hast-util-select": "^6.0.2",
+		"unist-util-visit": "^5.0.0"
+	},
+	"devDependencies": {
+		"@types/hast": "^3.0.4",
+		"@types/unist": "^3.0.3"
+	}
+}
