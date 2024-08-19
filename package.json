@@ -11,6 +11,7 @@
 	},
 	"devDependencies": {
 		"@antfu/eslint-config": "^2.26.0",
+		"@total-typescript/tsconfig": "^1.0.4",
 		"@types/node": "^22.4.0",
 		"bumpp": "^9.5.1",
 		"eslint": "^9.9.0",
