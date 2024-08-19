@@ -18,8 +18,8 @@
 import { type BuiltinLanguage, createHighlighter } from 'shiki'
 import { transformerMetaWordHighlight } from '@shikijs/transformers'
 import { JSDOM } from 'jsdom'
-import theme from '@local/shiki-theme-token'
-import token from '@local/shiki-transformer-token'
+import theme from '@jcayzac/shiki-theme-token'
+import token from '@jcayzac/shiki-transformer-token'
 import autolinks from '@jcayzac/shiki-transformer-autolinks'
 
 const langs: Set<BuiltinLanguage> = new Set([

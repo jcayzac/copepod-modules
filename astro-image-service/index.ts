@@ -13,6 +13,7 @@ interface Config {
 }
 
 const sharpService: LocalImageService<Config> = {
+	propertiesToHash: baseService.propertiesToHash,
 	validateOptions: baseService.validateOptions,
 	getURL: baseService.getURL,
 	parseURL: baseService.parseURL,
