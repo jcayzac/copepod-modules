@@ -26,7 +26,7 @@ function integration(): AstroIntegration {
 								...(config.vite?.build?.rollupOptions || {}),
 								external: (source: string, importer: string | undefined, isResolved: boolean) => {
 									if (source === '@jcayzac/astro-image-service-ng/service') {
-										// return true
+										return true
 									}
 
 									if (external === undefined) {
