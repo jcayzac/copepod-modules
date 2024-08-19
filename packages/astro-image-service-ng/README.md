@@ -1,4 +1,4 @@
-# `@jcayzac/astro-image-service`
+# `@jcayzac/astro-image-service-ng`
 
 Drop-in replacement for [Astro](https://astro.build/)'s built-in [image service](https://docs.astro.build/en/guides/images/), with support for cropping.
 
@@ -26,19 +26,19 @@ This lets you crop images to specific aspect ratios, a very crude form of [art d
 
 ```sh
 # pnpm
-pnpm add @jcayzac/astro-image-service sharp
+pnpm add @jcayzac/astro-image-service-ng sharp
 
 # bun
-bunx add @jcayzac/astro-image-service sharp
+bunx add @jcayzac/astro-image-service-ng sharp
 
 # npm
-npx add @jcayzac/astro-image-service sharp
+npx add @jcayzac/astro-image-service-ng sharp
 
 # yarn
-yarn add @jcayzac/astro-image-service sharp
+yarn add @jcayzac/astro-image-service-ng sharp
 
 # deno
-deno add npm:@jcayzac/astro-image-service npm:sharp
+deno add npm:@jcayzac/astro-image-service-ng npm:sharp
 ```
 
 ## Usage
@@ -51,7 +51,7 @@ deno add npm:@jcayzac/astro-image-service npm:sharp
    export default defineConfig({
      image: {
        service: {
-         entrypoint: '@jcayzac/astro-image-service',
+         entrypoint: '@jcayzac/astro-image-service-ng',
        },
      },
      // …other options
