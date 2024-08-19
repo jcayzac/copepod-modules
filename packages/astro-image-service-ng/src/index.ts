@@ -1,73 +1,63 @@
-import sharp, { type FormatEnum, type ResizeOptions } from 'sharp'
-import type { LocalImageService } from 'astro'
-import { baseService } from 'astro/assets'
+import type { AstroIntegration } from 'astro'
 
-export interface Config {
-	// Keep
-}
-const qualityTable: { [k: string]: number } = {
-	low: 25,
-	mid: 50,
-	high: 80,
-	max: 100,
-}
+function integration(): AstroIntegration {
+	return {
+		name: '@jcayzac/astro-image-service-ng/service',
+		hooks: {
+			'astro:config:setup': (options) => {
+				const { config, updateConfig } = options
 
-export interface Transform {
-	src: string
-	width?: number
-	height?: number
-	format: string
-	quality?: string | null
-}
+				let external = config.vite?.build?.rollupOptions?.external
 
-const service: LocalImageService<Config> = {
-	validateOptions: baseService.validateOptions,
-	getURL: baseService.getURL,
-	parseURL: baseService.parseURL,
-	getHTMLAttributes: baseService.getHTMLAttributes,
-	getSrcSet: baseService.getSrcSet,
-	async transform(inputBuffer, transformOptions, _config) {
-		const transform: Transform = transformOptions as Transform
+				updateConfig({
+					image: {
+						service: {
+							entrypoint: '@jcayzac/astro-image-service-ng/service',
+							config: {
+								debug: true,
+							},
+						},
+					},
+					vite: {
+						...(config.vite || {}),
+						build: {
+							...(config.vite?.build || {}),
+							rollupOptions: {
+								...(config.vite?.build?.rollupOptions || {}),
+								external: (source: string, importer: string | undefined, isResolved: boolean) => {
+									if (source === '@jcayzac/astro-image-service-ng/service') {
+										// return true
+									}
 
-		if (transform.format === 'svg') {
-		// FIXME: Returning the input buffer here assumes it's SVG, but it could be anything.
-		// TODO: Add support for SVG image tracing.
-			return { data: inputBuffer, format: 'svg' }
-		}
+									if (external === undefined) {
+										return false
+									}
 
-		const result = sharp(inputBuffer, {
-			failOnError: true,
-			pages: -1,
-			limitInputPixels: false,
-		})
+									if (typeof external === 'function') {
+										return external(source, importer, isResolved)
+									}
 
-		// Adjust for EXIF data orientation
-		result.rotate()
+									if (!Array.isArray(external)) {
+										external = [external]
+									}
 
-		// Resize. If the target aspect ratio is different from the source, the image is first cropped.
-		if (typeof transform.width === 'number' || typeof transform.height === 'number') {
-			const options: ResizeOptions = {}
-			if (typeof transform.width === 'number') {
-				options.width = Math.round(transform.width)
-			}
-			if (typeof transform.height === 'number') {
-				options.height = Math.round(transform.height)
-			}
+									for (const e of external) {
+										if (typeof e === 'string' && source === e) {
+											return true
+										}
 
-			result.resize(options)
-		}
-
-		if (transform.format) {
-			const quality = typeof transform.quality === 'number' ? transform.quality : qualityTable[transform.quality ?? '']
-			result.toFormat(transform.format as keyof FormatEnum, { quality })
-		}
-
-		const { data, info: { format } } = await result.toBuffer({ resolveWithObject: true })
-		return {
-			data,
-			format,
-		}
-	},
+										if (e instanceof RegExp && e.test(source)) {
+											return true
+										}
+									}
+								},
+							},
+						},
+					},
+				})
+			},
+		},
+	} satisfies AstroIntegration
 }
 
-export default service
+export default integration
