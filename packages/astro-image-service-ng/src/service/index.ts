@@ -1,10 +1,8 @@
 import sharp, { type FormatEnum, type ResizeOptions } from 'sharp'
 import type { LocalImageService } from 'astro'
 import { baseService } from 'astro/assets'
+import type { Config } from './config'
 
-export interface Config {
-	// Keep
-}
 const qualityTable: { [k: string]: number } = {
 	low: 25,
 	mid: 50,
@@ -21,19 +19,21 @@ export interface Transform {
 }
 
 const service: LocalImageService<Config> = {
+	propertiesToHash: baseService.propertiesToHash,
 	validateOptions: baseService.validateOptions,
 	getURL: baseService.getURL,
 	parseURL: baseService.parseURL,
 	getHTMLAttributes: baseService.getHTMLAttributes,
 	getSrcSet: baseService.getSrcSet,
-	async transform(inputBuffer, transformOptions, _config) {
-		globalThis.console.log('Made it to the transform function')
+	async transform(inputBuffer, transformOptions, config) {
+		if (config.service.config._debug)
+			globalThis.console.log('Made it to the transform function', { transformOptions, config })
 
 		const transform: Transform = transformOptions as Transform
 
 		if (transform.format === 'svg') {
-		// FIXME: Returning the input buffer here assumes it's SVG, but it could be anything.
-		// TODO: Add support for SVG image tracing.
+			// FIXME: Returning the input buffer here assumes it's SVG, but it could be anything.
+			// TODO: Add support for SVG image tracing.
 			return { data: inputBuffer, format: 'svg' }
 		}
 
