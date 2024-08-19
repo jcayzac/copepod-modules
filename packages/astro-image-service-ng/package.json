@@ -1,7 +1,7 @@
 {
 	"name": "@jcayzac/astro-image-service-ng",
 	"type": "module",
-	"version": "0.0.1-development5",
+	"version": "0.0.1-development6",
 	"description": "A drop-in replacement for Astro's default image service, with art direction support.",
 	"author": "Julien Cayzac",
 	"license": "MIT",
