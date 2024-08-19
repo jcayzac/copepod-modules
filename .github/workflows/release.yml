@@ -30,7 +30,7 @@ jobs:
           node-version: lts/*
           registry-url: https://registry.npmjs.org/
       - run: pnpm install
-      - run: pnpm m --filter "${GITHUB_REF_NAME%@*}" exec mkdist --format=esm -d --ext=mjs --minify --target=esnext --cwd
+      - run: pnpm run -r --filter "${GITHUB_REF_NAME%@*} build"
       - run: pnpm publish -r --no-git-checks --filter "${GITHUB_REF_NAME%@*}" --access public --force
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

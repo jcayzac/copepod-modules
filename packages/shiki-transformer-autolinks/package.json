@@ -35,6 +35,9 @@
 	"files": [
 		"dist"
 	],
+	"scripts": {
+		"build": "pnpm exec mkdist --format=esm -d --ext=mjs --minify --target=esnext --cwd"
+	},
 	"peerDependencies": {
 		"@shikijs/core": "^1.13.0"
 	},
