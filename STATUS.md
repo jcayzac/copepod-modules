@@ -4,7 +4,7 @@ The modules below that are checked have been published.
 
 - [x] astro-build-cache
 - [x] astro-classlist
-- [ ] astro-image-service
+- [x] astro-image-service-ng
 - [ ] atom-feeds
 - [ ] rehype-reading-stats
 - [ ] rehype-responsive-tables
