@@ -51,15 +51,6 @@ importers:
         specifier: ^4.14.2
         version: 4.14.2(@types/node@22.4.0)(rollup@4.21.0)(typescript@5.5.4)
 
-  packages/astro-image-service:
-    devDependencies:
-      astro:
-        specifier: ^4.14.2
-        version: 4.14.2(@types/node@22.4.0)(rollup@4.21.0)(typescript@5.5.4)
-      sharp:
-        specifier: ^0.33.5
-        version: 0.33.5
-
   packages/astro-image-service-ng:
     devDependencies:
       astro:
@@ -71,6 +62,49 @@ importers:
       vite:
         specifier: ^5.4.1
         version: 5.4.1(@types/node@22.4.0)
+
+  packages/astro-rehype-frontmatter-reading-stats:
+    dependencies:
+      '@types/hast':
+        specifier: ^3.0.4
+        version: 3.0.4
+      '@types/unist':
+        specifier: ^3.0.3
+        version: 3.0.3
+      hast-util-parse-selector:
+        specifier: ^4.0.0
+        version: 4.0.0
+      hast-util-select:
+        specifier: ^6.0.2
+        version: 6.0.2
+      reading-time:
+        specifier: ^1.5.0
+        version: 1.5.0
+      unified:
+        specifier: ^11.0.5
+        version: 11.0.5
+      unist-util-visit:
+        specifier: ^5.0.0
+        version: 5.0.0
+
+  packages/rehype-frontmatter-reading-stats:
+    dependencies:
+      hast-util-parse-selector:
+        specifier: ^4.0.0
+        version: 4.0.0
+      hast-util-select:
+        specifier: ^6.0.2
+        version: 6.0.2
+      unist-util-visit:
+        specifier: ^5.0.0
+        version: 5.0.0
+    devDependencies:
+      '@types/hast':
+        specifier: ^3.0.4
+        version: 3.0.4
+      '@types/unist':
+        specifier: ^3.0.3
+        version: 3.0.3
 
   packages/rehype-wrap-all:
     dependencies:
@@ -2915,6 +2949,9 @@ packages:
   readdirp@3.6.0:
     resolution: {integrity: sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==}
     engines: {node: '>=8.10.0'}
+
+  reading-time@1.5.0:
+    resolution: {integrity: sha512-onYyVhBNr4CmAxFsKS7bz+uTLRakypIe4R+5A824vBSkQy/hB3fZepoVEf8OVAxzLvK+H/jm9TzpI3ETSm64Kg==}
 
   refa@0.12.1:
     resolution: {integrity: sha512-J8rn6v4DBb2nnFqkqwy6/NnTYMcgLA+sLr0iIO41qpv0n+ngb7ksag2tMRl0inb1bbO/esUwzW1vbJi7K0sI0g==}
@@ -6583,6 +6620,8 @@ snapshots:
   readdirp@3.6.0:
     dependencies:
       picomatch: 2.3.1
+
+  reading-time@1.5.0: {}
 
   refa@0.12.1:
     dependencies:

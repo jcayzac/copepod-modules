@@ -1,0 +1,51 @@
+{
+	"name": "@jcayzac/astro-rehype-frontmatter-reading-stats",
+	"type": "module",
+	"version": "0.0.1",
+	"description": "Adds reading time and word count to the frontmatter of markdown/mdx files.",
+	"author": "Julien Cayzac",
+	"license": "MIT",
+	"funding": "https://github.com/sponsors/jcayzac",
+	"homepage": "https://github.com/jcayzac/copepod-modules/tree/main/packages/astro-rehype-frontmatter-reading-stats#readme",
+	"repository": {
+		"type": "git",
+		"url": "github:jcayzac/copepod-modules",
+		"directory": "packages/astro-rehype-frontmatter-reading-stats"
+	},
+	"bugs": "https://github.com/jcayzac/copepod-modules/issues",
+	"keywords": [
+		"astro",
+		"astro-plugin",
+		"rehype",
+		"rehype-plugin",
+		"markdown",
+		"frontmatter",
+		"reading-time",
+		"word-count"
+	],
+	"sideEffects": false,
+	"publishConfig": {
+		"access": "public",
+		"exports": {
+			".": {
+				"types": "./dist/index.d.ts",
+				"import": "./dist/index.mjs"
+			}
+		},
+		"module": "./dist/index.mjs",
+		"types": "./dist/index.d.ts"
+	},
+	"main": "./src/index.ts",
+	"files": [
+		"dist"
+	],
+	"dependencies": {
+		"@types/hast": "^3.0.4",
+		"@types/unist": "^3.0.3",
+		"hast-util-parse-selector": "^4.0.0",
+		"hast-util-select": "^6.0.2",
+		"reading-time": "^1.5.0",
+		"unified": "^11.0.5",
+		"unist-util-visit": "^5.0.0"
+	}
+}
