@@ -1,9 +1,9 @@
 # `@jcayzac/shiki-transformer-token`
 
-This [Shiki transformer](https://shiki.style/guide/transformers) is to be used together with [`@jcayzac/shiki-transformer-token`](https://www.npmjs.com/package/@jcayzac/shiki-transformer-token).
+This [Shiki transformer](https://shiki.style/guide/transformers) is to be used together with [`@jcayzac/shiki-theme-token`](https://www.npmjs.com/package/@jcayzac/shiki-theme-token).
 
 > [!WARNING]
-> Used alone, this transformer is non-functional, as it will pollute your output with useless HTML attributes.
+> Used alone, this transformer is non-functional, as it will pollute your output with useless HTML attributes. It **MUST** be used together with the theme.
 
 ## Installation
 
