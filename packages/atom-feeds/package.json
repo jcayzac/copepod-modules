@@ -34,6 +34,6 @@
 		"dist"
 	],
 	"scripts": {
-		"build": "pnpm exec mkdist --format=esm -d --ext=mjs --minify --target=esnext --cwd"
+		"build": "pnpm exec tsup"
 	}
 }

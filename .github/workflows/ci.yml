@@ -29,6 +29,7 @@ jobs:
         with:
           sarif_file: eslint.sarif
       - run: pnpm check
+      - run: pnpm build
   test:
     runs-on: ${{ matrix.os }}
     strategy:
@@ -48,4 +49,3 @@ jobs:
           cache: pnpm
       - run: pnpm install
       - run: pnpm test
-      - run: pnpm run -r build
