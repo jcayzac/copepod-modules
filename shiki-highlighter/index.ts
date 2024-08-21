@@ -7,8 +7,7 @@
  *    wraps everything in a <pre> tag (structure: classic), or remmoves all
  *    structure, including lines (structure: inline). This implementation
  *    keeps lines but removes the <pre> and <code> tags, so that the
- *    content can be wrapped by an upstream component instead.
- * 3. Handle HTML entities in the input sent by MDX.
+ *    content can be wrapped by a component instead.
  *
  * The list of supported languages is based on the ones I use in my blog. New
  * languages can be added as needed. The set is typed so that languages with
