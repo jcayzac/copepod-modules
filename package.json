@@ -19,6 +19,7 @@
 		"lint-staged": "^15.2.9",
 		"mkdist": "^1.5.4",
 		"pnpm": "^9.7.1",
-		"typescript": "^5.5.4"
+		"typescript": "^5.5.4",
+		"unbuild": "^2.0.0"
 	}
 }

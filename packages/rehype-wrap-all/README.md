@@ -1,4 +1,5 @@
 # `@jcayzac/rehype-wrap-all`
 
 > [!WARNING]
-> This is an internal package. It is not intended for public use.
+> This package is not (yet?) meant for public use.
+> It doesn't follow semantic versioning. It is part of a larger project and is published for internal use only.
