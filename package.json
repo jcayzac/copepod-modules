@@ -6,6 +6,7 @@
 	"scripts": {
 		"prepare": "git config core.hooksPath .githooks",
 		"lint": "eslint",
+		"build": "pnpm m run build",
 		"test": "pnpm m run --if-present test",
 		"check": "pnpm m exec tsc --noEmit"
 	},
