@@ -22,4 +22,8 @@ export default antfu({
 			},
 		],
 	},
+}).renamePlugins({
+	ts: '@typescript-eslint',
+	yaml: 'yml',
+	node: 'n',
 })
