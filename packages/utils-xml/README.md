@@ -7,6 +7,8 @@
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![bundle][bundle-src]][bundle-href]
 
+[Documentation](https://www.jsdocs.io/package/@jcayzac/utils-xml#package-index)
+
 ## Installation
 
 ```sh

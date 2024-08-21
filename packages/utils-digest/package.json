@@ -1,7 +1,7 @@
 {
 	"name": "@jcayzac/utils-digest",
 	"type": "module",
-	"version": "0.1.9",
+	"version": "0.1.10",
 	"description": "SHA-256 digest of an Uint8Array or Buffer, as a hexadecimal string.",
 	"author": "Julien Cayzac",
 	"license": "MIT",
