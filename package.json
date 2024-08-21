@@ -15,14 +15,12 @@
 		"@total-typescript/tsconfig": "^1.0.4",
 		"@types/node": "^22.4.2",
 		"astro-eslint-parser": "^1.0.2",
-		"bumpp": "^9.5.1",
 		"eslint": "^9.9.0",
 		"eslint-plugin-astro": "^1.2.3",
 		"eslint-plugin-format": "^0.1.2",
 		"lint-staged": "^15.2.9",
-		"mkdist": "^1.5.4",
 		"pnpm": "^9.7.1",
-		"typescript": "^5.5.4",
-		"unbuild": "^2.0.0"
+		"tsup": "^8.2.4",
+		"typescript": "^5.5.4"
 	}
 }

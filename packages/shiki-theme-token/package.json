@@ -38,7 +38,7 @@
 		"sample.css"
 	],
 	"scripts": {
-		"build": "pnpm exec mkdist --format=esm -d --ext=mjs --minify --target=esnext --cwd"
+		"build": "pnpm exec tsup"
 	},
 	"devDependencies": {
 		"shiki": "^1.13.0"
