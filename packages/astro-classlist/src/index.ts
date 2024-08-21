@@ -20,7 +20,7 @@ export interface ClassListStaticFunctions {
 /**
  * A utility object for working with the `class:list` attribute.
  */
-// eslint-disable-next-line ts/no-redeclare
+// eslint-disable-next-line @typescript-eslint/no-redeclare
 export const ClassList: ClassListStaticFunctions = {
 	/**
 	 * Converts an astro `class:list` expression to an array of strings.
