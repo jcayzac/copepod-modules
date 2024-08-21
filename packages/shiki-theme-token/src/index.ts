@@ -1,7 +1,7 @@
 /*
  * A theme that "colors" tokens based on their grammar scope name.
  *
- * The list of supporter scopes is based on the what I collected using the
+ * The list of supported scopes is based on the what I collected using the
  * "Developer: Inspect Editor Tokens and Scopes" feature in VS Code. It can
  * be amended any time.
  */
