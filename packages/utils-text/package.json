@@ -1,7 +1,7 @@
 {
 	"name": "@jcayzac/utils-text",
 	"type": "module",
-	"version": "0.2.9",
+	"version": "0.2.10",
 	"description": "Small utilities for XML.",
 	"author": "Julien Cayzac",
 	"license": "MIT",
@@ -13,7 +13,12 @@
 		"directory": "packages/utils-text"
 	},
 	"bugs": "https://github.com/jcayzac/copepod-modules/issues",
-	"keywords": ["regex", "regexp", "regular expression", "regular expressions"],
+	"keywords": [
+		"regex",
+		"regexp",
+		"regular expression",
+		"regular expressions"
+	],
 	"sideEffects": false,
 	"publishConfig": {
 		"access": "public",
