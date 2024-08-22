@@ -41,7 +41,7 @@ jobs:
         run: pnpm install
 
       - name: Building Packages
-        run: pnpm build
+        run: pnpm build #
 
       - name: Create Release PR or Publish
         uses: changesets/action@v1
