@@ -1,37 +1,55 @@
+# $schema: https://json.schemastore.org/github-workflow.json
 name: Release
-permissions:
-  id-token: write
-  contents: write
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  FORCE_COLOR: true
+
 on:
   push:
-    tags:
-      # Must be "package-name@version"
-      - '*'
+    branches:
+      - main
+      - next
+
 jobs:
   release:
+    name: Release
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
     steps:
-      - shell: bash
-        run: |
-          set -eu -o pipefail
-          echo "Release Tag: ${GITHUB_REF_NAME}"
-          echo "Package: ${GITHUB_REF_NAME%@*}"
-          echo "Version: ${GITHUB_REF_NAME#*@}"
-      - uses: actions/checkout@v4
-      - shell: bash
-        run: |
-          set -eu -o pipefail
-          [ -d "packages/${GITHUB_REF_NAME%@*}" ] && echo "Package '${GITHUB_REF_NAME%@*}' exists"
-          [ -f "packages/${GITHUB_REF_NAME%@*}/package.json" ] && echo '…and has a package.json'
-          [[ $(jq -r '.version' < "packages/${GITHUB_REF_NAME%@*}/package.json") == "${GITHUB_REF_NAME#*@}" ]] && echo '…and the version matches the tag'
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: lts/*
           registry-url: https://registry.npmjs.org/
-      - run: pnpm install
-      - run: pnpm run -r --filter "${GITHUB_REF_NAME%@*}" build
-      - run: pnpm publish -r --no-git-checks --filter "${GITHUB_REF_NAME%@*}" --access public --force
+          cache: pnpm
+
+      - name: Install Dependencies
+        run: pnpm install
+
+      - name: Building Packages
+        run: pnpm build
+
+      - name: Create Release PR or Publish
+        uses: changesets/action@v1
+        with:
+          version: pnpm changeset version
+          publish: pnpm exec changeset publish
+          commit: '[ci] release'
+          title: '[ci] release'
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
           NPM_CONFIG_PROVENANCE: true

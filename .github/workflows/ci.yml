@@ -1,5 +1,6 @@
-$schema: https://json.schemastore.org/github-workflow.json
+# $schema: https://json.schemastore.org/github-workflow.json
 name: CI
+
 on:
   push:
     branches:
@@ -7,6 +8,14 @@ on:
   pull_request:
     branches:
       - '*'
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  FORCE_COLOR: true
+
 jobs:
   lint:
     permissions:
@@ -15,22 +24,38 @@ jobs:
       actions: read # only required for a private repository by github/codeql-action/upload-sarif to get the Action run status
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v4
         with:
           run_install: false
-      - uses: actions/setup-node@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: lts/*
           cache: pnpm
-      - run: pnpm install
-      - run: pnpm add -wD @microsoft/eslint-formatter-sarif
-      - run: pnpm exec eslint -f @microsoft/eslint-formatter-sarif -o eslint.sarif || true
-      - uses: github/codeql-action/upload-sarif@v3
+
+      - name: Install Dependencies
+        run: |
+          pnpm install
+          pnpm add -wD @microsoft/eslint-formatter-sarif
+
+      - name: Run ESLint
+        run: pnpm exec eslint -f @microsoft/eslint-formatter-sarif -o eslint.sarif || true
+
+      - name: Uploading SARIF
+        uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: eslint.sarif
-      - run: pnpm check
-      - run: pnpm build
+
+      - name: Typechecking
+        run: pnpm check
+
+      - name: Building Packages
+        run: pnpm build
   test:
     runs-on: ${{ matrix.os }}
     strategy:
@@ -39,14 +64,22 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
       fail-fast: false
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v4
         with:
           run_install: false
-      - name: Set node ${{ matrix.node }}
+
+      - name: Setup Node ${{ matrix.node }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
           cache: pnpm
-      - run: pnpm install
-      - run: pnpm test
+
+      - name: Install Dependencies
+        run: pnpm install
+
+      - name: Running Tests
+        run: pnpm test
