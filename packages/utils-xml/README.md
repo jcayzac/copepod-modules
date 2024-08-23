@@ -1,6 +1,6 @@
 # `@jcayzac/utils-xml`
 
-> Small utilities for XML
+> (Mostly useless) small utilities for XML
 
 [![license][license-src]][license-href]
 [![npm version][npm-version-src]][npm-version-href]
