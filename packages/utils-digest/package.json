@@ -1,7 +1,7 @@
 {
 	"name": "@jcayzac/utils-digest",
 	"type": "module",
-	"version": "0.1.10",
+	"version": "0.1.11",
 	"description": "SHA-256 digest of an Uint8Array or Buffer, as a hexadecimal string.",
 	"author": "Julien Cayzac",
 	"license": "MIT",
@@ -13,7 +13,15 @@
 		"directory": "packages/utils-digest"
 	},
 	"bugs": "https://github.com/jcayzac/copepod-modules/issues",
-	"keywords": ["digest", "buffer", "uint8array", "sha-256", "sha256", "hex", "hexadecimal"],
+	"keywords": [
+		"digest",
+		"buffer",
+		"uint8array",
+		"sha-256",
+		"sha256",
+		"hex",
+		"hexadecimal"
+	],
 	"sideEffects": false,
 	"publishConfig": {
 		"access": "public",
