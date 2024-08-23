@@ -1,0 +1,70 @@
+name: 🐛 Bug report
+description: Report an issue
+body:
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: Describe the bug
+      description: |
+        A clear and concise description of what the bug is.
+
+        > [!NOTE]
+        > _"CommonJS is not supported"_ is not a valid bug, it's a feature.
+      value: |
+        ## What I did
+
+        ## What I expected to happen
+
+        ## What happened instead
+
+    validations:
+      required: true
+  - type: input
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: A minimal reproduction is **required**, otherwise the issue might be closed without further notice.
+      placeholder: Link to reproduction repository, stackblitz, etc…
+    validations:
+      required: true
+  - type: textarea
+    id: system-info
+    attributes:
+      label: System Info
+      description: Run `npx envinfo --system --binaries --browsers`…
+      render: Shell
+      placeholder: …and paste the output here.
+    validations:
+      required: true
+  - type: dropdown
+    id: package-manager
+    attributes:
+      label: Runtime & Package Manager
+      description: What runtime and package manager are you using?
+      options:
+        - node + pnpm
+        - node + bun
+        - node + npm
+        - node + yarn
+        - deno
+        - bun
+        - browser
+        - other
+      default: 0
+    validations:
+      required: true
+  - type: checkboxes
+    id: checkboxes
+    attributes:
+      label: A few final checks
+      description: Let's review a few things before submitting the issue
+      options:
+        - label: I abide by [Code of Conduct](https://github.com/jcayzac/.github/blob/main/CODE_OF_CONDUCT.md)
+          required: true
+        - label: I have checked that there isn't already an issue that reports the same bug.
+          required: true
+        - label: The reproduction of the bug I linked to is [minimal](https://stackoverflow.com/help/minimal-reproducible-example).
+          required: true
+        - label: I understand that this is not a client support service, and that Open Source projects are a community effort.
+          required: true
+        - label: I am willing to submit a fix for this bug myself.

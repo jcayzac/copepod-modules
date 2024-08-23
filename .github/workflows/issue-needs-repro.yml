@@ -1,0 +1,28 @@
+# $schema: https://json.schemastore.org/github-workflow.json
+name: Close issues without repro
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  FORCE_COLOR: true
+
+jobs:
+  close-issues:
+    if: github.repository == 'jcayzac/copepod-modules'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: needs repro
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: close-issues
+          token: ${{ secrets.GITHUB_TOKEN }}
+          labels: needs repro
+          inactive-day: 3

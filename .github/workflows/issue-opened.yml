@@ -1,0 +1,32 @@
+# $schema: https://json.schemastore.org/github-workflow.json
+name: Label issues
+
+on:
+  issues:
+    types:
+      - reopened
+      - opened
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  FORCE_COLOR: true
+
+jobs:
+  label_issues:
+    runs-on: ubuntu-latest
+    if: github.repository == 'jcayzac/copepod-modules'
+    permissions:
+      issues: write
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ["needs triage"]
+            })

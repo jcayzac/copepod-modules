@@ -17,6 +17,7 @@ on:
 jobs:
   release:
     name: Release
+    if: github.repository == 'jcayzac/copepod-modules'
     runs-on: ubuntu-latest
     permissions:
       actions: read
