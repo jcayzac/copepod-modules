@@ -9,10 +9,15 @@ env:
   FORCE_COLOR: true
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
       - next
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   release:
