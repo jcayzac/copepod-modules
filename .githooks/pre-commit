@@ -1,2 +1,4 @@
 #!/bin/sh
-exec node_modules/.bin/lint-staged
+
+# only run when not invoked from CI
+[ -n "${CI:-}" ] || exec node_modules/.bin/lint-staged
