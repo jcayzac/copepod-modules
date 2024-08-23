@@ -1,7 +1,7 @@
 {
 	"name": "@jcayzac/utils-xml",
 	"type": "module",
-	"version": "0.1.12",
+	"version": "0.1.13",
 	"description": "Small utilities for XML.",
 	"author": "Julien Cayzac",
 	"license": "MIT",
