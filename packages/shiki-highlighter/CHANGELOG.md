@@ -1,5 +1,15 @@
 # @jcayzac/shiki-highlighter
 
+## 0.1.2
+
+### Patch Changes
+
+- [#32](https://github.com/jcayzac/copepod-modules/pull/32) [`eeabd51`](https://github.com/jcayzac/copepod-modules/commit/eeabd51b7919b0070e1f5196a2a04f469e134fd2) Thanks [@jcayzac](https://github.com/jcayzac)! - Use stricter tsconfig during build.
+
+- Updated dependencies [[`eeabd51`](https://github.com/jcayzac/copepod-modules/commit/eeabd51b7919b0070e1f5196a2a04f469e134fd2)]:
+  - @jcayzac/shiki-transformer-autolinks@0.2.10
+  - @jcayzac/shiki-transformer-token@0.1.7
+
 ## 0.1.1
 
 ### Patch Changes
