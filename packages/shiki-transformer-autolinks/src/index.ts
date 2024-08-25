@@ -47,8 +47,8 @@ function transformer(): ShikiTransformer {
 		preprocess(code: string) {
 			const linkTitles = new Map<string, string>()
 
-			for (const [_, title, url] of RegExpUtils.all(/\[([^\]]+)\]\(([^)]+)\)/g, code)) {
-				linkTitles.set(url, title)
+			for (const { 1: title, 2: url } of RegExpUtils.all(/\[([^\]]+)\]\(([^)]+)\)/g, code)) {
+				linkTitles.set(url as string, title as string)
 			}
 			meta(this).linkTitles = linkTitles
 		},
@@ -69,7 +69,7 @@ function transformer(): ShikiTransformer {
 			const found: { href: string, index: number }[] = []
 			for (const { 0: value, index } of RegExpUtils.all(/https?:\/\/\S+/g, child.value)) {
 				// If the URL ends with punctuation, keep it outside the link unless it's a /
-				const last = value[value.length - 1]
+				const last = value[value.length - 1] as string
 				const hasPunctuation = (last !== '/' && /\p{P}/u.test(last))
 				const href = hasPunctuation ? value.slice(0, -1) : value
 				found.unshift({ href, index })

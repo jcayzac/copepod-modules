@@ -9,6 +9,7 @@ export default defineConfig({
 	sourcemap: true,
 	splitting: false,
 	target: 'esnext',
+	tsconfig: 'tsconfig.json',
 	outExtension() {
 		return {
 			js: `.mjs`,

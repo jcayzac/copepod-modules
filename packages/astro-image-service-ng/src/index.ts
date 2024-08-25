@@ -22,9 +22,11 @@ function integration(config: Config): AstroIntegration {
 							rollupOptions: {
 								output: {
 									manualChunks: (id: string) => {
-										if (/\/@jcayzac\/astro-image-service-ng\b/.test(id)) {
-											return 'image-service'
+										if (!/\/@jcayzac\/astro-image-service-ng\b/.test(id)) {
+											return
 										}
+
+										return 'image-service'
 									},
 								},
 							},

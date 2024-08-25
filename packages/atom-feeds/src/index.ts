@@ -27,7 +27,7 @@ export interface AtomFeed {
 
 export interface AtomEntrySerializeOptions {
 	site: URL
-	readMoreLabel?: string
+	readMoreLabel?: string | undefined
 }
 
 function escape(text: string): string {
