@@ -63,19 +63,19 @@ importers:
   packages/astro-classlist:
     devDependencies:
       astro:
-        specifier: ^4.14.2
+        specifier: ^4.14.5
         version: 4.14.5(@types/node@22.5.0)(rollup@4.21.0)(typescript@5.5.4)
 
   packages/astro-image-service-ng:
     devDependencies:
       astro:
-        specifier: ^4.14.2
+        specifier: ^4.14.5
         version: 4.14.5(@types/node@22.5.0)(rollup@4.21.0)(typescript@5.5.4)
       sharp:
         specifier: ^0.33.5
         version: 0.33.5
       vite:
-        specifier: ^5.4.1
+        specifier: ^5.4.2
         version: 5.4.2(@types/node@22.5.0)
 
   packages/astro-rehype-frontmatter-reading-stats:
@@ -147,7 +147,7 @@ importers:
   packages/shiki-theme-token:
     devDependencies:
       shiki:
-        specifier: ^1.13.0
+        specifier: ^1.14.1
         version: 1.14.1
 
   packages/shiki-transformer-autolinks:
@@ -157,7 +157,7 @@ importers:
         version: link:../utils-text
     devDependencies:
       '@shikijs/core':
-        specifier: ^1.13.0
+        specifier: ^1.14.1
         version: 1.14.1
       '@types/hast':
         specifier: ^3.0.4
@@ -169,7 +169,7 @@ importers:
   packages/shiki-transformer-token:
     devDependencies:
       '@shikijs/core':
-        specifier: ^1.13.0
+        specifier: ^1.14.1
         version: 1.14.1
       '@types/hast':
         specifier: ^3.0.4
