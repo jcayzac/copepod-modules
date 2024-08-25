@@ -1,0 +1,48 @@
+{
+	"name": "@jcayzac/shiki-highlighter",
+	"type": "module",
+	"version": "0.1.0",
+	"description": "Shiki highlighter.",
+	"author": "Julien Cayzac",
+	"license": "MIT",
+	"funding": "https://github.com/sponsors/jcayzac",
+	"homepage": "https://github.com/jcayzac/copepod-modules/tree/main/packages/shiki-highlighter#readme",
+	"repository": {
+		"type": "git",
+		"url": "github:jcayzac/copepod-modules",
+		"directory": "packages/shiki-highlighter"
+	},
+	"bugs": "https://github.com/jcayzac/copepod-modules/issues",
+	"keywords": [
+		"shiki",
+		"highlighter",
+		"shiki-highlighter"
+	],
+	"sideEffects": false,
+	"publishConfig": {
+		"access": "public",
+		"exports": {
+			".": {
+				"types": "./dist/index.d.ts",
+				"import": "./dist/index.mjs"
+			}
+		},
+		"module": "./dist/index.mjs",
+		"types": "./dist/index.d.ts"
+	},
+	"main": "./src/index.ts",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "pnpm exec tsup"
+	},
+	"dependencies": {
+		"@jcayzac/shiki-theme-token": "workspace:^",
+		"@jcayzac/shiki-transformer-autolinks": "workspace:^",
+		"@jcayzac/shiki-transformer-token": "workspace:^",
+		"@shikijs/transformers": "^1.14.1",
+		"jsdom": "^24.1.1",
+		"shiki": "^1.14.1"
+	}
+}
