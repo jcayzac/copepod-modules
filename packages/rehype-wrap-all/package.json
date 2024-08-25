@@ -1,9 +1,8 @@
 {
 	"name": "@jcayzac/rehype-wrap-all",
 	"type": "module",
-	"version": "0.0.1-internal",
-	"private": true,
-	"description": "TBA",
+	"version": "0.0.1",
+	"description": "Wrap all matching elements with a given element",
 	"author": "Julien Cayzac",
 	"license": "MIT",
 	"funding": "https://github.com/sponsors/jcayzac",
