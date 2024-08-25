@@ -1,7 +1,7 @@
 {
 	"name": "@jcayzac/shiki-transformer-autolinks",
 	"type": "module",
-	"version": "0.2.8",
+	"version": "0.2.9",
 	"description": "A transformer for Shiki that automatically turns URLs into links.",
 	"author": "Julien Cayzac",
 	"license": "MIT",

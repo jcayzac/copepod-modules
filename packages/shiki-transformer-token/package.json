@@ -1,7 +1,7 @@
 {
 	"name": "@jcayzac/shiki-transformer-token",
 	"type": "module",
-	"version": "0.1.5",
+	"version": "0.1.6",
 	"description": "Shiki transformer to enable more semantic styling.",
 	"author": "Julien Cayzac",
 	"license": "MIT",
