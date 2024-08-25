@@ -1,7 +1,7 @@
 {
 	"name": "@jcayzac/shiki-highlighter",
 	"type": "module",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Shiki highlighter.",
 	"author": "Julien Cayzac",
 	"license": "MIT",

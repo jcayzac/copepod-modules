@@ -1,5 +1,11 @@
 # @jcayzac/shiki-transformer-autolinks
 
+## 0.2.9
+
+### Patch Changes
+
+- [#30](https://github.com/jcayzac/copepod-modules/pull/30) [`62cd787`](https://github.com/jcayzac/copepod-modules/commit/62cd787cc00cadaa126199a6cbe8c6c06907727b) Thanks [@jcayzac](https://github.com/jcayzac)! - Bumped dependencies.
+
 ## 0.2.8
 
 ### Patch Changes
