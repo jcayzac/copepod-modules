@@ -1,5 +1,11 @@
 # @jcayzac/shiki-transformer-autolinks
 
+## 0.2.10
+
+### Patch Changes
+
+- [#32](https://github.com/jcayzac/copepod-modules/pull/32) [`eeabd51`](https://github.com/jcayzac/copepod-modules/commit/eeabd51b7919b0070e1f5196a2a04f469e134fd2) Thanks [@jcayzac](https://github.com/jcayzac)! - Use stricter tsconfig during build.
+
 ## 0.2.9
 
 ### Patch Changes
