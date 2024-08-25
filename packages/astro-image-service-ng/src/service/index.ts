@@ -19,7 +19,7 @@ export interface Transform {
 }
 
 const service: LocalImageService<Config> = {
-	propertiesToHash: baseService.propertiesToHash,
+	propertiesToHash: baseService.propertiesToHash ?? [],
 	validateOptions: baseService.validateOptions,
 	getURL: baseService.getURL,
 	parseURL: baseService.parseURL,
@@ -70,6 +70,6 @@ const service: LocalImageService<Config> = {
 			format,
 		}
 	},
-}
+} as LocalImageService<Config>
 
 export default service

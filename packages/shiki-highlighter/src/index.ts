@@ -75,16 +75,6 @@ export interface HighlightOptions {
 	inline?: boolean
 }
 
-function parseMetaString(str: string) {
-	return Object.fromEntries(str.split(' ').reduce((prev: [string, boolean | string][], curr: string) => {
-		const [key, value] = curr.split('=')
-		const isNormalKey = /^[A-Z0-9]+$/i.test(key)
-		if (isNormalKey)
-			prev = [...prev, [key, value || true]]
-		return prev
-	}, []))
-}
-
 function highlight(code: string, options: HighlightOptions = {}): string {
 	const lang = options.lang ?? 'plaintext'
 	if (!langs.has(lang as BuiltinLanguage) && !langAlias[lang]) {
@@ -96,7 +86,6 @@ function highlight(code: string, options: HighlightOptions = {}): string {
 	if (typeof meta === 'string') {
 		metaProps = {
 			meta: {
-				...parseMetaString(meta),
 				__raw: meta,
 			},
 		}

@@ -76,7 +76,7 @@ function transformer(): ShikiTransformer {
 							return node
 
 						const child = children[0]
-						if (child.type !== 'text')
+						if (child?.type !== 'text')
 							return node
 
 						return child
