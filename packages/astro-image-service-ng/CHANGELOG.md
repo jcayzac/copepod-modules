@@ -1,5 +1,11 @@
 # @jcayzac/astro-image-service-ng
 
+## 0.0.4
+
+### Patch Changes
+
+- [#36](https://github.com/jcayzac/copepod-modules/pull/36) [`6ad336b`](https://github.com/jcayzac/copepod-modules/commit/6ad336bfddf176e23bbd40643875142296064bce) Thanks [@jcayzac](https://github.com/jcayzac)! - add more debug logs around image service
+
 ## 0.0.3
 
 ### Patch Changes
