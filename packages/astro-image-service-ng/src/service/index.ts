@@ -30,6 +30,8 @@ const service: LocalImageService<Config> = {
 
 		if (config.service.config._debug)
 			globalThis.console.log(`out: validateOptions(…) = ${inspect(result)}`)
+
+		return result
 	},
 
 	getURL: (options, config) => {
@@ -40,6 +42,8 @@ const service: LocalImageService<Config> = {
 
 		if (config.service.config._debug)
 			globalThis.console.log(`out: getURL(…) = ${inspect(result)}`)
+
+		return result
 	},
 
 	parseURL: (url, config) => {
@@ -50,6 +54,8 @@ const service: LocalImageService<Config> = {
 
 		if (config.service.config._debug)
 			globalThis.console.log(`out: parseURL(…) = ${inspect(result)}`)
+
+		return result
 	},
 
 	getHTMLAttributes: (options, config) => {
@@ -60,6 +66,8 @@ const service: LocalImageService<Config> = {
 
 		if (config.service.config._debug)
 			globalThis.console.log(`out: getHTMLAttributes(…) = ${inspect(result)}`)
+
+		return result
 	},
 
 	getSrcSet: (options, config) => {
