@@ -3,11 +3,9 @@ import type { Config } from './service/config'
 
 function integration(config: Config): AstroIntegration {
 	return {
-		name: '@jcayzac/astro-image-service-ng/service',
+		name: '@jcayzac/astro-image-service-ng',
 		hooks: {
-			'astro:config:setup': (options) => {
-				const { updateConfig } = options
-
+			'astro:config:setup': ({ updateConfig }) => {
 				updateConfig({
 					image: {
 						service: {
@@ -22,11 +20,8 @@ function integration(config: Config): AstroIntegration {
 							rollupOptions: {
 								output: {
 									manualChunks: (id: string) => {
-										if (!/\/@jcayzac\/astro-image-service-ng\b/.test(id)) {
-											return
-										}
-
-										return 'image-service'
+										const separate = /\/@jcayzac\/astro-image-service-ng\b/.test(id)
+										return separate ? 'image-service' : undefined
 									},
 								},
 							},

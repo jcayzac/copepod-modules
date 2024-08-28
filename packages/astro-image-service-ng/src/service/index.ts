@@ -1,3 +1,4 @@
+import { inspect } from 'node:util'
 import sharp, { type FormatEnum, type ResizeOptions } from 'sharp'
 import type { LocalImageService } from 'astro'
 import { baseService } from 'astro/assets'
@@ -19,22 +20,75 @@ export interface Transform {
 }
 
 const service: LocalImageService<Config> = {
-	propertiesToHash: baseService.propertiesToHash ?? [],
-	validateOptions: baseService.validateOptions,
-	getURL: baseService.getURL,
-	parseURL: baseService.parseURL,
-	getHTMLAttributes: baseService.getHTMLAttributes,
-	getSrcSet: baseService.getSrcSet,
-	async transform(inputBuffer, transformOptions, config) {
-		if (config.service.config._debug)
-			globalThis.console.log('Made it to the transform function', { transformOptions, config })
+	propertiesToHash: ['src', 'width', 'height', 'format', 'quality'],
 
-		const transform: Transform = transformOptions as Transform
+	validateOptions: (options, config) => {
+		if (config.service.config._debug)
+			globalThis.console.log(`in: validateOptions(${inspect({ options, config })})`)
+
+		const result = baseService.validateOptions?.(options, config) ?? options
+
+		if (config.service.config._debug)
+			globalThis.console.log(`out: validateOptions(…) = ${inspect(result)}`)
+	},
+
+	getURL: (options, config) => {
+		if (config.service.config._debug)
+			globalThis.console.log(`in: getURL(${inspect({ options, config })})`)
+
+		const result = baseService.getURL(options, config)
+
+		if (config.service.config._debug)
+			globalThis.console.log(`out: getURL(…) = ${inspect(result)}`)
+	},
+
+	parseURL: (url, config) => {
+		if (config.service.config._debug)
+			globalThis.console.log(`in: parseURL(${inspect({ url, config })})`)
+
+		const result = baseService.parseURL(url, config)
+
+		if (config.service.config._debug)
+			globalThis.console.log(`out: parseURL(…) = ${inspect(result)}`)
+	},
+
+	getHTMLAttributes: (options, config) => {
+		if (config.service.config._debug)
+			globalThis.console.log(`in: getHTMLAttributes(${inspect({ options, config })})`)
+
+		const result = baseService.getHTMLAttributes
+
+		if (config.service.config._debug)
+			globalThis.console.log(`out: getHTMLAttributes(…) = ${inspect(result)}`)
+	},
+
+	getSrcSet: (options, config) => {
+		if (config.service.config._debug)
+			globalThis.console.log(`in: getSrcSet(${inspect({ options, config })})`)
+
+		const result = baseService.getSrcSet?.(options, config)
+
+		if (config.service.config._debug)
+			globalThis.console.log(`out: getSrcSet(…) = ${inspect(result)}`)
+
+		return result
+	},
+
+	async transform(inputBuffer, options, config) {
+		if (config.service.config._debug)
+			globalThis.console.log(`in: transform(${inspect({ options, config })})`)
+
+		const transform: Transform = options as Transform
 
 		if (transform.format === 'svg') {
 			// FIXME: Returning the input buffer here assumes it's SVG, but it could be anything.
 			// TODO: Add support for SVG image tracing.
-			return { data: inputBuffer, format: 'svg' }
+			const result = { data: inputBuffer, format: 'svg' }
+
+			if (config.service.config._debug)
+				globalThis.console.log(`out: transform(…) = ${inspect(result)}`)
+
+			return result
 		}
 
 		const result = sharp(inputBuffer, {
@@ -65,6 +119,10 @@ const service: LocalImageService<Config> = {
 		}
 
 		const { data, info: { format } } = await result.toBuffer({ resolveWithObject: true })
+
+		if (config.service.config._debug)
+			globalThis.console.log(`out: transform(…) = ${inspect({ data, format })}`)
+
 		return {
 			data,
 			format,
