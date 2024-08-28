@@ -6,7 +6,6 @@
 		"**/.coverage": true,
 		"**/.coverage.lcov": true,
 		".git": true,
-		"**/dist": true,
 		"**/node_modules": true
 	},
 	"[markdown]": {
