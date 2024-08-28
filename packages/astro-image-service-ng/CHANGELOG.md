@@ -1,5 +1,11 @@
 # @jcayzac/astro-image-service-ng
 
+## 0.0.6
+
+### Patch Changes
+
+- [`7b28c42`](https://github.com/jcayzac/copepod-modules/commit/7b28c42fbf6a7e8d229df1f4efb03985418ca5d0) Thanks [@jcayzac](https://github.com/jcayzac)! - Bogus transformations were applied to the code during bundling. Disabling minification of the library when built by `tsup` seems to improve things.
+
 ## 0.0.5
 
 ### Patch Changes
