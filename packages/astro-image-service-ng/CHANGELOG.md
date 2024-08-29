@@ -1,5 +1,13 @@
 # @jcayzac/astro-image-service-ng
 
+## 0.0.7
+
+### Patch Changes
+
+- [#42](https://github.com/jcayzac/copepod-modules/pull/42) [`03c8f64`](https://github.com/jcayzac/copepod-modules/commit/03c8f64c9ffd271cc6b8ea0f57b4caba1634eba5) Thanks [@jcayzac](https://github.com/jcayzac)! - Fix `getHTMLAttributes()` returning invalid data.
+
+- [#44](https://github.com/jcayzac/copepod-modules/pull/44) [`c903092`](https://github.com/jcayzac/copepod-modules/commit/c903092b496cac12a8af4df92c8cb22988531492) Thanks [@jcayzac](https://github.com/jcayzac)! - Add `logger` option.
+
 ## 0.0.6
 
 ### Patch Changes
