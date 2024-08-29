@@ -1,3 +1,5 @@
+import type { AstroIntegrationLogger } from 'astro'
+
 export interface Config {
-	_debug?: boolean
+	logger?: AstroIntegrationLogger
 }

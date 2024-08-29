@@ -5,12 +5,15 @@ function integration(config: Config): AstroIntegration {
 	return {
 		name: '@jcayzac/astro-image-service-ng',
 		hooks: {
-			'astro:config:setup': ({ updateConfig }) => {
+			'astro:config:setup': ({ updateConfig, logger }) => {
 				updateConfig({
 					image: {
 						service: {
 							entrypoint: '@jcayzac/astro-image-service-ng/service',
-							config,
+							config: {
+								...config,
+								logger: config.logger ?? logger,
+							},
 						},
 					},
 					// Note: this is needed until Astro 5 to avoid error with Markdown files
