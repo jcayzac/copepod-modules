@@ -62,7 +62,7 @@ const service: LocalImageService<Config> = {
 		if (config.service.config._debug)
 			globalThis.console.log(`in: getHTMLAttributes(${inspect({ options, config })})`)
 
-		const result = baseService.getHTMLAttributes
+		const result = baseService.getHTMLAttributes?.(options, config)
 
 		if (config.service.config._debug)
 			globalThis.console.log(`out: getHTMLAttributes(…) = ${inspect(result)}`)
