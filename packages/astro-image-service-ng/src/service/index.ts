@@ -23,69 +23,47 @@ const service: LocalImageService<Config> = {
 	propertiesToHash: ['src', 'width', 'height', 'format', 'quality'],
 
 	validateOptions: (options, config) => {
-		if (config.service.config._debug)
-			globalThis.console.log(`in: validateOptions(${inspect({ options, config })})`)
-
+		config.service.config.logger?.debug?.(`in: validateOptions(${inspect({ options, config })})`)
 		const result = baseService.validateOptions?.(options, config) ?? options
 
-		if (config.service.config._debug)
-			globalThis.console.log(`out: validateOptions(…) = ${inspect(result)}`)
-
+		config.service.config.logger?.debug?.(`out: validateOptions(…) = ${inspect(result)}`)
 		return result
 	},
 
 	getURL: (options, config) => {
-		if (config.service.config._debug)
-			globalThis.console.log(`in: getURL(${inspect({ options, config })})`)
-
+		config.service.config.logger?.debug?.(`in: getURL(${inspect({ options, config })})`)
 		const result = baseService.getURL(options, config)
 
-		if (config.service.config._debug)
-			globalThis.console.log(`out: getURL(…) = ${inspect(result)}`)
-
+		config.service.config.logger?.debug?.(`out: getURL(…) = ${inspect(result)}`)
 		return result
 	},
 
 	parseURL: (url, config) => {
-		if (config.service.config._debug)
-			globalThis.console.log(`in: parseURL(${inspect({ url, config })})`)
-
+		config.service.config.logger?.debug?.(`in: parseURL(${inspect({ url, config })})`)
 		const result = baseService.parseURL(url, config)
 
-		if (config.service.config._debug)
-			globalThis.console.log(`out: parseURL(…) = ${inspect(result)}`)
-
+		config.service.config.logger?.debug?.(`out: parseURL(…) = ${inspect(result)}`)
 		return result
 	},
 
 	getHTMLAttributes: (options, config) => {
-		if (config.service.config._debug)
-			globalThis.console.log(`in: getHTMLAttributes(${inspect({ options, config })})`)
-
+		config.service.config.logger?.debug?.(`in: getHTMLAttributes(${inspect({ options, config })})`)
 		const result = baseService.getHTMLAttributes?.(options, config)
 
-		if (config.service.config._debug)
-			globalThis.console.log(`out: getHTMLAttributes(…) = ${inspect(result)}`)
-
+		config.service.config.logger?.debug?.(`out: getHTMLAttributes(…) = ${inspect(result)}`)
 		return result
 	},
 
 	getSrcSet: (options, config) => {
-		if (config.service.config._debug)
-			globalThis.console.log(`in: getSrcSet(${inspect({ options, config })})`)
-
+		config.service.config.logger?.debug?.(`in: getSrcSet(${inspect({ options, config })})`)
 		const result = baseService.getSrcSet?.(options, config)
 
-		if (config.service.config._debug)
-			globalThis.console.log(`out: getSrcSet(…) = ${inspect(result)}`)
-
+		config.service.config.logger?.debug?.(`out: getSrcSet(…) = ${inspect(result)}`)
 		return result
 	},
 
 	async transform(inputBuffer, options, config) {
-		if (config.service.config._debug)
-			globalThis.console.log(`in: transform(${inspect({ options, config })})`)
-
+		config.service.config.logger?.debug?.(`in: transform(${inspect({ options, config })})`)
 		const transform: Transform = options as Transform
 
 		if (transform.format === 'svg') {
@@ -93,9 +71,7 @@ const service: LocalImageService<Config> = {
 			// TODO: Add support for SVG image tracing.
 			const result = { data: inputBuffer, format: 'svg' }
 
-			if (config.service.config._debug)
-				globalThis.console.log(`out: transform(…) = ${inspect(result)}`)
-
+			config.service.config.logger?.debug?.(`out: transform(…) = ${inspect(result)}`)
 			return result
 		}
 
@@ -128,9 +104,7 @@ const service: LocalImageService<Config> = {
 
 		const { data, info: { format } } = await result.toBuffer({ resolveWithObject: true })
 
-		if (config.service.config._debug)
-			globalThis.console.log(`out: transform(…) = ${inspect({ data, format })}`)
-
+		config.service.config.logger?.debug?.(`out: transform(…) = ${inspect({ data, format })}`)
 		return {
 			data,
 			format,
