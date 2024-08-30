@@ -12,6 +12,7 @@ export default antfu({
 	],
 	stylistic: {
 		indent: 'tab',
+
 	},
 	rules: {
 		'ts/no-unused-vars': [
@@ -26,4 +27,6 @@ export default antfu({
 	ts: '@typescript-eslint',
 	yaml: 'yml',
 	node: 'n',
+}).overrideRules({
+	'multiline-ternary': 'off',
 })
