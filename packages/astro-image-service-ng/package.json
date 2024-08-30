@@ -1,7 +1,7 @@
 {
 	"name": "@jcayzac/astro-image-service-ng",
 	"type": "module",
-	"version": "0.0.7",
+	"version": "0.1.0",
 	"description": "A drop-in replacement for Astro's default image service, with art direction support.",
 	"author": "Julien Cayzac",
 	"license": "MIT",
@@ -41,18 +41,22 @@
 	},
 	"main": "./src/index.ts",
 	"files": [
-		"dist"
+		"dist",
+		"src"
 	],
 	"scripts": {
 		"build": "pnpm exec tsup"
 	},
 	"peerDependencies": {
-		"astro": "^4.14.2",
+		"astro": "^4.14.5",
 		"sharp": "^0.33.5"
+	},
+	"dependencies": {
+		"@jcayzac/image-information": "workspace:^",
+		"svgo": "^3.3.2"
 	},
 	"devDependencies": {
 		"astro": "^4.14.5",
-		"sharp": "^0.33.5",
-		"vite": "^5.4.2"
+		"sharp": "^0.33.5"
 	}
 }

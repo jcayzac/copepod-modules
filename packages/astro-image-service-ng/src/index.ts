@@ -1,19 +1,21 @@
 import type { AstroIntegration } from 'astro'
-import type { Config } from './service/config'
+import type { Config, PrivateConfig } from './service/config'
 
-function integration(config: Config): AstroIntegration {
+export default function integration(config: Config = {}): AstroIntegration {
 	return {
 		name: '@jcayzac/astro-image-service-ng',
 		hooks: {
-			'astro:config:setup': ({ updateConfig, logger }) => {
+			'astro:config:setup': ({ config: { publicDir, outDir, build: { assets } }, updateConfig }) => {
 				updateConfig({
 					image: {
 						service: {
 							entrypoint: '@jcayzac/astro-image-service-ng/service',
 							config: {
 								...config,
-								logger: config.logger ?? logger,
-							},
+								publicDir,
+								outDir,
+								assets,
+							} satisfies PrivateConfig,
 						},
 					},
 					// Note: this is needed until Astro 5 to avoid error with Markdown files
@@ -35,5 +37,3 @@ function integration(config: Config): AstroIntegration {
 		},
 	} satisfies AstroIntegration
 }
-
-export default integration
