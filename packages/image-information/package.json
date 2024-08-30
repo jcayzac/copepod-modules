@@ -1,0 +1,58 @@
+{
+	"name": "@jcayzac/image-information",
+	"type": "module",
+	"version": "1.0.0",
+	"description": "Pure Javascript, lightweight local or remote image information detection",
+	"author": "Julien Cayzac",
+	"license": "MIT",
+	"funding": "https://github.com/sponsors/jcayzac",
+	"homepage": "https://github.com/jcayzac/copepod-modules/tree/main/packages/image-size#readme",
+	"repository": {
+		"type": "git",
+		"url": "github:jcayzac/copepod-modules",
+		"directory": "packages/image-size"
+	},
+	"bugs": "https://github.com/jcayzac/copepod-modules/issues",
+	"keywords": [
+		"image",
+		"metadata",
+		"size",
+		"orientation",
+		"async",
+		"lightweight",
+		"EXIF",
+		"AVCI",
+		"AVIF",
+		"HEIC",
+		"HEIF",
+		"JPEG",
+		"PNG",
+		"PSD",
+		"SVG",
+		"TGA",
+		"TIFF",
+		"WEBP"
+	],
+	"sideEffects": false,
+	"publishConfig": {
+		"access": "public",
+		"exports": {
+			".": {
+				"types": "./dist/index.d.ts",
+				"import": "./dist/index.mjs"
+			}
+		},
+		"module": "./dist/index.mjs",
+		"types": "./dist/index.d.ts"
+	},
+	"main": "./src/index.ts",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "pnpm exec tsup"
+	},
+	"dependencies": {
+		"image-size": "^1.1.1"
+	}
+}
