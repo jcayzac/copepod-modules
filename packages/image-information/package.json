@@ -1,7 +1,7 @@
 {
 	"name": "@jcayzac/image-information",
 	"type": "module",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"description": "Pure Javascript, lightweight local or remote image information detection",
 	"author": "Julien Cayzac",
 	"license": "MIT",
