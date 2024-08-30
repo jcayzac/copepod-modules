@@ -1,10 +1,39 @@
 import { imageSize as lookup } from 'image-size'
 
 export interface ImageInformation {
+	/// Intrinsic width of the image.
 	width: number
+
+	/// Intrinsic height of the image.
 	height: number
+
+	/// EXIF orientation, if available.
 	orientation?: number | undefined
-	format: string
+
+	/// Inferred file extension, e.g 'avif' or 'png'.
+	extension: string
+
+	/// Inferred MIME type, e.g 'image/avif' or 'image/png'.
+	type: string
+}
+
+const SUPPORTED_TYPES = new Set([
+	'avif',
+	'gif',
+	'heic',
+	'heif',
+	'j2c',
+	'jp2',
+	'jpeg',
+	'jpg',
+	'png',
+	'svg',
+	'webp',
+])
+
+const MIME_TYPES: Record<string, string> = {
+	jpg: 'image/jpeg',
+	svg: 'image/svg+xml',
 }
 
 /**
@@ -16,19 +45,19 @@ export interface ImageInformation {
 export function probe(buffer: Uint8Array): ImageInformation | undefined {
 	try {
 		const { width, height, orientation, type } = lookup(buffer)
-		if (width !== undefined && height !== undefined && type !== undefined) {
+		if (width !== undefined && height !== undefined && type !== undefined && SUPPORTED_TYPES.has(type)) {
 			const isPortrait = (orientation ?? 0) >= 5
 			return {
 				width: isPortrait ? height : width,
 				height: isPortrait ? width : height,
 				orientation,
-				format: type,
+				extension: type,
+				type: MIME_TYPES[type] ?? `image/${type}`,
 			}
 		}
 	}
-	// eslint-disable-next-line unused-imports/no-unused-vars, @typescript-eslint/no-unused-vars
-	catch (_ignored) {
-		// Ignore
+	catch (ignored) {
+		void ignored
 	}
 
 	return undefined
