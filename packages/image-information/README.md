@@ -9,7 +9,7 @@
 
 This module detect informations about local or remote images. For remote images, it streams the data only until it finds information.
 
-Images in the following formats are supported: [BMP](https://docs.fileformat.com/image/bmp/), [CUR](https://docs.fileformat.com/image/cur/), [DDS](https://docs.fileformat.com/image/dds/), [GIF](https://docs.fileformat.com/image/gif/), [HEIC](https://docs.fileformat.com/image/heic/), [HEIF](https://docs.fileformat.com/image/heif/), [AVIF](https://docs.fileformat.com/image/avif/), [ICNS](https://docs.fileformat.com/image/icns/), [ICO](https://docs.fileformat.com/image/ico/), [J2C](https://docs.fileformat.com/image/j2c/), [JP2](https://docs.fileformat.com/image/jp2/), [JPEG](https://docs.fileformat.com/image/jpeg/), [KTX](https://github.khronos.org/KTX-Specification/ktxspec.v2.html), [PNG](https://docs.fileformat.com/image/png/), [PNM](https://en.wikipedia.org/wiki/Netpbm), [PSD](https://docs.fileformat.com/image/psd/), [SVG](https://docs.fileformat.com/page-description-language/svg/), [TGA](https://docs.fileformat.com/image/tga/), [TIFF](https://docs.fileformat.com/image/tiff/) & [WebP](https://docs.fileformat.com/image/webp/).
+Images in the following formats are supported: [GIF](https://docs.fileformat.com/image/gif/), [HEIC](https://docs.fileformat.com/image/heic/), [HEIF](https://docs.fileformat.com/image/heif/), [AVIF](https://docs.fileformat.com/image/avif/), [J2C](https://docs.fileformat.com/image/j2c/), [JP2](https://docs.fileformat.com/image/jp2/), [JPEG](https://docs.fileformat.com/image/jpeg/), [PNG](https://docs.fileformat.com/image/png/), [SVG](https://docs.fileformat.com/page-description-language/svg/) & [WebP](https://docs.fileformat.com/image/webp/).
 
 ## Usage
 
@@ -38,18 +38,33 @@ import { imageInformation } from '@jcayzac/image-information'
 // Remote URL
 const info = await imageInformation('https://example.com/image.jpg')
 if (info !== undefined) {
-  const { width, height, type, orientation } = info
-  console.log(`Found information:`, {
+  const {
+    // intrinsic width.
     width,
+
+    // intrinsic height.
     height,
+
+    // inferred file extension (doesn't care about URL).
+    extension,
+
+    // inferred MIME type.
     type,
+
+    // detected EXIF orientation, if any.
     orientation,
-  })
+  } = info
+
+  console.log(`Found information:`, info)
 }
 
 // File URL
 const info2 = await imageInformation('file:///tmp/image.jpg')
 ```
+
+> [!NOTE]
+>
+> The function accepts strings as a convenience, but those are expected to represent valid URLs. For local images, you must use the `file://` URL scheme. Passing paths directly will not work.
 
 ### Getting information about an image from a buffer
 
