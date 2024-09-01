@@ -1,5 +1,14 @@
 # @jcayzac/astro-image-service-ng
 
+## 0.2.0
+
+### Minor Changes
+
+- [#49](https://github.com/jcayzac/copepod-modules/pull/49) [`6f7f0da`](https://github.com/jcayzac/copepod-modules/commit/6f7f0da862cc8993d00e8cb9b7a1047e795bb3b9) Thanks [@jcayzac](https://github.com/jcayzac)! - - SVG images are optimized with `svgo`.
+  - Using a quality of `"max"` or `100` will request lossless transforms for formats that support it (`webp` and `avif`).
+  - `width` and `height` are now automatically inferred in most cases.
+  - The image service doesn't depend on the Astro built-in image service anymore.
+
 ## 0.0.7
 
 ### Patch Changes
