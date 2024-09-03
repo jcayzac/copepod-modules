@@ -48,7 +48,7 @@
 		"build": "pnpm exec tsup"
 	},
 	"peerDependencies": {
-		"astro": "^4.14.5",
+		"astro": "^4.15.2",
 		"sharp": "^0.33.5"
 	},
 	"dependencies": {
@@ -56,7 +56,7 @@
 		"svgo": "^3.3.2"
 	},
 	"devDependencies": {
-		"astro": "^4.14.5",
+		"astro": "^4.15.2",
 		"sharp": "^0.33.5"
 	}
 }

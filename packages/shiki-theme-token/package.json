@@ -41,6 +41,6 @@
 		"build": "pnpm exec tsup"
 	},
 	"devDependencies": {
-		"shiki": "^1.14.1"
+		"shiki": "^1.16.1"
 	}
 }
