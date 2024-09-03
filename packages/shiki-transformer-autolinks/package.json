@@ -39,13 +39,13 @@
 		"build": "pnpm exec tsup"
 	},
 	"peerDependencies": {
-		"@shikijs/core": "^1.13.0"
+		"@shikijs/core": "^1.16.1"
 	},
 	"dependencies": {
 		"@jcayzac/utils-text": "workspace:^"
 	},
 	"devDependencies": {
-		"@shikijs/core": "^1.14.1",
+		"@shikijs/core": "^1.16.1",
 		"@types/hast": "^3.0.4",
 		"@types/unist": "^3.0.3"
 	}
