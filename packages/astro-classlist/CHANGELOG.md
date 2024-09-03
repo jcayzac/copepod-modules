@@ -1,5 +1,13 @@
 # @jcayzac/astro-classlist
 
+## 0.1.8
+
+### Patch Changes
+
+- [#53](https://github.com/jcayzac/copepod-modules/pull/53) [`7dd0c24`](https://github.com/jcayzac/copepod-modules/commit/7dd0c244628771857826ca348aefe250a6a8b9a5) Thanks [@jcayzac](https://github.com/jcayzac)! - Fix example in README
+
+- [#56](https://github.com/jcayzac/copepod-modules/pull/56) [`e9a190f`](https://github.com/jcayzac/copepod-modules/commit/e9a190fc9174d617a7c048aa3b7042770a7279b1) Thanks [@jcayzac](https://github.com/jcayzac)! - Updated dependencies.
+
 ## 0.1.7
 
 ### Patch Changes
