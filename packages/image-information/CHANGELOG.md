@@ -1,5 +1,11 @@
 # @jcayzac/image-information
 
+## 1.1.1
+
+### Patch Changes
+
+- [#51](https://github.com/jcayzac/copepod-modules/pull/51) [`3c66bd1`](https://github.com/jcayzac/copepod-modules/commit/3c66bd149c5d74a9b12dd14d6acf210a6eb66cd9) Thanks [@jcayzac](https://github.com/jcayzac)! - Fix documentation
+
 ## 1.1.0
 
 ### Minor Changes
