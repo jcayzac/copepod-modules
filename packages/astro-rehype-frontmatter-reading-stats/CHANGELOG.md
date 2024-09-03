@@ -1,5 +1,11 @@
 # @jcayzac/astro-rehype-frontmatter-reading-stats
 
+## 0.0.5
+
+### Patch Changes
+
+- [#55](https://github.com/jcayzac/copepod-modules/pull/55) [`15e9074`](https://github.com/jcayzac/copepod-modules/commit/15e90749018eca4596b70b4f17b79393ca3a5dde) Thanks [@jcayzac](https://github.com/jcayzac)! - Updated documentation
+
 ## 0.0.4
 
 ### Patch Changes
