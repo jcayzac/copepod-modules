@@ -1,6 +1,6 @@
 # `@jcayzac/image-information`
 
-> Lightweigth detection of local or remote images' type, orientation & size in pure Javascript.
+> Lightweight detection of local or remote images' type, orientation & size in pure Javascript.
 
 [![license][license-src]][license-href]
 [![npm version][npm-version-src]][npm-version-href]

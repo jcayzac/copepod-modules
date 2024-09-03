@@ -17,20 +17,8 @@ export interface ImageInformation {
 	type: string
 }
 
-const SUPPORTED_TYPES = new Set([
-	'avif',
-	'gif',
-	'heic',
-	'heif',
-	'j2c',
-	'jp2',
-	'jpeg',
-	'jpg',
-	'png',
-	'svg',
-	'webp',
-])
-
+// Associate file types with MIME types.
+// Others will just default to `image/<type>`.
 const MIME_TYPES: Record<string, string> = {
 	jpg: 'image/jpeg',
 	svg: 'image/svg+xml',
@@ -45,7 +33,7 @@ const MIME_TYPES: Record<string, string> = {
 export function probe(buffer: Uint8Array): ImageInformation | undefined {
 	try {
 		const { width, height, orientation, type } = lookup(buffer)
-		if (width !== undefined && height !== undefined && type !== undefined && SUPPORTED_TYPES.has(type)) {
+		if (width !== undefined && height !== undefined && type !== undefined) {
 			const isPortrait = (orientation ?? 0) >= 5
 			return {
 				width: isPortrait ? height : width,
@@ -66,7 +54,7 @@ export function probe(buffer: Uint8Array): ImageInformation | undefined {
 /**
  * Try to get information about an image.
  *
- * @param url URL of the image to probe. Can be a file or remote URL.
+ * @param url URL of the image to probe. Can be a `file:`, `data:` or remote URL.
  * @returns Image information, if found.
  * @throws {Error} If an IO error happens while fetching the URL.
  */
