@@ -1,0 +1,65 @@
+{
+	"name": "@jcayzac/astro-image-service-composable-persistence",
+	"type": "module",
+	"version": "0.0.0",
+	"description": "Compose any Astro image service with a persistence layer of your choice.",
+	"author": "Julien Cayzac",
+	"license": "MIT",
+	"funding": "https://github.com/sponsors/jcayzac",
+	"homepage": "https://github.com/jcayzac/copepod-modules/tree/main/packages/astro-image-service-composable-persistence#readme",
+	"repository": {
+		"type": "git",
+		"url": "github:jcayzac/copepod-modules",
+		"directory": "packages/astro-image-service-composable-persistence"
+	},
+	"bugs": "https://github.com/jcayzac/copepod-modules/issues",
+	"keywords": [
+		"astro",
+		"astro-component",
+		"image",
+		"image-service",
+		"composable",
+		"cache",
+		"persistence",
+		"s3",
+		"fs",
+		"tus",
+		"resumable"
+	],
+	"sideEffects": false,
+	"publishConfig": {
+		"access": "public",
+		"exports": {
+			".": {
+				"types": "./dist/index.d.ts",
+				"import": "./dist/index.mjs"
+			},
+			"./service": {
+				"types": "./dist/service/index.d.ts",
+				"import": "./dist/service/index.mjs"
+			}
+		},
+		"module": "./dist/index.mjs",
+		"types": "./dist/index.d.ts"
+	},
+	"main": "./src/index.ts",
+	"files": [
+		"dist",
+		"src"
+	],
+	"scripts": {
+		"build": "pnpm exec tsup"
+	},
+	"peerDependencies": {
+		"astro": "^4.15.2",
+		"sharp": "^0.33.5"
+	},
+	"dependencies": {
+		"@jcayzac/image-information": "workspace:^",
+		"svgo": "^3.3.2"
+	},
+	"devDependencies": {
+		"astro": "^4.15.2",
+		"sharp": "^0.33.5"
+	}
+}
