@@ -61,8 +61,19 @@ const service: LocalImageService<PrivateConfig> = {
 				}
 				const info = await imageInformation(url)
 				if (info) {
-					options.width = info.width
-					options.height = info.height
+					// Instead of setting options.width and options.height,
+					// let's just turn src into an ImageMetadata object so
+					// that target dimensions can be calculated later.
+					options.src = {
+						src,
+						width: info.width,
+						height: info.height,
+						// FIXME: is this safe?
+						format: info.type as ImageMetadata['format'],
+					}
+					if (info.orientation !== undefined) {
+						options.src.orientation = info.orientation
+					}
 				}
 				else {
 					// Couldn't infer dimensions :-/
@@ -362,6 +373,9 @@ export default service
 
 function getTargetDimensions(options: Transform) {
 	let { width, height } = options
+
+	// If either width or height is missing, use the image's intrinsic dimensions
+	// to calculate the missing dimension(s).
 	if (isImageMetadata(options.src)) {
 		const aspectRatio = options.src.width / options.src.height
 		if (height && !width) {
