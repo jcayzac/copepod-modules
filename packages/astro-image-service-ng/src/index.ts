@@ -1,15 +1,17 @@
 import type { AstroIntegration } from 'astro'
 import type { Config, PrivateConfig } from './service/config'
 
+const name = '@jcayzac/astro-image-service-ng'
+
 export default function integration(config: Config = {}): AstroIntegration {
 	return {
-		name: '@jcayzac/astro-image-service-ng',
+		name,
 		hooks: {
 			'astro:config:setup': ({ config: { publicDir, outDir, build: { assets } }, updateConfig }) => {
 				updateConfig({
 					image: {
 						service: {
-							entrypoint: '@jcayzac/astro-image-service-ng/service',
+							entrypoint: `${name}/service`,
 							config: {
 								...config,
 								publicDir,
@@ -24,10 +26,7 @@ export default function integration(config: Config = {}): AstroIntegration {
 						build: {
 							rollupOptions: {
 								output: {
-									manualChunks: (id: string) => {
-										const separate = /\/@jcayzac\/astro-image-service-ng\b/.test(id)
-										return separate ? 'image-service' : undefined
-									},
+									manualChunks: (id: string) => id.includes(name) ? 'image-service' : undefined,
 								},
 							},
 						},

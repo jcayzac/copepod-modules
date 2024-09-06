@@ -7,10 +7,6 @@ import type { ImageMetadata, LocalImageService } from 'astro'
 import { AstroError } from 'astro/errors'
 import type { LocalImageServiceConfig, PrivateConfig, ResolvedTransform, Transform } from './config'
 
-function isImageMetadata(src: any): src is ImageMetadata {
-	return typeof src === 'object' && typeof src.src === 'string' && 'width' in src && 'height' in src && 'format' in src
-}
-
 // Keep for compatibility with Astro documentation
 // See https://docs.astro.build/en/guides/images/#quality
 const qualityTable: { [k: string]: number } = {
@@ -21,17 +17,17 @@ const qualityTable: { [k: string]: number } = {
 }
 
 const service: LocalImageService<PrivateConfig> = {
+	// Caution: do not add here properties that only matter for srcsets,
+	// like `widths`, `autoscale:list` or `densities`.
 	propertiesToHash: ['src', 'width', 'height', 'format', 'quality'],
 
 	validateOptions: async (options: Transform, config: LocalImageServiceConfig) => {
+		// Check that the integration was used
 		const { src } = options
-		const { publicDir, assets, outDir, defaultFormat = 'avif' } = config.service.config
+		const { publicDir, assets, outDir, defaults = {} } = config.service.config
+
 		if (!publicDir || !assets || !outDir) {
 			throw new AstroError(`This image service cannot be used directly, you must use the provided Astro integration!`)
-		}
-
-		if (!src) {
-			throw new AstroError(`\`src\` is missing`)
 		}
 
 		if (typeof src === 'string') {
@@ -91,12 +87,42 @@ const service: LocalImageService<PrivateConfig> = {
 				throw new AstroError(`Cannot transform from "${src.format}" to "svg"`)
 			}
 		}
+		else if (!src) {
+			throw new AstroError(`\`src\` is missing`)
+		}
 		else {
 			throw new AstroError(`Expected \`src\` to be of type \`string | ImageMetadata\`, but got \`${typeof src}\` instead`)
 		}
 
-		if (options.densities && options.widths) {
-			throw new AstroError(`\`densities\` and \`widths\` cannot be used together`)
+		let mutuallyExclusive = 0
+		if (options.densities) {
+			mutuallyExclusive += 1
+		}
+		if (options.widths) {
+			mutuallyExclusive += 1
+		}
+		if (options['autoscale:list']) {
+			mutuallyExclusive += 1
+		}
+		if (mutuallyExclusive > 1) {
+			throw new AstroError(`\`densities\`, \`widths\` and \`autoscale:list\` are mutually-exclusive`)
+		}
+
+		if (options.format !== 'svg' && !options.sizes && !options.widths && !options.densities && !options['autoscale:list']) {
+			options['autoscale:list'] = defaults['autoscale:list']
+		}
+
+		if (options['autoscale:list']) {
+			if (options.format === 'svg') {
+				throw new AstroError(`\`autoscale:list\` cannot be used with SVG images`)
+			}
+			if (options.sizes) {
+				throw new AstroError(`\`sizes\` cannot be specified if \`autoscale:list\` is used`)
+			}
+			if (!Array.isArray(options['autoscale:list']) || options['autoscale:list'].some(value => typeof value !== 'number')) {
+				throw new AstroError(`\`autoscale:list\` must be an array of numbers`)
+			}
+			options['autoscale:list'] = options['autoscale:list'].filter(value => value > 0 && value < 100)
 		}
 
 		if (options.width) {
@@ -108,7 +134,7 @@ const service: LocalImageService<PrivateConfig> = {
 		}
 
 		if (!options.format) {
-			options.format = defaultFormat
+			options.format = defaults.format ?? 'avif'
 		}
 		else if (options.format === 'jpg') {
 			options.format = 'jpeg'
@@ -146,6 +172,10 @@ const service: LocalImageService<PrivateConfig> = {
 			query.append('f', options.format)
 		}
 
+		if (options['autoscale:list']) {
+			query.append('autoscale', options['autoscale:list'].join(','))
+		}
+
 		return `${path}?${query}`
 	},
 
@@ -159,15 +189,15 @@ const service: LocalImageService<PrivateConfig> = {
 		const height = query.get('h')
 		const quality = query.get('q')
 		const format = query.get('f')
-		const lossless = query.get('lossless')
+		const autoscale = query.get('autoscale')?.split(',')?.map(value => Number.parseFloat(value))
 
 		return {
 			src,
-			width: width ? Number.parseInt(width, 10) : undefined,
-			height: height ? Number.parseInt(height, 10) : undefined,
+			'width': width ? Number.parseInt(width, 10) : undefined,
+			'height': height ? Number.parseInt(height, 10) : undefined,
 			quality,
 			format,
-			lossless: lossless === '1',
+			'autoscale:list': autoscale,
 		}
 	},
 
@@ -183,11 +213,29 @@ const service: LocalImageService<PrivateConfig> = {
 			quality: _quality,
 			densities: _densities,
 			widths: _widths,
+			'autoscale:list': autoscale,
 			loading = 'lazy',
 			decoding = 'async',
 			...attributes
 		} = options
-		return { ...attributes, width, height, loading, decoding }
+
+		const result: Record<string, any> = {
+			...attributes,
+			width,
+			height,
+			loading,
+			decoding,
+		}
+
+		// Generate the `sizes` attribute if `autoscale:list` is used
+		if (autoscale && width) {
+			result.sizes = `${autoscale.map((value) => {
+				const w = Math.round(width * value / 100)
+				return `(width <= ${w}px): ${w}px`
+			}).join(', ')},${width}px`
+		}
+
+		return result
 	},
 
 	getSrcSet: (options: Transform, _config: LocalImageServiceConfig) => {
@@ -198,19 +246,19 @@ const service: LocalImageService<PrivateConfig> = {
 		} as Record<string, string>)[format] ?? `image/${format}`
 
 		const [imageWidth, maxWidth]
-			= typeof options.src === 'string'
+			= (typeof options.src === 'string'
 				? [options.width, Infinity]
-				: [options.src.width, options.src.width]
+				: [options.src.width, options.src.width]) as [number, number]
 
 		const allWidths = []
-		const { widths, densities } = options
+		const { widths, densities, 'autoscale:list': autoscaleList } = options
 		if (densities) {
 			const { width } = getTargetDimensions(options)
 			if (width !== undefined) {
 				const densityValues = densities.map(density => typeof density === 'number' ? density : Number.parseFloat(density)).sort()
 				allWidths.push(
 					...densityValues.map((density, index) => ({
-						maxTargetWidth: Math.min(Math.round(width * density), maxWidth),
+						width: Math.min(Math.round(width * density), maxWidth),
 						descriptor: `${densityValues[index]}x`,
 					})),
 				)
@@ -219,10 +267,29 @@ const service: LocalImageService<PrivateConfig> = {
 		else if (widths) {
 			allWidths.push(
 				...widths.map(width => ({
-					maxTargetWidth: Math.min(width, maxWidth),
+					width: Math.min(width, maxWidth),
 					descriptor: `${width}w`,
 				})),
 			)
+		}
+		else if (Array.isArray(autoscaleList)) {
+			const { width } = getTargetDimensions(options)
+			if (width !== undefined) {
+				allWidths.push(
+					...autoscaleList.map((autoscale) => {
+						const w = Math.round(width * autoscale / 100)
+						return {
+							width: Math.min(w, maxWidth),
+							descriptor: `${w}w`,
+						}
+					}),
+				)
+
+				allWidths.push({
+					width,
+					descriptor: `${width}w`,
+				})
+			}
 		}
 
 		const {
@@ -231,17 +298,15 @@ const service: LocalImageService<PrivateConfig> = {
 			...transformWithoutDimensions
 		} = options
 
-		return allWidths.reduce<any>((srcSet, { maxTargetWidth, descriptor }) => {
+		return allWidths.reduce<any>((srcSet, { width, descriptor }) => {
 			const srcSetTransform = { ...transformWithoutDimensions }
 
-			if (maxTargetWidth !== imageWidth) {
-				srcSetTransform.width = maxTargetWidth
+			if (width !== imageWidth) {
+				srcSetTransform.width = width
 			}
-			else {
-				if (options.width && options.height) {
-					srcSetTransform.width = options.width
-					srcSetTransform.height = options.height
-				}
+			else if (options.width && options.height) {
+				srcSetTransform.width = options.width
+				srcSetTransform.height = options.height
 			}
 
 			srcSet.push({
@@ -371,26 +436,16 @@ const service: LocalImageService<PrivateConfig> = {
 
 export default service
 
-function getTargetDimensions(options: Transform) {
-	let { width, height } = options
+function isImageMetadata(src: any): src is ImageMetadata {
+	return typeof src === 'object' && typeof src.src === 'string' && 'width' in src && 'height' in src && 'format' in src
+}
 
-	// If either width or height is missing, use the image's intrinsic dimensions
-	// to calculate the missing dimension(s).
-	if (isImageMetadata(options.src)) {
-		const aspectRatio = options.src.width / options.src.height
-		if (height && !width) {
-			width = Math.round(height * aspectRatio)
-		}
-		else if (width && !height) {
-			height = Math.round(width / aspectRatio)
-		}
-		else if (!width && !height) {
-			width = options.src.width
-			height = options.src.height
-		}
+function getTargetDimensions({ width, height, src }: Transform) {
+	if ((!width || !height) && isImageMetadata(src)) {
+		const { width: sw, height: sh } = src
+		const ratio = sw / sh
+		width ||= Math.round((height || sh) * ratio)
+		height ||= Math.round((width || sw) / ratio)
 	}
-	return {
-		width,
-		height,
-	}
+	return { width, height }
 }
