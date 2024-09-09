@@ -1,5 +1,11 @@
 # @jcayzac/astro-build-cache
 
+## 0.1.9
+
+### Patch Changes
+
+- [#63](https://github.com/jcayzac/copepod-modules/pull/63) [`cea18ba`](https://github.com/jcayzac/copepod-modules/commit/cea18bab799eae6481baf68927aeaff95edb2eb6) Thanks [@jcayzac](https://github.com/jcayzac)! - Temporary fix for monorepos
+
 ## 0.1.8
 
 ### Patch Changes
