@@ -1,8 +1,16 @@
 import { env } from 'node:process'
+import { mkdir } from 'node:fs/promises'
 import { type Kv, openKv } from '@deno/kv'
 import digest from '@jcayzac/utils-digest'
 
 const MODE = env.NODE_ENV === 'production' ? 'production' : 'development'
+
+async function openDb(): Promise<Kv> {
+	// FIXME: we need a way to access cacheDir from the Astro config
+	const dir = `${env.INIT_CWD || '.'}/node_modules/.astro`
+	await mkdir(dir, { recursive: true })
+	return await openKv(`${dir}/build-cache.${MODE}`)
+}
 
 /**
  * A simple cache for Astro build artifacts, using sqlite3 files stored in `node_modules/.astro/build-cache.<mode>`.
@@ -16,7 +24,7 @@ export class Cache {
 	 * @param name Name of the cache. Cached content is scoped by name.
 	 */
 	constructor(public name: string = 'null') {
-		this.ready = openKv(`node_modules/.astro/build-cache.${MODE}`)
+		this.ready = openDb()
 	}
 
 	/**
