@@ -1,5 +1,11 @@
 # @jcayzac/astro-image-service-ng
 
+## 0.2.4
+
+### Patch Changes
+
+- [#65](https://github.com/jcayzac/copepod-modules/pull/65) [`c7a74bb`](https://github.com/jcayzac/copepod-modules/commit/c7a74bbd71c022fdc118277161c68939966213b2) Thanks [@jcayzac](https://github.com/jcayzac)! - Fix broken links in `package.json`.
+
 ## 0.2.3
 
 ### Patch Changes
