@@ -6,11 +6,11 @@
 	"author": "Julien Cayzac",
 	"license": "MIT",
 	"funding": "https://github.com/sponsors/jcayzac",
-	"homepage": "https://github.com/jcayzac/copepod-modules/tree/main/packages/astro-image-service#readme",
+	"homepage": "https://github.com/jcayzac/copepod-modules/tree/main/packages/astro-image-service-ng#readme",
 	"repository": {
 		"type": "git",
 		"url": "github:jcayzac/copepod-modules",
-		"directory": "packages/astro-image-service"
+		"directory": "packages/astro-image-service-ng"
 	},
 	"bugs": "https://github.com/jcayzac/copepod-modules/issues",
 	"keywords": [
