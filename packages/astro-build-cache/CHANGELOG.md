@@ -1,5 +1,11 @@
 # @jcayzac/astro-build-cache
 
+## 0.1.8
+
+### Patch Changes
+
+- [#62](https://github.com/jcayzac/copepod-modules/pull/62) [`04e5c34`](https://github.com/jcayzac/copepod-modules/commit/04e5c34d67590b822bd5f7f5c50c9ca432ee9ba5) Thanks [@jcayzac](https://github.com/jcayzac)! - Depending on the project configuration and package manager, the build might fail if this module isn't externalized. This adds the required configuration to the README.
+
 ## 0.1.7
 
 ### Patch Changes

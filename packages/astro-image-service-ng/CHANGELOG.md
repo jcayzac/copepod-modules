@@ -1,5 +1,11 @@
 # @jcayzac/astro-image-service-ng
 
+## 0.2.3
+
+### Patch Changes
+
+- [#59](https://github.com/jcayzac/copepod-modules/pull/59) [`4b5fe12`](https://github.com/jcayzac/copepod-modules/commit/4b5fe1218f3862c4a8711c5f923a33573002b5f9) Thanks [@jcayzac](https://github.com/jcayzac)! - Fix image dimension bug when width and height were not provided.
+
 ## 0.2.2
 
 ### Patch Changes
