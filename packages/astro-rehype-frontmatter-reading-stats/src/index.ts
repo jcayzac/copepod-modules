@@ -8,7 +8,6 @@ interface MarkdownAstroData {
 	frontmatter: Record<string, any>
 }
 
-// eslint-disable-next-line unicorn/consistent-function-scoping
 const main: Plugin = () => (tree, file) => {
 	const data = file.data.astro as MarkdownAstroData
 
