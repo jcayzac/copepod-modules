@@ -73,6 +73,25 @@ const value = cached<Uint8Array>(
 )
 ```
 
+> [!TIP]
+> To avoid any build error when using this module, you should add it to the list of externalized packages:
+>
+> ```ts
+> // astro.config.mjs
+> export default defineConfig({
+>   /* ...other options... */
+>   vite: {
+>     build: {
+>       rollupOptions: {
+>         external: [
+>           '@jcayzac/astro-build-cache',
+>         ],
+>       },
+>     }
+>   },
+> })
+> ```
+
 ## Like it? Buy me a coffee!
 
 If you like anything here, consider buying me a coffee using one of the following platforms:
