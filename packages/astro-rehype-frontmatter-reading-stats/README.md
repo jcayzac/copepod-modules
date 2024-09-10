@@ -51,13 +51,14 @@ The frontmatter of your Markdown documents will have new fields added:
 - `readingTime`: the estimated reading time in minutes, rounded.
 
    > [!TIP]
-   > if you want an [ISO-8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations), for example to use in a [`<time>`](https://developer.mozilla.org/docs/Web/HTML/Element/time) HTML element, simply use `` `PT${readingTime}M` ``.
+   > if you want an [ISO-8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations), for example to use in a [`<time>`](https://developer.mozilla.org/docs/Web/HTML/Element/time) HTML element, simply use `` `PT${Math.round(readingTime)}M` ``.
 
 You can access those in your Astro components:
 
 ```astro
 ---
-import { type CollectionEntry } from 'astro:content'
+import type { FrontmatterReadingStats } from '@jcayzac/astro-rehype-frontmatter-reading-stats'
+import type { CollectionEntry } from 'astro:content'
 
 interface Props {
   article: CollectionEntry<'articles'>
@@ -65,12 +66,12 @@ interface Props {
 
 const { article } = props as Props
 const { Content, remarkPluginFrontmatter } = await article.render()
-const { wordCount, readingTime } = remarkPluginFrontmatter
+const { wordCount, readingTime } = remarkPluginFrontmatter as FrontmatterReadingStats
 ---
 <div>
   <h1>{article.title}</h1>
   <p>{wordCount} words</p>
-  <time datetime={`PT${readingTime}M`}>A {readingTime}min read</time>
+  <time datetime={`PT${Math.round(readingTime)}M`}>A {readingTime}min read</time>
   <Content />
 </div>
 ```
