@@ -1,7 +1,7 @@
 {
 	"name": "@jcayzac/astro-rehype-frontmatter-reading-stats",
 	"type": "module",
-	"version": "0.0.5",
+	"version": "0.1.0",
 	"description": "Adds reading time and word count to the frontmatter of markdown/mdx files.",
 	"author": "Julien Cayzac",
 	"license": "MIT",
