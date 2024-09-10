@@ -1,0 +1,43 @@
+{
+	"name": "@jcayzac/utils-sorters",
+	"type": "module",
+	"version": "0.0.0",
+	"description": "Composable sorting algorithms for sort() or toSorted().",
+	"author": "Julien Cayzac",
+	"license": "MIT",
+	"funding": "https://github.com/sponsors/jcayzac",
+	"homepage": "https://github.com/jcayzac/copepod-modules/tree/main/packages/utils-sorters#readme",
+	"repository": {
+		"type": "git",
+		"url": "github:jcayzac/copepod-modules",
+		"directory": "packages/utils-sorters"
+	},
+	"bugs": "https://github.com/jcayzac/copepod-modules/issues",
+	"keywords": [
+		"sort",
+		"sorting",
+		"sorters",
+		"composable",
+		"functional",
+		"fp"
+	],
+	"sideEffects": false,
+	"publishConfig": {
+		"access": "public",
+		"exports": {
+			".": {
+				"types": "./dist/index.d.ts",
+				"import": "./dist/index.mjs"
+			}
+		},
+		"module": "./dist/index.mjs",
+		"types": "./dist/index.d.ts"
+	},
+	"main": "./src/index.ts",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "pnpm exec tsup"
+	}
+}
