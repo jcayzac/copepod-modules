@@ -1,5 +1,16 @@
 # @jcayzac/astro-rehype-frontmatter-reading-stats
 
+## 0.1.0
+
+### Minor Changes
+
+- [#67](https://github.com/jcayzac/copepod-modules/pull/67) [`6ba3bd9`](https://github.com/jcayzac/copepod-modules/commit/6ba3bd960159e7d5e40f53795d5c394d7351bd0f) Thanks [@jcayzac](https://github.com/jcayzac)! - This version exports a new `FrontmatterReadingStats` type so that you can get the correct types for `readingTime` and `wordCount` (both `number`) instead of `any`. Just change your code like this:
+
+  ```patch
+  - const { wordCount, readingTime } = remarkPluginFrontmatter;
+  + const { wordCount, readingTime } = remarkPluginFrontmatter as FrontmatterReadingStats;
+  ```
+
 ## 0.0.5
 
 ### Patch Changes
