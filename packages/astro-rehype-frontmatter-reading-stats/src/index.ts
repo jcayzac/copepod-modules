@@ -16,8 +16,6 @@ interface MarkdownAstroData {
 }
 
 const main: Plugin = () => (tree, file) => {
-	const data = file.data.astro as MarkdownAstroData
-
 	let time = 0
 	let words = 0
 	const queue: hast.Node[] = [tree]
@@ -40,10 +38,13 @@ const main: Plugin = () => (tree, file) => {
 
 	const minutes = time / 60000
 
-	data.frontmatter = {
-		...data.frontmatter,
-		readingTime: minutes,
-		wordCount: words,
+	const data = file.data.astro as MarkdownAstroData
+	if (data) {
+		data.frontmatter = {
+			...data.frontmatter ?? {},
+			readingTime: minutes,
+			wordCount: words,
+		}
 	}
 }
 
