@@ -2,6 +2,13 @@ import type * as hast from 'hast'
 import type * as unified from 'unified'
 import rt from 'reading-time'
 
+export interface FrontmatterReadingStats {
+	readingTime: number
+	wordCount: number
+
+	[key: string]: any
+}
+
 type Plugin<PluginParameters extends any[] = any[]> = unified.Plugin<PluginParameters, hast.Root>
 
 interface MarkdownAstroData {
