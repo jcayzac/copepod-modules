@@ -1,3 +1,16 @@
+function anyToString(value: any) {
+	return `${value}`
+}
+
+function anyToNumber(value: any) {
+	const t = typeof value
+	return t === 'number' || t === 'bigint' ? value : +value
+}
+
+function diffSign<T>(a: T, b: T) {
+	return a === b ? 0 : a > b ? 1 : -1
+}
+
 /**
  * A comparator that reverses the order of another comparator.
  * @param other Comparator to reverse.
@@ -12,7 +25,7 @@ export function reversed<T, R>(other: (a: T, b: T) => R) {
  * @param fn Transformer that extracts a `string` metric from an element.
  * @returns Lexicographic comparator for the extracted metric.
  */
-export function lexicographic<T>(fn: (arg: T) => string = arg => `${arg}`) {
+export function lexicographic<T>(fn: (arg: T) => string = anyToString) {
 	return (a: T, b: T) => fn(a).localeCompare(fn(b))
 }
 
@@ -21,8 +34,8 @@ export function lexicographic<T>(fn: (arg: T) => string = arg => `${arg}`) {
  * @param fn Transformer that extracts a numeric metric from an element.
  * @returns Descending-order comparator for the extracted metric.
  */
-export function descending<T>(fn: (arg: T) => number = arg => +arg) {
-	return (a: T, b: T) => fn(b) - fn(a)
+export function descending<T>(fn: (arg: T) => number = anyToNumber) {
+	return (a: T, b: T) => diffSign(fn(b), fn(a))
 }
 
 /**
@@ -30,6 +43,6 @@ export function descending<T>(fn: (arg: T) => number = arg => +arg) {
  * @param fn Transformer that extracts a numeric metric from an element.
  * @returns Ascending-order comparator for the extracted metric.
  */
-export function ascending<T>(fn: (arg: T) => number = arg => +arg) {
-	return (a: T, b: T) => fn(a) - fn(b)
+export function ascending<T>(fn: (arg: T) => number = anyToNumber) {
+	return (a: T, b: T) => diffSign(fn(a), fn(b))
 }
