@@ -1,5 +1,5 @@
 ---
-"@jcayzac/utils-sorters": patch
+"@jcayzac/utils-sorters": minor
 ---
 
 Added support for bigints.
