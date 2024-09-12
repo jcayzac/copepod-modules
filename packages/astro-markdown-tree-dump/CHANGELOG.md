@@ -1,5 +1,11 @@
 # @jcayzac/astro-markdown-tree-dump
 
+## 0.1.1
+
+### Patch Changes
+
+- [#75](https://github.com/jcayzac/copepod-modules/pull/75) [`4240675`](https://github.com/jcayzac/copepod-modules/commit/4240675960836e357000d17d6616e60dabc1266b) Thanks [@jcayzac](https://github.com/jcayzac)! - Exclude the "position" attribute from dumps, for brievity.
+
 ## 0.1.0
 
 ### Minor Changes
