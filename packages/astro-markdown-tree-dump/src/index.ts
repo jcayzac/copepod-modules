@@ -11,19 +11,18 @@ interface Roots {
 }
 
 function makePlugin<K extends keyof Roots>(key: K): unified.Plugin<[], Roots[K]> {
-	return (() => async (tree: Roots[K], file: {
-		cwd: string
-		data: {
-			astro: {
-				frontmatter: { [key: string]: any }
-			}
-		}
-		history: [string, ...string[]]
-		value: string
-	}) => {
+	return (() => async (tree: Roots[K], file: { cwd: string, history: [string] }) => {
 		const [, slug] = /\/([^/]+)(?:\/index)?\.mdx?$/.exec(file.history[0]) ?? []
+
 		await mkdir(`${file.cwd}/.${key}`, { recursive: true })
-		await writeFile(`${file.cwd}/.${key}/${slug}.yaml`, YAML.stringify(tree), 'utf8')
+		await writeFile(
+			`${file.cwd}/.${key}/${slug}.yaml`,
+			YAML.stringify(
+				tree,
+				(k, v) => k !== 'position' ? v : undefined,
+			),
+			'utf8',
+		)
 		return tree
 	}) as any
 }
