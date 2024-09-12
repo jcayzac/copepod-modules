@@ -1,0 +1,55 @@
+{
+	"name": "@jcayzac/astro-markdown-tree-dump",
+	"type": "module",
+	"version": "0.0.0",
+	"description": "Dumps rehype and remark trees to files",
+	"author": "Julien Cayzac",
+	"license": "MIT",
+	"funding": "https://github.com/sponsors/jcayzac",
+	"homepage": "https://github.com/jcayzac/copepod-modules/tree/main/packages/astro-markdown-tree-dump#readme",
+	"repository": {
+		"type": "git",
+		"url": "github:jcayzac/copepod-modules",
+		"directory": "packages/astro-markdown-tree-dump"
+	},
+	"bugs": "https://github.com/jcayzac/copepod-modules/issues",
+	"keywords": [
+		"astro",
+		"astro-integration",
+		"rehype",
+		"remark",
+		"debug"
+	],
+	"sideEffects": false,
+	"publishConfig": {
+		"access": "public",
+		"exports": {
+			".": {
+				"types": "./dist/index.d.ts",
+				"import": "./dist/index.mjs"
+			}
+		},
+		"module": "./dist/index.mjs",
+		"types": "./dist/index.d.ts"
+	},
+	"main": "./src/index.ts",
+	"files": [
+		"dist",
+		"src"
+	],
+	"scripts": {
+		"build": "pnpm exec tsup"
+	},
+	"peerDependencies": {
+		"astro": "^4.15.2"
+	},
+	"dependencies": {
+		"@types/hast": "^3.0.4",
+		"@types/mdast": "^4.0.4",
+		"unified": "^11.0.5",
+		"yaml": "^2.5.1"
+	},
+	"devDependencies": {
+		"astro": "^4.15.2"
+	}
+}
