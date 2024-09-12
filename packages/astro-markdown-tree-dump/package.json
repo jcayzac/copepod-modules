@@ -1,7 +1,7 @@
 {
 	"name": "@jcayzac/astro-markdown-tree-dump",
 	"type": "module",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Dumps rehype and remark trees to files",
 	"author": "Julien Cayzac",
 	"license": "MIT",
