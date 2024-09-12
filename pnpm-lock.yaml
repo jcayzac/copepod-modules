@@ -49,7 +49,7 @@ importers:
         version: 9.9.0
       tsup:
         specifier: ^8.2.4
-        version: 8.2.4(postcss@8.4.44)(typescript@5.5.4)(yaml@2.5.0)
+        version: 8.2.4(postcss@8.4.44)(typescript@5.5.4)(yaml@2.5.1)
       typescript:
         specifier: ^5.5.4
         version: 5.5.4
@@ -84,6 +84,25 @@ importers:
       sharp:
         specifier: ^0.33.5
         version: 0.33.5
+
+  packages/astro-markdown-tree-dump:
+    dependencies:
+      '@types/hast':
+        specifier: ^3.0.4
+        version: 3.0.4
+      '@types/mdast':
+        specifier: ^4.0.4
+        version: 4.0.4
+      unified:
+        specifier: ^11.0.5
+        version: 11.0.5
+      yaml:
+        specifier: ^2.5.1
+        version: 2.5.1
+    devDependencies:
+      astro:
+        specifier: ^4.15.2
+        version: 4.15.2(@types/node@22.5.2)(rollup@4.21.2)(terser@5.32.0)(typescript@5.5.4)
 
   packages/astro-minify-html:
     dependencies:
@@ -205,6 +224,8 @@ importers:
         version: 3.0.3
 
   packages/utils-digest: {}
+
+  packages/utils-sorters: {}
 
   packages/utils-text: {}
 
@@ -3836,6 +3857,11 @@ packages:
     engines: {node: '>= 14'}
     hasBin: true
 
+  yaml@2.5.1:
+    resolution: {integrity: sha512-bLQOjaX/ADgQ20isPJRvF0iRUHIxVhYvr53Of7wGcWlO2jvtUlH5m87DsmulFVxRpNLOnI4tB6p/oh8D7kpn9Q==}
+    engines: {node: '>= 14'}
+    hasBin: true
+
   yargs-parser@21.1.1:
     resolution: {integrity: sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==}
     engines: {node: '>=12'}
@@ -7160,12 +7186,12 @@ snapshots:
 
   pnpm@9.9.0: {}
 
-  postcss-load-config@6.0.1(postcss@8.4.44)(yaml@2.5.0):
+  postcss-load-config@6.0.1(postcss@8.4.44)(yaml@2.5.1):
     dependencies:
       lilconfig: 3.1.2
     optionalDependencies:
       postcss: 8.4.44
-      yaml: 2.5.0
+      yaml: 2.5.1
 
   postcss-selector-parser@6.1.2:
     dependencies:
@@ -7711,7 +7737,7 @@ snapshots:
 
   tslib@2.7.0: {}
 
-  tsup@8.2.4(postcss@8.4.44)(typescript@5.5.4)(yaml@2.5.0):
+  tsup@8.2.4(postcss@8.4.44)(typescript@5.5.4)(yaml@2.5.1):
     dependencies:
       bundle-require: 5.0.0(esbuild@0.23.1)
       cac: 6.7.14
@@ -7723,7 +7749,7 @@ snapshots:
       globby: 11.1.0
       joycon: 3.1.1
       picocolors: 1.1.0
-      postcss-load-config: 6.0.1(postcss@8.4.44)(yaml@2.5.0)
+      postcss-load-config: 6.0.1(postcss@8.4.44)(yaml@2.5.1)
       resolve-from: 5.0.0
       rollup: 4.21.2
       source-map: 0.8.0-beta.0
@@ -7980,6 +8006,8 @@ snapshots:
       yaml: 2.5.0
 
   yaml@2.5.0: {}
+
+  yaml@2.5.1: {}
 
   yargs-parser@21.1.1: {}
 
