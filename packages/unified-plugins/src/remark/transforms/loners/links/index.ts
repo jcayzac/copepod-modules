@@ -3,12 +3,15 @@ import type { MdxJsxFlowElement, MdxJsxFlowElementData } from 'mdast-util-mdx-js
 import { nodeToString } from '../../../utils'
 import type { LinkTransform } from './transform'
 import { youtube } from './youtube'
+import { codepen } from './codepen'
 
 export * from './transform'
 export * from './youtube'
+export * from './codepen'
 
 const DEFAULT_TRANSFORMS: LinkTransform[] = [
 	youtube,
+	codepen,
 ]
 
 export interface LinkOptions {

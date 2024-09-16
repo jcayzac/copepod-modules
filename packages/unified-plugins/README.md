@@ -25,10 +25,11 @@ All headings are automatically given an `id` attribute based on their text conte
 
 ### Unwrapping of "loner" elements
 
-Elements that are the only child of a paragraph are unwrapped from the paragraph is they can be block elements. This includes the following elements:
+Elements that are the only child of a paragraph are unwrapped from the paragraph if they can be block elements. This includes the following elements:
 
 **HTML (or JSX):**
 
+* `<iframe>`
 * `<img>`.
 * `<figcaption>`
 * `<picture>`
@@ -41,7 +42,7 @@ Elements that are the only child of a paragraph are unwrapped from the paragraph
 
 ### Link transforms
 
-Lone links whose URL is recognized by a registered link transform can be altered or transformed into other elements.
+Lone links whose URL is recognized by a registered link transform can be altered or transformed into another element.
 
 A link transform conforms to the following interface:
 
@@ -69,24 +70,18 @@ In addition to `url` and `title`, captured groups with a corresponding name in `
 
 By default, the following link transforms are registered:
 
-* `youtube`: Transforms YouTube video URLs into responsive iframes.
+* `codepen`: Transforms CodePen URLs into responsive iframes loaded lazily.
+Captured groups:
+  * `owner`: The pen's owner.
+  * `pen`: The pen's id.
+* `youtube`: Transforms YouTube video URLs into responsive iframes loaded lazily.
+Captured groups:
+  * `id`: The video ID.
 
 You can override the default transforms, or register new ones, by setting the `baseline.links.transforms` option.
 
 > [!NOTE]
-> Links often don't have titles. Writing a link like this:
->
-> ```md
-> [A link](https://example.com)
-> ```
->
-> is more readable than this:
->
-> ```md
-> [](https://example.com "A link")
-> ```
->
-> When the `title` attribute is absent, the preset automatically sets it to the element's text content before passing it to the `transform()` function (or the registered MDX component), so that the first syntax is equivalent to the latter one.
+> Markdown links often don't have titles. When a link doesn't have one, the preset automatically sets it to the element's text content before it passes it down to the `transform()` function or an MDX component.
 
 ### Asides
 
@@ -116,7 +111,9 @@ Arbitrary aside types are also supported, for instance:
 > A tip for cooking.
 ```
 
-Asides are converted to `<aside>` elements in rehype. They have a class list that includes `aside` and `aside-<type>`, where `<type>` is the aside type in lowercase. The mdast elements also have the `type` attribute set so that it can be picked up by any MDX component responsible for rendering asides.
+Asides are converted to `<aside>` elements in rehype. They have a class list that includes `aside` and `aside-<type>`, where `<type>` is the aside type in lowercase.
+
+The aside type is also available in the `data` attribute of the mdast node, as well as in the `data-type` attribute set in the rehype node.
 
 A title can be passed as an argument to the aside type:
 
@@ -124,7 +121,7 @@ A title can be passed as an argument to the aside type:
 > [!TIP: I bet you didn't know this!]
 ```
 
-Titles are not inserted into the tree, but are available in the `data` attribute of the mdast node as well as the `data-title` attribute of the rehype node.
+Titles are not inserted into the tree, but are available in the `data` attribute of the mdast node as well as in the `data-title` attribute of the rehype node.
 
 ### _"Double blockquotes"_ `>>` syntax for figure captions
 

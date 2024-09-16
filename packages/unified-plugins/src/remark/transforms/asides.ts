@@ -1,4 +1,4 @@
-import type { Paragraph, Parent, Text } from 'mdast'
+import type { Data, Paragraph, Parent, Text } from 'mdast'
 import type { AnyData } from '../utils'
 
 /**
@@ -45,13 +45,14 @@ export function asides(parent: Parent) {
 	const { data } = parent as AnyData
 	parent.data = {
 		...data,
+		type,
+		title,
 		hName: 'aside',
 		hProperties: {
 			...data?.hProperties,
-			className: ['aside', `aside-${type}`],
-			type,
-			title,
-			dataTitle: title,
+			'className': ['aside', `aside-${type}`],
+			'data-type': type,
+			'data-title': title,
 		},
-	}
+	} as Data
 }
