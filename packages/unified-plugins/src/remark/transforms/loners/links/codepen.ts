@@ -4,11 +4,14 @@ import 'mdast-util-to-hast'
 
 export const codepen: LinkTransform = {
 	name: 'codepen',
-	detect: /^https:\/\/codepen\.io\/([^/]+)\/pen\/([^/]+)/,
+	detect: /^https:\/\/codepen\.io\/([^/]+)\/pen\/([^?/]+)/,
 	groups: ['owner', 'pen'],
 	transform: function (link: Link, owner: string, pen: string): Parent | undefined {
-		const url = new URL(`https://codepen.io/${owner}/embed/${pen}`)
-		url.searchParams.set('default-tab', 'html,result')
+		const url = new URL(link.url)
+		url.pathname = `/${owner}/embed/preview/${pen}`
+		if (!url.searchParams.has('default-tab')) {
+			url.searchParams.set('default-tab', 'html,result')
+		}
 		return {
 			type: 'blockquote',
 			position: link.position,
