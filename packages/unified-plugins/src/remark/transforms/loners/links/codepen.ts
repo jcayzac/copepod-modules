@@ -25,7 +25,7 @@ export const codepen: LinkTransform = {
 						children: [],
 						properties: {
 							src: url.href,
-							title: link.title || 'YouTube video player',
+							title: link.title || 'CodePen Embed',
 							style: 'border:0;width:100%;height:100%;min-height:20rem',
 							frameborder: '0',
 							scrolling: 'no',
