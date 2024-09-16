@@ -1,5 +1,6 @@
 import type { Link, Parent } from 'mdast'
 import type { LinkTransform } from './transform'
+import 'mdast-util-to-hast'
 
 export const codepen: LinkTransform = {
 	name: 'codepen',
@@ -8,26 +9,33 @@ export const codepen: LinkTransform = {
 	transform: function (link: Link, owner: string, pen: string): Parent | undefined {
 		const url = new URL(`https://codepen.io/${owner}/embed/${pen}`)
 		url.searchParams.set('default-tab', 'html,result')
-		const element = {
-			type: 'image',
-			url: url.href,
-			title: link.title || 'YouTube video player',
+		return {
+			type: 'blockquote',
 			position: link.position,
 			children: [],
 			data: {
-				hName: 'iframe',
+				hName: 'div',
 				hProperties: {
-					height: '25vh',
-					style: 'border:0;width:100%;min-width:20rem;max-width:80rem;min-height:20rem;',
-					frameborder: '0',
-					scrolling: 'no',
-					allowfullscreen: null,
-					allowtransparency: null,
-					loading: 'lazy',
+					style: 'resize:both;overflow:auto;display:flex;min-height:20rem',
 				},
+				hChildren: [
+					{
+						type: 'element',
+						tagName: 'iframe',
+						children: [],
+						properties: {
+							src: url.href,
+							title: link.title || 'YouTube video player',
+							style: 'border:0;width:100%;height:100%;min-height:20rem',
+							frameborder: '0',
+							scrolling: 'no',
+							allowfullscreen: null,
+							allowtransparency: null,
+							loading: 'lazy',
+						},
+					},
+				],
 			},
-		}
-
-		return element
+		} satisfies Parent
 	} as LinkTransform['transform'],
 }
