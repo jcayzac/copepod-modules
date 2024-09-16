@@ -5,6 +5,7 @@ import { type LinkOptions, type LinkTransform, processLink } from './links'
 
 const LONERS_MD = new Set(['image'])
 const LONERS_MDX = new Set([
+	'iframe',
 	'img',
 	'figcaption',
 	'picture',
