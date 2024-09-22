@@ -1,7 +1,7 @@
+import type { AstroIntegration } from 'astro'
 import { readFile, writeFile } from 'node:fs/promises'
 import glob from 'fast-glob'
 import { minify } from 'html-minifier-terser'
-import type { AstroIntegration } from 'astro'
 
 export default function integration(): AstroIntegration {
 	return {

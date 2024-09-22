@@ -1,6 +1,6 @@
 import type { Parent, Root, Text } from 'hast'
-import { isElement, onlyParents } from './utils'
 import * as transforms from './transforms'
+import { isElement, onlyParents } from './utils'
 
 export interface BaselineOptions {
 }

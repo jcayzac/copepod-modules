@@ -1,7 +1,7 @@
 import type { Root } from 'hast'
-import katex from 'rehype-katex'
 import type { Options as KatexOptions } from 'rehype-katex'
-import { type BaselineOptions, baseline } from './baseline'
+import katex from 'rehype-katex'
+import { baseline, type BaselineOptions } from './baseline'
 
 export interface PresetOptions {
 	baseline?: BaselineOptions | undefined
