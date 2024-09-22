@@ -1,5 +1,11 @@
 # @jcayzac/shiki-highlighter
 
+## 0.2.0
+
+### Minor Changes
+
+- [#84](https://github.com/jcayzac/copepod-modules/pull/84) [`7886d7b`](https://github.com/jcayzac/copepod-modules/commit/7886d7bc54b84b913c8211ebe17a62f4f1fbef6b) Thanks [@jcayzac](https://github.com/jcayzac)! - Updated dependencies.
+
 ## 0.1.3
 
 ### Patch Changes
