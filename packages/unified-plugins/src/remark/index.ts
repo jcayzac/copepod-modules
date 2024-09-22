@@ -1,7 +1,7 @@
 import type { Root } from 'mdast'
-import math from 'remark-math'
 import type { Options as MathOptions } from 'remark-math'
-import { type BaselineOptions, baseline } from './baseline'
+import math from 'remark-math'
+import { baseline, type BaselineOptions } from './baseline'
 
 export interface PresetOptions {
 	baseline?: BaselineOptions | undefined

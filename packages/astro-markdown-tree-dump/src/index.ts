@@ -1,9 +1,9 @@
-import { mkdir, writeFile } from 'node:fs/promises'
 import type { AstroIntegration } from 'astro'
-import YAML from 'yaml'
 import type * as hast from 'hast'
 import type * as mdast from 'mdast'
 import type * as unified from 'unified'
+import { mkdir, writeFile } from 'node:fs/promises'
+import YAML from 'yaml'
 
 interface Roots {
 	rehype: hast.Root

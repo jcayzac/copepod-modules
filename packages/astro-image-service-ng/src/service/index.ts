@@ -1,11 +1,11 @@
+import type { ImageMetadata, LocalImageService } from 'astro'
+import type { LocalImageServiceConfig, PrivateConfig, ResolvedTransform, Transform } from './config'
 import assert from 'node:assert'
-import sharp from 'sharp'
-import { optimize as svgo } from 'svgo'
 import { imageInformation } from '@jcayzac/image-information'
 import { baseService } from 'astro/assets'
-import type { ImageMetadata, LocalImageService } from 'astro'
 import { AstroError } from 'astro/errors'
-import type { LocalImageServiceConfig, PrivateConfig, ResolvedTransform, Transform } from './config'
+import sharp from 'sharp'
+import { optimize as svgo } from 'svgo'
 
 function isImageMetadata(src: any): src is ImageMetadata {
 	return typeof src === 'object' && typeof src.src === 'string' && 'width' in src && 'height' in src && 'format' in src

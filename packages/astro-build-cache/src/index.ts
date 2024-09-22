@@ -1,5 +1,5 @@
-import { env } from 'node:process'
 import { mkdir } from 'node:fs/promises'
+import { env } from 'node:process'
 import { type Kv, openKv } from '@deno/kv'
 import digest from '@jcayzac/utils-digest'
 

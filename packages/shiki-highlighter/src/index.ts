@@ -14,12 +14,12 @@
  * builtin support can be tab-competed.
  */
 
-import { type BuiltinLanguage, createHighlighter } from 'shiki'
+import theme from '@jcayzac/shiki-theme-token'
+import autolinks from '@jcayzac/shiki-transformer-autolinks'
+import token from '@jcayzac/shiki-transformer-token'
 import { transformerMetaWordHighlight } from '@shikijs/transformers'
 import { JSDOM } from 'jsdom'
-import theme from '@jcayzac/shiki-theme-token'
-import token from '@jcayzac/shiki-transformer-token'
-import autolinks from '@jcayzac/shiki-transformer-autolinks'
+import { type BuiltinLanguage, createHighlighter } from 'shiki'
 
 const langs: Set<BuiltinLanguage> = new Set([
 	'ansi' as BuiltinLanguage,

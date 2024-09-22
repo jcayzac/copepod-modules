@@ -1,7 +1,7 @@
 import type { Parent, PhrasingContent, RootContent } from 'mdast'
-import 'mdast-util-to-hast'
 import { isLink } from '../../utils'
 import { type LinkOptions, type LinkTransform, processLink } from './links'
+import 'mdast-util-to-hast'
 
 const LONERS_MD = new Set(['image'])
 const LONERS_MDX = new Set([

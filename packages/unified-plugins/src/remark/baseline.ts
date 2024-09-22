@@ -1,8 +1,8 @@
 import type { Parent, Root } from 'mdast'
-import GithubSlugger from 'github-slugger'
-import * as utils from './utils'
-import * as transforms from './transforms'
 import type { LinkOptions } from './transforms/loners/links'
+import GithubSlugger from 'github-slugger'
+import * as transforms from './transforms'
+import * as utils from './utils'
 
 const SLUGGER = new GithubSlugger()
 

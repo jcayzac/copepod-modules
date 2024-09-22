@@ -16,6 +16,7 @@ export default antfu({
 	},
 	rules: {
 		'unicorn/consistent-function-scoping': 'off',
+		'antfu/no-top-level-await': 'off',
 		'ts/no-unused-vars': [
 			'error',
 			{
