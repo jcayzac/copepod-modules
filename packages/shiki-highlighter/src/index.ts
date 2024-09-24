@@ -76,9 +76,10 @@ export interface HighlightOptions {
 }
 
 function highlight(code: string, options: HighlightOptions = {}): string {
-	const lang = options.lang ?? 'plaintext'
+	let lang = options.lang ?? 'plaintext'
 	if (!langs.has(lang as BuiltinLanguage) && !langAlias[lang]) {
-		throw new Error(`Language "${lang}" is not supported. Supported languages are:\n${[...langs].join(', ')}`)
+		console.warn(`@jcayzac/shiki-highlighter doesn't support the "${lang}" language. Supported languages are:\n${[...langs].join(', ')}`)
+		lang = 'plaintext'
 	}
 
 	const { meta, inline } = options
