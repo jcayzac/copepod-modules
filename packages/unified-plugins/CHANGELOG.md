@@ -1,5 +1,11 @@
 # @copepod/unified-plugins
 
+## 0.8.0
+
+### Minor Changes
+
+- [#96](https://github.com/jcayzac/copepod-modules/pull/96) [`acc7bc6`](https://github.com/jcayzac/copepod-modules/commit/acc7bc6212103d7fe2b665e19c15a7ad155a53ef) Thanks [@jcayzac](https://github.com/jcayzac)! - Add support for breakpoints in code fences.
+
 ## 0.7.0
 
 ### Minor Changes
