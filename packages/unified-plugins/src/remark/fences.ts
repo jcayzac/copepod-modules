@@ -23,10 +23,18 @@ export function fences(options: FencesOptions = {}) {
 				if (child.type !== 'code') {
 					continue
 				}
-
 				const { lang, meta, data: oldData = {}, value } = child as Code
+
+				// If no component is registered for the language, skip.
 				const component = lang && componentRoutes[lang]
 				if (!component) {
+					continue
+				}
+
+				// If the meta string has `source`, skip.
+				const metaTokens = meta?.split(' ') ?? []
+				if (metaTokens.includes('source')) {
+					child.meta = metaTokens.filter(token => token !== 'source').join(' ')
 					continue
 				}
 
