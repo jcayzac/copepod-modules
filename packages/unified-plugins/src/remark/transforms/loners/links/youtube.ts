@@ -3,8 +3,8 @@ import type { LinkTransform } from './transform'
 
 export const youtube: LinkTransform = {
 	name: 'youtube',
-	detect: /^https:\/\/(?:youtu\.be\/|(?:.+\.)?youtube\.com\/watch\?(?:[^&]+&)*v=)([^?&/]+)/,
-	groups: ['id'],
+	detect: /^https:\/\/(?:youtu\.be\/|(?:.+\.)?youtube\.com\/watch\?(?:[^&]+&)*v=)([^?&/]+)(?:[?&](.+))?/,
+	groups: ['id', 'query'],
 	transform: function (link: Link, id: string): Parent | undefined {
 		const url = new URL(link.url)
 		const t = url.searchParams.get('t')
