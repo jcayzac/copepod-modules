@@ -1,5 +1,11 @@
 # @copepod/unified-plugins
 
+## 0.6.0
+
+### Minor Changes
+
+- [#90](https://github.com/jcayzac/copepod-modules/pull/90) [`8301e69`](https://github.com/jcayzac/copepod-modules/commit/8301e696ed5f43c64c0c504859b33ecf8409c3d5) Thanks [@jcayzac](https://github.com/jcayzac)! - Add component routing for code fences.
+
 ## 0.5.0
 
 ### Minor Changes
