@@ -4,8 +4,8 @@ import 'mdast-util-to-hast'
 
 export const codepen: LinkTransform = {
 	name: 'codepen',
-	detect: /^https:\/\/codepen\.io\/([^/]+)\/(?:pen|embed|embed\/preview)\/([^?/]+)/,
-	groups: ['owner', 'pen'],
+	detect: /^https:\/\/codepen\.io\/([^/]+)\/(?:pen|embed|embed\/preview)\/([^?/]+)(?:\?(.+))?/,
+	groups: ['owner', 'pen', 'query'],
 	transform: function (link: Link, owner: string, pen: string): Parent | undefined {
 		const url = new URL(link.url)
 		url.pathname = `/${owner}/embed/preview/${pen}`
