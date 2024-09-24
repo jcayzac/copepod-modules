@@ -1,5 +1,11 @@
 # @copepod/unified-plugins
 
+## 0.7.0
+
+### Minor Changes
+
+- [#92](https://github.com/jcayzac/copepod-modules/pull/92) [`e4bc056`](https://github.com/jcayzac/copepod-modules/commit/e4bc05677e29c838c09156e6e7e23ad902a66867) Thanks [@jcayzac](https://github.com/jcayzac)! - Support skipping the replacing of a code fence with a component if the meta string has `source`.
+
 ## 0.6.0
 
 ### Minor Changes
