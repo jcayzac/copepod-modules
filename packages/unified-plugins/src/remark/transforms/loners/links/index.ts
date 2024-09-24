@@ -46,7 +46,7 @@ export function processLink(link: Link, options: LinkOptions) {
 			return transform(link, ...args)
 		}
 
-		// Route the loner to an MDX  component, passing not only the url and title as props,
+		// Route the loner to an MDX component, passing not only the url and title as props,
 		// but also all the captured groups from the regex.
 		const mdx = {
 			type: 'mdxJsxFlowElement',
