@@ -1,4 +1,5 @@
 import type * as mdast from 'mdast'
+import type { MdxJsxFlowElement, MdxJsxTextElement } from 'mdast-util-mdx-jsx'
 
 export interface AnyData { data?: { [key: string]: any } }
 
@@ -20,8 +21,13 @@ export function onlyParents(nodes: mdast.Node[]): mdast.Parent[] {
 }
 
 export function isParent(node: mdast.Node | undefined | null): node is mdast.Parent {
-	const asParent = node ? node as mdast.Parent : node
-	return Array.isArray(asParent?.children) && asParent.children[0] !== undefined
+	return node !== undefined
+		&& node !== null
+		&& 'children' in node
+		&& Array.isArray(node.children)
+		&& node.children[0] !== undefined
+		&& !isMdxJsxFlowElement(node)
+		&& !isMdxJsxTextElement(node)
 }
 
 export function isLink(node: mdast.Node | undefined | null): node is mdast.Link {
@@ -34,4 +40,12 @@ export function isParagraph(node: mdast.Node | undefined | null): node is mdast.
 
 export function isText(node: mdast.Node | undefined | null): node is mdast.Text {
 	return node?.type === 'text'
+}
+
+export function isMdxJsxFlowElement(node: mdast.Node | undefined | null): node is MdxJsxFlowElement {
+	return node?.type === 'mdxJsxFlowElement'
+}
+
+export function isMdxJsxTextElement(node: mdast.Node | undefined | null): node is MdxJsxTextElement {
+	return node?.type === 'mdxJsxTextElement'
 }
