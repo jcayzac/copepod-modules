@@ -1,5 +1,11 @@
 # @jcayzac/shiki-highlighter
 
+## 0.2.1
+
+### Patch Changes
+
+- [#94](https://github.com/jcayzac/copepod-modules/pull/94) [`0904167`](https://github.com/jcayzac/copepod-modules/commit/0904167724b2e1d0533dbd43fbc19b6e2da02e82) Thanks [@jcayzac](https://github.com/jcayzac)! - Do not fail when the language is not supported. Instead, falls back to `plaintext`.
+
 ## 0.2.0
 
 ### Minor Changes
