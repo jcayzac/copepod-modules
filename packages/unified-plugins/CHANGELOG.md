@@ -1,5 +1,11 @@
 # @copepod/unified-plugins
 
+## 0.4.0
+
+### Minor Changes
+
+- [#86](https://github.com/jcayzac/copepod-modules/pull/86) [`ae032ff`](https://github.com/jcayzac/copepod-modules/commit/ae032ffe945b94c499da25ed04b29cf5e26ace37) Thanks [@jcayzac](https://github.com/jcayzac)! - youtube: add `query` to named captured groups.
+
 ## 0.3.0
 
 ### Minor Changes
