@@ -1,5 +1,11 @@
 # @copepod/unified-plugins
 
+## 0.5.0
+
+### Minor Changes
+
+- [#88](https://github.com/jcayzac/copepod-modules/pull/88) [`509420c`](https://github.com/jcayzac/copepod-modules/commit/509420c3d867e882b56ad029a19a3983a3fd6cdc) Thanks [@jcayzac](https://github.com/jcayzac)! - codepen: add `query` to named captured groups.
+
 ## 0.4.0
 
 ### Minor Changes
