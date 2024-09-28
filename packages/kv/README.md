@@ -95,7 +95,7 @@ const store = await kv.store('images')
 const value = await store.get('image.jpg')
 
 // Set value with key 'image.jpg' in store 'images'
-await store.set('image.jpg', value)
+const success = await store.set('image.jpg', value)
 
 // Now delete that entry
 await store.set('image.jpg', undefined)
@@ -127,6 +127,7 @@ export default class MemoryStore implements Store<string> {
 
   async set(key, value) {
     cache.set(key, value)
+    return true
   }
 }
 ```
@@ -156,7 +157,7 @@ export default class CompositeKeyMemoryStore implements Store<CompositeKey> {
   }
 
   async set(key, value) {
-    this.underlyingStore.set(JSON.stringify([key.a, key.b]), value)
+    return this.underlyingStore.set(JSON.stringify([key.a, key.b]), value)
   }
 }
 ```
@@ -192,14 +193,25 @@ export default class ImageStore implements Store<TransformParams> {
     const { name, type, width, height, ...rest } = key
     const other = Object.entries(rest).toSorted((a, b) => a[0].localeCompare(b[0])).map(([k, v]) => `${k}=${v}`).join(',')
     const path = `${this.path}/${name}[${width},${height},${other}].${type}`
-    return await readFile(path)
+    try {
+      return await readFile(path)
+    }
+    catch {
+      return undefined
+    }
   }
 
   async set(key, value) {
     const { name, type, width, height } = key
     const other = Object.entries(rest).toSorted((a, b) => a[0].localeCompare(b[0])).map(([k, v]) => `${k}=${v}`).join(',')
     const path = `${this.path}/${name}[${width},${height},${other}].${type}`
-    return await writeFile(path, value)
+    try {
+      await writeFile(path, value)
+      return true
+    }
+    catch {
+      return false
+    }
   }
 }
 ```
