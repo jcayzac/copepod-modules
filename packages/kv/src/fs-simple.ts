@@ -15,7 +15,7 @@ async function pathForKey(path: string, key: string): Promise<string> {
 class SimpleStore implements Store<string> {
 	private readonly path: string
 
-	constructor(public readonly params: Params) {
+	constructor(params: Params) {
 		this.path = paths.resolve(params.path)
 	}
 
