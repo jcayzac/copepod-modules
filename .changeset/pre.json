@@ -23,6 +23,8 @@
     "@copepod/kv": "0.0.0"
   },
   "changesets": [
-    "old-items-tickle"
+    "eleven-mayflies-occur",
+    "old-items-tickle",
+    "sharp-queens-speak"
   ]
 }
