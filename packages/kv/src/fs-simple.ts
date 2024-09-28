@@ -1,5 +1,5 @@
 import type { Store, StoreParams } from './types'
-import { mkdir, readdir, readFile, unlink, writeFile } from 'node:fs/promises'
+import { mkdir, readdir, readFile, rmdir, unlink, writeFile } from 'node:fs/promises'
 import paths from 'node:path'
 import { digest } from './utils'
 
@@ -54,7 +54,7 @@ class SimpleStore implements Store<string> {
 						break
 					}
 
-					await unlink(dir)
+					await rmdir(dir)
 				}
 			}
 		}
