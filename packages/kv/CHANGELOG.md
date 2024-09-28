@@ -1,5 +1,11 @@
 # @copepod/kv
 
+## 0.0.1-dev.2
+
+### Patch Changes
+
+- [#104](https://github.com/jcayzac/copepod-modules/pull/104) [`6ea4430`](https://github.com/jcayzac/copepod-modules/commit/6ea4430bf401e6da80eb4d560a85063bea7f19be) Thanks [@jcayzac](https://github.com/jcayzac)! - small api fixes
+
 ## 0.0.1-dev.1
 
 ### Patch Changes
