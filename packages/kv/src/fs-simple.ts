@@ -1,7 +1,6 @@
 import type { Store, StoreParams } from './types'
-import { mkdir, readdir, readFile, rmdir, unlink, writeFile } from 'node:fs/promises'
 import paths from 'node:path'
-import { digest } from './utils'
+import { deleteFile, digest, readFile, writeFile } from './utils'
 
 export interface Params extends StoreParams {
 	path: string
@@ -21,46 +20,12 @@ class SimpleStore implements Store<string> {
 
 	async get(key: string): Promise<Uint8Array | undefined> {
 		const path = await pathForKey(this.path, key)
-		try {
-			return await readFile(path)
-		}
-		catch {
-			return undefined
-		}
+		return await readFile(path)
 	}
 
-	async set(key: string, value: Uint8Array | undefined): Promise<void> {
+	async set(key: string, value: Uint8Array | undefined): Promise<boolean> {
 		const path = await pathForKey(this.path, key)
-		try {
-			if (value !== undefined) {
-				await mkdir(paths.dirname(path), { recursive: true })
-				await writeFile(path, value)
-			}
-			else {
-				// Delete entry
-				await unlink(path)
-
-				// Prune empty directories
-				let dir = path
-				while (true) {
-					const oldDir = dir
-					dir = paths.dirname(oldDir)
-					if (dir === oldDir) {
-						break
-					}
-
-					const content = await readdir(dir)
-					if (content.length) {
-						break
-					}
-
-					await rmdir(dir)
-				}
-			}
-		}
-		catch {
-			// no-op
-		}
+		return await (value !== undefined ? writeFile(path, value) : deleteFile(path))
 	}
 }
 

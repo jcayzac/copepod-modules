@@ -22,7 +22,7 @@ export interface StoreConfig<Params extends StoreParams = StoreParams> {
 
 export interface Store<Key = string> {
 	get: (key: Key) => Promise<Uint8Array | undefined>
-	set: (key: Key, value: Uint8Array | undefined) => Promise<void>
+	set: (key: Key, value: Uint8Array | undefined) => Promise<boolean>
 }
 
 export interface Config {
