@@ -89,20 +89,23 @@ export default {
 import { kv } from '@copepod/kv'
 
 // Get a store. If no store is defined for that id, returns `undefined`.
-const store = kv.store('images')
+const store = await kv.store('images')
 
 // Get value with key 'image.jpg' from store
 const value = await store.get('image.jpg')
 
 // Set value with key 'image.jpg' in store 'images'
 await store.set('image.jpg', value)
+
+// Now delete that entry
+await store.set('image.jpg', undefined)
 ```
 
 ## API
 
 * `kv.store<Key>(store: string): Promise<Store<Key> | undefined>`: Get a store by its id.
-* `store.get(store: string, key: Key): Promise<Uint8Array | undefined>`: Get a value from a store. The key can be any keyable material understood by the store backend.
-* `store.set(store: string, key: Key, value: Uint8Array | undefined): Promise<void>`: Set a value in a store. Passing `undefined` as the value will delete the key from the store.
+* `store.get(key: Key): Promise<Uint8Array | undefined>`: Get a value from a store. The key can be any keyable material understood by the store backend.
+* `store.set(key: Key, value: Uint8Array | undefined): Promise<void>`: Set a value in a store. Passing `undefined` as the value will delete the key from the store.
 
 ## Backends
 
