@@ -1,7 +1,7 @@
 {
 	"name": "@copepod/kv",
 	"type": "module",
-	"version": "0.0.0",
+	"version": "0.0.1-dev.0",
 	"description": "Pluggable, statically-configured key-value store",
 	"author": "Julien Cayzac",
 	"license": "MIT",
