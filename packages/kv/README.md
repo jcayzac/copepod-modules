@@ -31,9 +31,9 @@ deno add npm:@copepod/kv
 
 ## Configuration
 
-Configuration is static. There is no API to configure stores, and importing a store will automatically register the right backend and return a configured store instance.
+Configuration is static: there is no API to configure stores, and all the necessary configuration is in the configuration file.
 
-The configuration file is where store names are mapped to their backends. It can be a JSON file, a YAML file, a Javascript or Typescript file, and must be named `kv.config.*` where `*` is the extension of the file. It's also possible to simply pass a configuration in the project's `package.json` file under the `kv` key.
+The configuration file associates store identifiers with backends and backend parameters. It can be a JSON file, a YAML file, a Javascript or Typescript file, and must be named `kv.config.*` where `*` is the extension of the file. It's also possible to simply pass a configuration in the project's `package.json` file under the `kv` key.
 
 ### Examples
 
@@ -48,10 +48,10 @@ The configuration file is where store names are mapped to their backends. It can
   "kv": {
     "stores": [
       {
-        "id": "images",
-        "use": "@copepod/kv-filesystem",
+        "id": "build-cache",
+        "use": "@copepod/kv/fs-simple",
         "with": {
-          "path": "images"
+          "path": ".cache"
         }
       },
       // Add more stores here
@@ -65,20 +65,20 @@ The configuration file is where store names are mapped to their backends. It can
 ```ts
 import type { Config } from '@copepod/kv/config'
 
-const images: {
+const buildCache: {
   // Store id
-  id: 'images',
+  id: 'build-cache',
   // Backend module
-  use: '@copepod/kv-filesystem',
+  use: '@copepod/kv/fs-simple',
   // Backend configuration
   with: {
-    path: 'images',
+    path: '.cache',
   },
 }
 
 export default {
   stores: [
-    images,
+    buildCache,
   ],
 } satisfies Config
 ```
@@ -89,7 +89,7 @@ export default {
 import { kv } from '@copepod/kv'
 
 // Get a store. If no store is defined for that id, returns `undefined`.
-const store = await kv.store('images')
+const store = await kv.store('build-cache')
 
 // Get value with key 'image.jpg' from store
 const value = await store.get('image.jpg')
@@ -105,7 +105,7 @@ await store.set('image.jpg', undefined)
 
 * `kv.store<Key>(store: string): Promise<Store<Key> | undefined>`: Get a store by its id.
 * `store.get(key: Key): Promise<Uint8Array | undefined>`: Get a value from a store. The key can be any keyable material understood by the store backend.
-* `store.set(key: Key, value: Uint8Array | undefined): Promise<void>`: Set a value in a store. Passing `undefined` as the value will delete the key from the store.
+* `store.set(key: Key, value: Uint8Array | undefined): Promise<boolean>`: Set a value in a store. Passing `undefined` as the value will delete the key from the store. Returns `true` if the operation was successful, `false` otherwise.
 
 ## Backends
 
@@ -114,10 +114,14 @@ Backends are modules that implement the key-value store interface. Here is a ver
 ```ts
 import type { Store } from '@copepod/kv/types'
 
+export interface Config {
+  [key: string]: any
+}
+
 export default class MemoryStore implements Store<string> {
   private cache: Map<string, Uint8Array>
 
-  constructor(params: { [key: string]: any }) {
+  constructor(params: Config) {
     this.cache = new Map()
   }
 
@@ -126,8 +130,12 @@ export default class MemoryStore implements Store<string> {
   }
 
   async set(key, value) {
-    cache.set(key, value)
-    return true
+    if (value === undefined) {
+      cache.delete(key)
+    }
+    else {
+      cache.set(key, value)
+    }
   }
 }
 ```
