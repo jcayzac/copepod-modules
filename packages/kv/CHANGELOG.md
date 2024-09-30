@@ -1,5 +1,13 @@
 # @copepod/kv
 
+## 0.0.1-dev.3
+
+### Patch Changes
+
+- [#108](https://github.com/jcayzac/copepod-modules/pull/108) [`7a44893`](https://github.com/jcayzac/copepod-modules/commit/7a448932ae8fb409900452f66510dcf5ec77fd70) Thanks [@jcayzac](https://github.com/jcayzac)! - Add support for whitespaces.
+
+- [#106](https://github.com/jcayzac/copepod-modules/pull/106) [`56c8d33`](https://github.com/jcayzac/copepod-modules/commit/56c8d3380dbb91180b50d9fec67a9af406fb44e5) Thanks [@jcayzac](https://github.com/jcayzac)! - Added fs-composite built-in backend
+
 ## 0.0.1-dev.2
 
 ### Patch Changes
