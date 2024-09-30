@@ -21,17 +21,11 @@ export interface Params extends StoreParams {
 }
 
 function extract(obj: any, path: string): any {
-	return path.split(/[.[\]]/).filter(Boolean).reduce((obj, cur) => obj && obj[cur], obj)
-}
-
-function *all(regex: RegExp, text: string): Generator<RegExpExecArray, void, undefined> {
-	const r = new RegExp(regex.source, regex.flags)
-	r.lastIndex = 0
-	let match: RegExpExecArray | null
-	// eslint-disable-next-line no-cond-assign
-	while (match = r.exec(text)) {
-		yield match
-	}
+	return path
+		.split(/[.[\]]/)
+		.map(x => x.trim())
+		.filter(Boolean)
+		.reduce((obj, cur) => obj && obj[cur], obj)
 }
 
 async function hash(key: object): Promise<string> {
@@ -106,9 +100,12 @@ export default class CompositeStore implements Store<object> {
 		const raws: string[] = []
 		const interpolators: string[] = []
 		let lastIndex = 0
-		for (const match of all(/\{([^{}]+)\}/g, pattern)) {
+		const re = /\{([^{}]+)\}/g
+		let match: RegExpExecArray | null
+		// eslint-disable-next-line no-cond-assign
+		while (match = re.exec(pattern)) {
 			raws.push(pattern.slice(lastIndex, match.index))
-			interpolators.push(match[1]!)
+			interpolators.push(match[1]!.trim())
 			lastIndex = match.index + match[0].length
 		}
 
