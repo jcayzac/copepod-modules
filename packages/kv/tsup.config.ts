@@ -7,5 +7,6 @@ export default defineConfig({
 		'src/types.ts',
 		'src/index.ts',
 		'src/fs-simple.ts',
+		'src/fs-composite.ts',
 	],
 })
