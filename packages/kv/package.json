@@ -37,6 +37,10 @@
 			"./fs-simple": {
 				"types": "./dist/fs-simple.d.ts",
 				"import": "./dist/fs-simple.mjs"
+			},
+			"./fs-composite": {
+				"types": "./dist/fs-composite.d.ts",
+				"import": "./dist/fs-composite.mjs"
 			}
 		},
 		"module": "./dist/index.mjs",
