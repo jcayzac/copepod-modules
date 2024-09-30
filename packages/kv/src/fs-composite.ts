@@ -29,56 +29,55 @@ function extract(obj: any, path: string): any {
 }
 
 async function hash(key: object): Promise<string> {
-	const table = new WeakMap<object, string>()
+	const hashed = new WeakMap<object, string>()
 	let counter = 0
-	function stableHash(arg: any): string {
+	function inner(arg: any): string {
 		const isDate = arg instanceof Date
 		const isRegExp = arg instanceof RegExp
 
 		if (Object(arg) === arg && !isDate && !isRegExp) {
-			// Object/function, not null/date/regexp. Use WeakMap to store the id first.
-			// If it's already hashed, directly return the result.
-			let result = table.get(arg)
-			if (result) {
-				return result
-			}
+			let result = hashed.get(arg)
+			if (!result) {
+				// Prevent circular references from blowing up the stack.
+				result = `${++counter}~`
+				hashed.set(arg, result)
 
-			// Store the hash first for circular reference detection before entering the
-			// recursive `stableHash` calls.
-			// For other objects like set and map, we use this id directly as the hash.
-			result = `${++counter}~`
-			table.set(arg, result)
-			let index: any
-
-			if (Array.isArray(arg)) {
-				result = '@'
-				for (index = 0; index < arg.length; index++) {
-					result += `${stableHash(arg[index])},`
-				}
-				table.set(arg, result)
-			}
-			else if (arg?.constructor === Object) {
-				result = '#'
-				const keys = Object.keys(arg).sort()
-				// eslint-disable-next-line no-cond-assign
-				while ((index = keys.pop() as string) !== undefined) {
-					if (arg[index] !== undefined) {
-						result += `${index}:${stableHash(arg[index])},`
+				if (Array.isArray(arg)) {
+					result = '@'
+					for (let index = 0; index < arg.length; index++) {
+						result += `${inner(arg[index])},`
 					}
 				}
-				table.set(arg, result)
+				else if (arg?.constructor === Object) {
+					result = '#'
+					const keys = Object.keys(arg).sort()
+					let prop: string | undefined
+					// eslint-disable-next-line no-cond-assign
+					while ((prop = keys.pop()) !== undefined) {
+						if (arg[prop] !== undefined) {
+							result += `${prop}:${inner(arg[prop])},`
+						}
+					}
+				}
+
+				hashed.set(arg, result)
 			}
+
 			return result
 		}
-		else if (isDate) {
-			return arg.toJSON()
-		}
 		else {
-			return typeof arg === 'string' ? JSON.stringify(arg) : arg.toString()
+			switch (typeof arg) {
+				case 'string':
+					return JSON.stringify(arg)
+				case 'symbol':
+					return arg.toString()
+				default:
+					return isDate ? arg.toJSON() : `${arg}`
+			}
 		}
 	}
 
-	const data = new TextEncoder().encode(stableHash(key))
+	const data = new TextEncoder().encode(inner(key))
 	return Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', data)))
 		.map(b => b.toString(16).padStart(2, '0'))
 		.join('')
