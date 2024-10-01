@@ -67,6 +67,6 @@
 		"build": "pnpm exec tsup"
 	},
 	"dependencies": {
-		"c12": "^1.11.2"
+		"c12": "^2.0.0"
 	}
 }
