@@ -331,6 +331,9 @@ const service: LocalImageService<PrivateConfig> = {
 
 		// Resize, allowing the image ratio to change if requested.
 		if (typeof transform.width === 'number' || typeof transform.height === 'number') {
+			descriptor.width = '(auto)'
+			descriptor.height = '(auto)'
+
 			const params: sharp.ResizeOptions = {}
 			if (typeof transform.width === 'number') {
 				params.width = Math.round(transform.width)
