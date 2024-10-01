@@ -1,5 +1,11 @@
 # @copepod/kv
 
+## 0.0.1-dev.4
+
+### Patch Changes
+
+- [#109](https://github.com/jcayzac/copepod-modules/pull/109) [`e1ca2a4`](https://github.com/jcayzac/copepod-modules/commit/e1ca2a4f7e95fa73895935135bb2180d05dce1b1) Thanks [@jcayzac](https://github.com/jcayzac)! - Export submodules in the monorepo's workspace too.
+
 ## 0.0.1-dev.3
 
 ### Patch Changes
