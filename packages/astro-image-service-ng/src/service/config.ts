@@ -6,12 +6,19 @@ export interface Config {
 	 * @default 'avif'
 	 */
 	defaultFormat?: 'avif' | 'webp' | undefined
+
+	/**
+	 * [`@copepod/kv`](https://www.npmjs.com/package/@copepod/kv) store identifier to cache transformed images with.
+	 * @default undefined
+	 */
+	kv?: string | undefined
 }
 
 export interface PrivateConfig extends Config {
 	publicDir?: URL | string
 	outDir?: URL | string
 	assets?: string
+	command?: string
 }
 
 export type LocalImageServiceConfig = Parameters<LocalImageService<PrivateConfig>['transform']>[2]

@@ -52,6 +52,7 @@
 		"sharp": "^0.33.5"
 	},
 	"dependencies": {
+		"@copepod/kv": "workspace:0.0.1-dev.3",
 		"@jcayzac/image-information": "workspace:^",
 		"svgo": "^3.3.2"
 	},

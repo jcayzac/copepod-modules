@@ -71,6 +71,9 @@ importers:
 
   packages/astro-image-service-ng:
     dependencies:
+      '@copepod/kv':
+        specifier: workspace:0.0.1-dev.3
+        version: link:../kv
       '@jcayzac/image-information':
         specifier: workspace:^
         version: link:../image-information
