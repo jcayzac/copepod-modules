@@ -1,6 +1,9 @@
+import type { Store } from '@copepod/kv/types'
 import type { ImageMetadata, LocalImageService } from 'astro'
 import type { LocalImageServiceConfig, PrivateConfig, ResolvedTransform, Transform } from './config'
 import assert from 'node:assert'
+import paths from 'node:path'
+import * as kv from '@copepod/kv'
 import { imageInformation } from '@jcayzac/image-information'
 import { baseService } from 'astro/assets'
 import { AstroError } from 'astro/errors'
@@ -20,14 +23,26 @@ const qualityTable: { [k: string]: number } = {
 	max: 100, // lossless
 }
 
+const stores = new Map<string, Store<{ [k: string]: any }>>()
+
 const service: LocalImageService<PrivateConfig> = {
 	propertiesToHash: ['src', 'width', 'height', 'format', 'quality'],
 
 	validateOptions: async (options: Transform, config: LocalImageServiceConfig) => {
 		const { src } = options
-		const { publicDir, assets, outDir, defaultFormat = 'avif' } = config.service.config
+		const { publicDir, assets, outDir, command, defaultFormat = 'avif', kv: storeId } = config.service.config
 		if (!publicDir || !assets || !outDir) {
 			throw new AstroError(`This image service cannot be used directly, you must use the provided Astro integration!`)
+		}
+
+		if (typeof storeId === 'string' && command === 'build') {
+			if (!stores.has(storeId)) {
+				const store = await kv.store(storeId) as Store<{ [k: string]: any }>
+				if (!store) {
+					throw new AstroError(`KV store "${storeId}" not found`)
+				}
+				stores.set(storeId, store)
+			}
 		}
 
 		if (!src) {
@@ -113,6 +128,23 @@ const service: LocalImageService<PrivateConfig> = {
 		else if (options.format === 'jpg') {
 			options.format = 'jpeg'
 		}
+
+		// figure the name of the original image
+		const path = new URL(
+			typeof src === 'string' ? src : 'fsPath' in src ? src.fsPath as string : src.src,
+			'http://localhost',
+		).pathname
+		const parts = paths.basename(path).split('.')
+		// pop the extension
+		if (parts.length > 1) {
+			parts.pop()
+		}
+		// pop the hash
+		if (parts.length > 1 && path.startsWith(`/${assets}/`)) {
+			parts.pop()
+		}
+		// keep the rest
+		options._name = parts.join('.')
 
 		return options
 	},
@@ -256,7 +288,16 @@ const service: LocalImageService<PrivateConfig> = {
 		}, [])
 	},
 
-	async transform(inputBuffer, transform: ResolvedTransform, _config: LocalImageServiceConfig) {
+	async transform(inputBuffer, transform: ResolvedTransform, config: LocalImageServiceConfig) {
+		const { kv: storeId } = config.service.config
+		const store = storeId ? stores.get(storeId) : undefined
+
+		// TODO:
+		// - probe input buffer for size and format
+		// - compute input buffer digest
+		// - load from cache if available
+		// - save to cache
+
 		// validateOptions() currently guarantees that inputBuffer is an SVG
 		// if "format" is "svg", so we can safely assume that here.
 		if (transform.format === 'svg') {
@@ -274,24 +315,30 @@ const service: LocalImageService<PrivateConfig> = {
 			failOn: 'error',
 			pages: -1, // convert all pages
 			limitInputPixels: false,
-		})
+		}).rotate()
+
+		const descriptor: { [key: string]: any } = {
+			name: transform._name,
+		}
 
 		const metadata = await result.metadata()
 		const colorspace = (metadata.space ?? 'srgb') as string
 		const isHdr = colorspace === 'rgb16'
 		const icc = metadata.icc
-
-		// Always call rotate() first to ensure that the image is properly oriented.
-		result.rotate()
+		descriptor.width = metadata.width
+		descriptor.height = metadata.height
+		descriptor.format = metadata.format
 
 		// Resize, allowing the image ratio to change if requested.
 		if (typeof transform.width === 'number' || typeof transform.height === 'number') {
 			const params: sharp.ResizeOptions = {}
 			if (typeof transform.width === 'number') {
 				params.width = Math.round(transform.width)
+				descriptor.width = params.width
 			}
 			if (typeof transform.height === 'number') {
 				params.height = Math.round(transform.height)
+				descriptor.height = params.height
 			}
 			result.resize(params)
 		}
@@ -347,11 +394,14 @@ const service: LocalImageService<PrivateConfig> = {
 					break
 			}
 
+			descriptor.format = transform.format
+			descriptor.formatOptions = options
 			result.toFormat(transform.format, options)
 		}
 
 		if (isHdr && transform.format === 'png') {
 			// Only PNG supports HDR images for now
+			descriptor.pipelineColorspace = 'rgb16'
 			result.pipelineColorspace('rgb16')
 		}
 
@@ -359,12 +409,28 @@ const service: LocalImageService<PrivateConfig> = {
 			result.keepIccProfile()
 		}
 
-		const { data, info: { format } } = await result.toBuffer({
-			resolveWithObject: true,
-		})
+		const digest = new Uint8Array(await crypto.subtle.digest('sha-256', inputBuffer))
+		descriptor.digest = btoa(String.fromCharCode(...digest))
+
+		if (store) {
+			const data = await store.get(descriptor)
+			if (data) {
+				return {
+					data,
+					format: descriptor.format,
+				}
+			}
+		}
+
+		const data = await result.toBuffer()
+
+		if (store) {
+			await store.set(descriptor, data)
+		}
+
 		return {
 			data,
-			format,
+			format: descriptor.format,
 		}
 	},
 }

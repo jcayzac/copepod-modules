@@ -5,7 +5,7 @@ export default function integration(config: Config = {}): AstroIntegration {
 	return {
 		name: '@jcayzac/astro-image-service-ng',
 		hooks: {
-			'astro:config:setup': ({ config: { publicDir, outDir, build: { assets } }, updateConfig }) => {
+			'astro:config:setup': ({ config: { publicDir, outDir, build: { assets } }, command, updateConfig }) => {
 				updateConfig({
 					image: {
 						service: {
@@ -15,6 +15,7 @@ export default function integration(config: Config = {}): AstroIntegration {
 								publicDir,
 								outDir,
 								assets,
+								command,
 							} satisfies PrivateConfig,
 						},
 					},

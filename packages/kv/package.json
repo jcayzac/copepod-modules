@@ -46,7 +46,20 @@
 		"module": "./dist/index.mjs",
 		"types": "./dist/index.d.ts"
 	},
-	"main": "./src/index.ts",
+	"exports": {
+		".": {
+			"import": "./src/index.ts"
+		},
+		"./types": {
+			"import": "./src/types.ts"
+		},
+		"./fs-simple": {
+			"import": "./src/fs-simple.ts"
+		},
+		"./fs-composite": {
+			"import": "./src/fs-composite.ts"
+		}
+	},
 	"files": [
 		"dist"
 	],
