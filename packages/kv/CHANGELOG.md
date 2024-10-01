@@ -1,5 +1,11 @@
 # @copepod/kv
 
+## 0.0.1-dev.6
+
+### Patch Changes
+
+- [#117](https://github.com/jcayzac/copepod-modules/pull/117) [`352bbba`](https://github.com/jcayzac/copepod-modules/commit/352bbba020a70d2e7cf864a76e3a846f6fc253fb) Thanks [@jcayzac](https://github.com/jcayzac)! - Interpolate keys not found to empty strings.
+
 ## 0.0.1-dev.5
 
 ### Patch Changes
