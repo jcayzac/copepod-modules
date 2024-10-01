@@ -45,7 +45,7 @@
 		"@jcayzac/utils-text": "workspace:^"
 	},
 	"devDependencies": {
-		"@shikijs/core": "^1.18.0",
+		"@shikijs/core": "^1.21.0",
 		"@types/hast": "^3.0.4",
 		"@types/unist": "^3.0.3"
 	}
