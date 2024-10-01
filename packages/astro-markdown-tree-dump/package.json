@@ -50,6 +50,6 @@
 		"yaml": "^2.5.1"
 	},
 	"devDependencies": {
-		"astro": "^4.15.8"
+		"astro": "^4.15.9"
 	}
 }
