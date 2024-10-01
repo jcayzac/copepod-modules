@@ -119,7 +119,7 @@ export default class CompositeStore implements Store<object> {
 		const path = String.raw(
 			{ raw: this.raws },
 			...this.interpolators.map(interpolator =>
-				interpolator === '__hash' ? h : extract(key, interpolator)),
+				interpolator === '__hash' ? h : extract(key, interpolator) ?? ''),
 		)
 		return paths.join(this.root, path)
 	}
