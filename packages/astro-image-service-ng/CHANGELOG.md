@@ -1,5 +1,11 @@
 # @jcayzac/astro-image-service-ng
 
+## 0.3.0-dev.3
+
+### Patch Changes
+
+- [#119](https://github.com/jcayzac/copepod-modules/pull/119) [`540df62`](https://github.com/jcayzac/copepod-modules/commit/540df624dccb69eb7fd30cb95ff65481257facae) Thanks [@jcayzac](https://github.com/jcayzac)! - Integration with @copepod/kv: interpolated dimensions are set to '(auto)'.
+
 ## 0.3.0-dev.2
 
 ### Patch Changes
