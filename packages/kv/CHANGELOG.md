@@ -1,5 +1,11 @@
 # @copepod/kv
 
+## 0.0.1-dev.5
+
+### Patch Changes
+
+- [#115](https://github.com/jcayzac/copepod-modules/pull/115) [`97cfe91`](https://github.com/jcayzac/copepod-modules/commit/97cfe91f22898cb5b2031f93506d595e7b5524fb) Thanks [@jcayzac](https://github.com/jcayzac)! - Fix pattern interpolation
+
 ## 0.0.1-dev.4
 
 ### Patch Changes
