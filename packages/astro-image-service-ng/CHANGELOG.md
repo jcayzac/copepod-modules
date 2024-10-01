@@ -1,5 +1,12 @@
 # @jcayzac/astro-image-service-ng
 
+## 0.3.0-dev.1
+
+### Patch Changes
+
+- Updated dependencies [[`97cfe91`](https://github.com/jcayzac/copepod-modules/commit/97cfe91f22898cb5b2031f93506d595e7b5524fb)]:
+  - @copepod/kv@0.0.1-dev.5
+
 ## 0.3.0-dev.0
 
 ### Minor Changes
