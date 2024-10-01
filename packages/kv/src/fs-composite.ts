@@ -107,6 +107,7 @@ export default class CompositeStore implements Store<object> {
 			interpolators.push(match[1]!.trim())
 			lastIndex = match.index + match[0].length
 		}
+		raws.push(pattern.slice(lastIndex))
 
 		this.root = paths.resolve(root)
 		this.raws = raws
