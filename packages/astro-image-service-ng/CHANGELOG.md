@@ -1,5 +1,11 @@
 # @jcayzac/astro-image-service-ng
 
+## 0.3.0-dev.4
+
+### Patch Changes
+
+- [#121](https://github.com/jcayzac/copepod-modules/pull/121) [`322959e`](https://github.com/jcayzac/copepod-modules/commit/322959e85eb487ca9f40c76695653bf2fbb054d2) Thanks [@jcayzac](https://github.com/jcayzac)! - Fix kv descriptor having wrong dimensions.
+
 ## 0.3.0-dev.3
 
 ### Patch Changes
