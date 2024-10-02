@@ -50,12 +50,9 @@ async function hash(key: object): Promise<string> {
 				}
 				else if (arg?.constructor === Object) {
 					result = '#'
-					const keys = Object.keys(arg).sort()
-					let prop: string | undefined
-					// eslint-disable-next-line no-cond-assign
-					while ((prop = keys.pop()) !== undefined) {
-						if (arg[prop] !== undefined) {
-							result += `${prop}:${inner(arg[prop])},`
+					for (const [k, v] of Object.entries(arg).sort((a, b) => b[0].localeCompare(a[0]))) {
+						if (v !== undefined) {
+							result += `${k}:${inner(v)},`
 						}
 					}
 				}
