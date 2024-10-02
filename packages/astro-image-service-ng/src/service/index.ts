@@ -292,12 +292,6 @@ const service: LocalImageService<PrivateConfig> = {
 		const { kv: storeId } = config.service.config
 		const store = storeId ? stores.get(storeId) : undefined
 
-		// TODO:
-		// - probe input buffer for size and format
-		// - compute input buffer digest
-		// - load from cache if available
-		// - save to cache
-
 		// validateOptions() currently guarantees that inputBuffer is an SVG
 		// if "format" is "svg", so we can safely assume that here.
 		if (transform.format === 'svg') {
@@ -325,23 +319,21 @@ const service: LocalImageService<PrivateConfig> = {
 		const colorspace = (metadata.space ?? 'srgb') as string
 		const isHdr = colorspace === 'rgb16'
 		const icc = metadata.icc
-		descriptor.width = metadata.width
-		descriptor.height = metadata.height
-		descriptor.format = metadata.format
+		descriptor.format = metadata.format as string
+
+		Object.assign(descriptor, getTargetDimensions({
+			...transform,
+			src: metadata,
+		}))
 
 		// Resize, allowing the image ratio to change if requested.
 		if (typeof transform.width === 'number' || typeof transform.height === 'number') {
-			descriptor.width = '(auto)'
-			descriptor.height = '(auto)'
-
 			const params: sharp.ResizeOptions = {}
 			if (typeof transform.width === 'number') {
 				params.width = Math.round(transform.width)
-				descriptor.width = params.width
 			}
 			if (typeof transform.height === 'number') {
 				params.height = Math.round(transform.height)
-				descriptor.height = params.height
 			}
 			result.resize(params)
 		}
@@ -440,12 +432,19 @@ const service: LocalImageService<PrivateConfig> = {
 
 export default service
 
-function getTargetDimensions(options: Transform) {
+function getTargetDimensions(options: {
+	width?: number | undefined
+	height?: number | undefined
+	src?: string | {
+		width?: number | undefined
+		height?: number | undefined
+	}
+}) {
 	let { width, height } = options
 
 	// If either width or height is missing, use the image's intrinsic dimensions
 	// to calculate the missing dimension(s).
-	if (isImageMetadata(options.src)) {
+	if (typeof options?.src === 'object' && typeof options?.src?.width === 'number' && typeof options?.src?.height === 'number') {
 		const aspectRatio = options.src.width / options.src.height
 		if (height && !width) {
 			width = Math.round(height * aspectRatio)
