@@ -20,6 +20,9 @@ export interface Params extends StoreParams {
 	pattern: string
 }
 
+/**
+ * Extract a value from an object using a path.
+ */
 function extract(obj: any, path: string): any {
 	return path
 		.split(/[.[\]]/)
@@ -97,9 +100,12 @@ export default class CompositeStore implements Store<object> {
 		const interpolators: string[] = []
 		let lastIndex = 0
 		const re = /\{([^{}]+)\}/g
-		let match: RegExpExecArray | null
-		// eslint-disable-next-line no-cond-assign
-		while (match = re.exec(pattern)) {
+		while (true) {
+			const match = re.exec(pattern)
+			if (!match) {
+				break
+			}
+
 			raws.push(pattern.slice(lastIndex, match.index))
 			interpolators.push(match[1]!.trim())
 			lastIndex = match.index + match[0].length
@@ -112,13 +118,11 @@ export default class CompositeStore implements Store<object> {
 	}
 
 	private async pathFor(key: object) {
-		const h = await hash(key)
-		const path = String.raw(
-			{ raw: this.raws },
-			...this.interpolators.map(interpolator =>
-				interpolator === '__hash' ? h : extract(key, interpolator) ?? ''),
-		)
-		return paths.join(this.root, path)
+		const interpolated = []
+		for (const interpolator of this.interpolators) {
+			interpolated.push(interpolator === '__hash' ? await hash(key) : extract(key, interpolator) ?? '')
+		}
+		return paths.join(this.root, String.raw({ raw: this.raws }, interpolated))
 	}
 
 	async get(key: object): Promise<Uint8Array | undefined> {
