@@ -1,0 +1,34 @@
+# $schema: https://json.schemastore.org/github-workflow.json
+name: Main
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  FORCE_COLOR: true
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  no-pre:
+    if: github.repository == 'jcayzac/copepod-modules'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Check no pre.json exists
+        run: |
+          [ ! -e .changesest/pre.json ] || exit 1
