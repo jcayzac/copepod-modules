@@ -33,6 +33,9 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
+      - name: Check Workflow
+        uses: reviewdog/action-actionlint@v1
+
       - name: Setup PNPM
         uses: pnpm/action-setup@v4
         with:
