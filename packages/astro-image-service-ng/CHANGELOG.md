@@ -1,5 +1,22 @@
 # @jcayzac/astro-image-service-ng
 
+## 0.3.0
+
+### Minor Changes
+
+- [#129](https://github.com/jcayzac/copepod-modules/pull/129) [`a96752c`](https://github.com/jcayzac/copepod-modules/commit/a96752cc2ff49dffe922bf8ed143fba77ed797ec) Thanks [@jcayzac](https://github.com/jcayzac)! - Integrate with @copepod/kv.
+
+### Patch Changes
+
+- [#129](https://github.com/jcayzac/copepod-modules/pull/129) [`c497dec`](https://github.com/jcayzac/copepod-modules/commit/c497deca4033e9535912a9a3614834c3de22c075) Thanks [@jcayzac](https://github.com/jcayzac)! - Integration with @copepod/kv: interpolated dimensions are set to '(auto)'.
+
+- [#129](https://github.com/jcayzac/copepod-modules/pull/129) [`965d789`](https://github.com/jcayzac/copepod-modules/commit/965d789e12fbe97e8dcc6c8b2ab2b7f495a6f82d) Thanks [@jcayzac](https://github.com/jcayzac)! - Fix kv descriptor having wrong dimensions.
+
+- [#129](https://github.com/jcayzac/copepod-modules/pull/129) [`87ebe18`](https://github.com/jcayzac/copepod-modules/commit/87ebe183b983832e6254659f011620d9f2bcbb69) Thanks [@jcayzac](https://github.com/jcayzac)! - Update peer dependencies to be compatible with Astro 5.
+
+- Updated dependencies [[`3ec6b81`](https://github.com/jcayzac/copepod-modules/commit/3ec6b8107d8bd7e5be407fc63afe6d56745aa21e), [`d845aa4`](https://github.com/jcayzac/copepod-modules/commit/d845aa4a97ce7c3a8526212596eedc1f38c54d90), [`a96752c`](https://github.com/jcayzac/copepod-modules/commit/a96752cc2ff49dffe922bf8ed143fba77ed797ec), [`35e1be3`](https://github.com/jcayzac/copepod-modules/commit/35e1be3582753f320da20184dff70c2c7e7fb032), [`28cb378`](https://github.com/jcayzac/copepod-modules/commit/28cb3780f9a1eb8065fc613a2511965b34a11cd0), [`a334e0d`](https://github.com/jcayzac/copepod-modules/commit/a334e0d06e38ca5b7f4629607bd299b28413a1c1), [`9aa2a1a`](https://github.com/jcayzac/copepod-modules/commit/9aa2a1a0efd213ea442ffd2b7f653586d1079021), [`1ad4591`](https://github.com/jcayzac/copepod-modules/commit/1ad45914cd4e51638e7249823395081000228fd0), [`4387766`](https://github.com/jcayzac/copepod-modules/commit/4387766fbb39cacd01f692195a5313253439e36e)]:
+  - @copepod/kv@0.0.1
+
 ## 0.3.0-dev.5
 
 ### Patch Changes

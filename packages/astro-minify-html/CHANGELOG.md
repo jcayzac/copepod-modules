@@ -1,5 +1,11 @@
 # @jcayzac/astro-minify-html
 
+## 1.0.1
+
+### Patch Changes
+
+- [#129](https://github.com/jcayzac/copepod-modules/pull/129) [`87ebe18`](https://github.com/jcayzac/copepod-modules/commit/87ebe183b983832e6254659f011620d9f2bcbb69) Thanks [@jcayzac](https://github.com/jcayzac)! - Update peer dependencies to be compatible with Astro 5.
+
 ## 1.0.1-dev.0
 
 ### Patch Changes

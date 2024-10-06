@@ -1,5 +1,27 @@
 # @copepod/kv
 
+## 0.0.1
+
+### Patch Changes
+
+- [#129](https://github.com/jcayzac/copepod-modules/pull/129) [`3ec6b81`](https://github.com/jcayzac/copepod-modules/commit/3ec6b8107d8bd7e5be407fc63afe6d56745aa21e) Thanks [@jcayzac](https://github.com/jcayzac)! - fix dir pruning
+
+- [#129](https://github.com/jcayzac/copepod-modules/pull/129) [`d845aa4`](https://github.com/jcayzac/copepod-modules/commit/d845aa4a97ce7c3a8526212596eedc1f38c54d90) Thanks [@jcayzac](https://github.com/jcayzac)! - Interpolate keys not found to empty strings.
+
+- [#129](https://github.com/jcayzac/copepod-modules/pull/129) [`a96752c`](https://github.com/jcayzac/copepod-modules/commit/a96752cc2ff49dffe922bf8ed143fba77ed797ec) Thanks [@jcayzac](https://github.com/jcayzac)! - Export submodules in the monorepo's workspace too.
+
+- [#129](https://github.com/jcayzac/copepod-modules/pull/129) [`35e1be3`](https://github.com/jcayzac/copepod-modules/commit/35e1be3582753f320da20184dff70c2c7e7fb032) Thanks [@jcayzac](https://github.com/jcayzac)! - Fix pattern interpolation
+
+- [#129](https://github.com/jcayzac/copepod-modules/pull/129) [`28cb378`](https://github.com/jcayzac/copepod-modules/commit/28cb3780f9a1eb8065fc613a2511965b34a11cd0) Thanks [@jcayzac](https://github.com/jcayzac)! - Initial release.
+
+- [#129](https://github.com/jcayzac/copepod-modules/pull/129) [`a334e0d`](https://github.com/jcayzac/copepod-modules/commit/a334e0d06e38ca5b7f4629607bd299b28413a1c1) Thanks [@jcayzac](https://github.com/jcayzac)! - fix api
+
+- [#129](https://github.com/jcayzac/copepod-modules/pull/129) [`9aa2a1a`](https://github.com/jcayzac/copepod-modules/commit/9aa2a1a0efd213ea442ffd2b7f653586d1079021) Thanks [@jcayzac](https://github.com/jcayzac)! - Add support for whitespaces.
+
+- [#129](https://github.com/jcayzac/copepod-modules/pull/129) [`1ad4591`](https://github.com/jcayzac/copepod-modules/commit/1ad45914cd4e51638e7249823395081000228fd0) Thanks [@jcayzac](https://github.com/jcayzac)! - Added fs-composite built-in backend
+
+- [#129](https://github.com/jcayzac/copepod-modules/pull/129) [`4387766`](https://github.com/jcayzac/copepod-modules/commit/4387766fbb39cacd01f692195a5313253439e36e) Thanks [@jcayzac](https://github.com/jcayzac)! - small api fixes
+
 ## 0.0.1-dev.6
 
 ### Patch Changes

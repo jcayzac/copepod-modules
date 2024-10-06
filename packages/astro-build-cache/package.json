@@ -1,7 +1,7 @@
 {
 	"name": "@jcayzac/astro-build-cache",
 	"type": "module",
-	"version": "0.1.10-dev.0",
+	"version": "0.1.10",
 	"description": "Persistent build cache for artifacts you generate during an SSG Astro build (social images, etc).",
 	"author": "Julien Cayzac",
 	"license": "MIT",
