@@ -22,5 +22,7 @@
     "@jcayzac/utils-text": "0.2.11",
     "@jcayzac/utils-xml": "0.1.13"
   },
-  "changesets": []
+  "changesets": [
+    "sharp-llamas-draw"
+  ]
 }
