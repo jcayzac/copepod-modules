@@ -1,4 +1,5 @@
 import type { ImageTransform, LocalImageService } from 'astro'
+import type { FitEnum } from 'sharp'
 
 export interface Config {
 	/**
@@ -29,6 +30,17 @@ export interface Transform extends ImageTransform {
 	index?: number | undefined
 	title?: string | undefined
 	sizes?: string | undefined
+
+	/**
+	 * Fitting algorithm to use when resizing images.
+	 *
+	 * Possible values are `cover`, `contain`, `fill`, `inside`, `outside`.
+	 *
+	 * @see [here](https://sharp.pixelplumbing.com/api-resize) for a detailed description.
+	 *
+	 * @default `cover`
+	 */
+	fit?: keyof FitEnum | undefined
 }
 
 export interface ResolvedTransform extends Omit<Transform, 'src'> {
