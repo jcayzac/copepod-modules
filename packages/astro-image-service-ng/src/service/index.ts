@@ -26,7 +26,7 @@ const qualityTable: { [k: string]: number } = {
 const stores = new Map<string, Store<{ [k: string]: any }>>()
 
 const service: LocalImageService<PrivateConfig> = {
-	propertiesToHash: ['src', 'width', 'height', 'format', 'quality'],
+	propertiesToHash: ['src', 'width', 'height', 'format', 'quality', 'fit'],
 
 	validateOptions: async (options: Transform, config: LocalImageServiceConfig) => {
 		const { src } = options
@@ -178,6 +178,10 @@ const service: LocalImageService<PrivateConfig> = {
 			query.append('f', options.format)
 		}
 
+		if (options.fit) {
+			query.append('fit', options.fit)
+		}
+
 		return `${path}?${query}`
 	},
 
@@ -191,7 +195,7 @@ const service: LocalImageService<PrivateConfig> = {
 		const height = query.get('h')
 		const quality = query.get('q')
 		const format = query.get('f')
-		const lossless = query.get('lossless')
+		const fit = query.get('fit')
 
 		return {
 			src,
@@ -199,7 +203,7 @@ const service: LocalImageService<PrivateConfig> = {
 			height: height ? Number.parseInt(height, 10) : undefined,
 			quality,
 			format,
-			lossless: lossless === '1',
+			...(fit ? { fit } : {}),
 		}
 	},
 
@@ -334,6 +338,9 @@ const service: LocalImageService<PrivateConfig> = {
 			}
 			if (typeof transform.height === 'number') {
 				params.height = Math.round(transform.height)
+			}
+			if (transform.fit !== undefined) {
+				params.fit = transform.fit
 			}
 			result.resize(params)
 		}
