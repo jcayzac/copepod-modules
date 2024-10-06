@@ -1,5 +1,11 @@
 # @jcayzac/astro-image-service-ng
 
+## 0.4.0-dev.0
+
+### Minor Changes
+
+- [#132](https://github.com/jcayzac/copepod-modules/pull/132) [`ca34727`](https://github.com/jcayzac/copepod-modules/commit/ca347279e20ed2891c94a1955ca2efe1992d1f01) Thanks [@jcayzac](https://github.com/jcayzac)! - The image service now accepts a `"fit"` parameter, with possible values `"cover"`, `"contain"`, `"fill"`, `"inside"` or `"outside"`. See [here](https://sharp.pixelplumbing.com/api-resize) for a detailed description.
+
 ## 0.3.0
 
 ### Minor Changes
