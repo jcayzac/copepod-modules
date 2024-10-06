@@ -29,6 +29,10 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - name: Check no pre.json exists
+      - name: Check no preview release
         run: |
-          [ ! -e .changeset/pre.json ] || exit 1
+          [ ! -e .changeset/pre.json ] || \
+          [[ "$(jq -r '.mode' < .changeset/pre.json)" != "pre" ]] || {
+            printf '%b' '\e[1;31mNo prereleases are allowed on the main branch.\e[0m'
+            exit 1
+          }
