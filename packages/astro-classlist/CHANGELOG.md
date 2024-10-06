@@ -1,5 +1,11 @@
 # @jcayzac/astro-classlist
 
+## 0.1.9-dev.0
+
+### Patch Changes
+
+- [#126](https://github.com/jcayzac/copepod-modules/pull/126) [`f50d85f`](https://github.com/jcayzac/copepod-modules/commit/f50d85fd69ba0ced2c4a7a7922703ef05e8de066) Thanks [@jcayzac](https://github.com/jcayzac)! - Update peer dependencies to be compatible with Astro 5.
+
 ## 0.1.8
 
 ### Patch Changes
