@@ -31,4 +31,4 @@ jobs:
 
       - name: Check no pre.json exists
         run: |
-          [ ! -e .changesest/pre.json ] || exit 1
+          [ ! -e .changeset/pre.json ] || exit 1
