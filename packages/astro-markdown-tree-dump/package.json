@@ -41,7 +41,7 @@
 		"build": "pnpm exec tsup"
 	},
 	"peerDependencies": {
-		"astro": "^4.15.2"
+		"astro": "^4.15.3 || ^5.0.0-alpha.0 || ^5.0.0"
 	},
 	"dependencies": {
 		"@types/hast": "^3.0.4",
