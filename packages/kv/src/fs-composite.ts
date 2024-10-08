@@ -122,7 +122,7 @@ export default class CompositeStore implements Store<object> {
 		for (const interpolator of this.interpolators) {
 			interpolated.push(interpolator === '__hash' ? await hash(key) : extract(key, interpolator) ?? '')
 		}
-		return paths.join(this.root, String.raw({ raw: this.raws }, interpolated))
+		return paths.join(this.root, String.raw({ raw: this.raws }, ...interpolated))
 	}
 
 	async get(key: object): Promise<Uint8Array | undefined> {
