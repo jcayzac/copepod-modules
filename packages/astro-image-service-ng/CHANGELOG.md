@@ -1,5 +1,12 @@
 # @jcayzac/astro-image-service-ng
 
+## 0.4.0-dev.1
+
+### Minor Changes
+
+- [#134](https://github.com/jcayzac/copepod-modules/pull/134) [`52dd536`](https://github.com/jcayzac/copepod-modules/commit/52dd5364b4478a61824b8bfbe437cea269eda12b) Thanks [@jcayzac](https://github.com/jcayzac)! - `"fit"` should now work as expected. In addition, if `"contain"` is used, I now use the dominant color (or transparent of the image has an transparent pixels) for the bands around the image, rather than the default black used by Sharp.
+  Because it requires calling `Sharp.stats()` and it's very expensive, resizing is now deferred so nothing gets done until the kv store is checked first.
+
 ## 0.4.0-dev.0
 
 ### Minor Changes

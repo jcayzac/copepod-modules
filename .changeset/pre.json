@@ -23,6 +23,7 @@
     "@jcayzac/utils-xml": "0.1.13"
   },
   "changesets": [
-    "sharp-llamas-draw"
+    "sharp-llamas-draw",
+    "strange-glasses-own"
   ]
 }
