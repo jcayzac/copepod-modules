@@ -1,5 +1,14 @@
 # @jcayzac/astro-image-service-ng
 
+## 0.4.0
+
+### Minor Changes
+
+- [#136](https://github.com/jcayzac/copepod-modules/pull/136) [`da695ae`](https://github.com/jcayzac/copepod-modules/commit/da695aec435500c4bdcf4e9df12e326cdaf7c0f3) Thanks [@jcayzac](https://github.com/jcayzac)! - The image service now accepts a `"fit"` parameter, with possible values `"cover"`, `"contain"`, `"fill"`, `"inside"` or `"outside"`. See [here](https://sharp.pixelplumbing.com/api-resize) for a detailed description.
+
+- [#136](https://github.com/jcayzac/copepod-modules/pull/136) [`4be26c8`](https://github.com/jcayzac/copepod-modules/commit/4be26c87b5134f9e4bb98f2a135a9353a53b84a8) Thanks [@jcayzac](https://github.com/jcayzac)! - `"fit"` should now work as expected. In addition, if `"contain"` is used, I now use the dominant color (or transparent of the image has an transparent pixels) for the bands around the image, rather than the default black used by Sharp.
+  Because it requires calling `Sharp.stats()` and it's very expensive, resizing is now deferred so nothing gets done until the kv store is checked first.
+
 ## 0.4.0-dev.1
 
 ### Minor Changes
