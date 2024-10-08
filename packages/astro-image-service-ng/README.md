@@ -7,27 +7,15 @@
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![bundle][bundle-src]][bundle-href]
 
-## Motivation
+This module gives you a few things not provided by Astro's built-in image service:
 
-Astro's built-in image service is great, but it lacks support for cropping. When the service receives a transformation request with both the `width` and `height` parameters provided, it ignores the `height` parameter and preserves the aspect ratio of the input image.
-
-The image service provided by this package do things differently: when both the `width` and `height` parameters are provided, the image is first cropped to match the new image aspect ratio, then resized to the requested dimensions while maintaining the original pixel aspect ratio. This is similar to what [`object-fit: cover`](https://developer.mozilla.org/docs/Web/CSS/object-fit#cover) does in CSS.
-
-This lets you crop images to specific aspect ratios, a very crude form of [art direction](https://mariohernandez.io/blog/art-direction-using-the-picture-html-element/) useful in various scenarios, for example:
-
-- When you use media queries in a `<picture>` element to serve different images based on the viewport size, and you're OK with dropping all but the center of the image on very small viewports.
-- When generating social images, for example for the [Open Graph protocol](https://ogp.me/) or for an [`ImageObject`](https://schema.org/ImageObject) inside [JSON-LD](https://json-ld.org/) embedded in your pages. [Facebook recommends a `40:21` (aka `1.91:1`) aspect ratio](https://developers.facebook.com/docs/sharing/webmasters/images/) for the former while [Google recommends `16:9`, `4:3` and `1:1`](https://developers.google.com/search/docs/appearance/structured-data/article#article-types) for the latter.
-
-> [!NOTE]
-> I am considering adding support for more art direction in some upcoming release.
->
-> I think the ability to specify the cropping strategy and the focal point of the image would be the bare minimum.
->
-> Some composition API where you can add e.g. an author avatar or a website logo somewhere, and add some text on top of the image, would be nice too.
->
-> Right now it mostly depends on what I need for my own projects. If you want these features sooner, **[consider supporting me!](https://github.com/jcayzac/copepod-modules/tree/main/packages/astro-image-service#like-it-buy-me-a-coffee)**
+- Support for cropping.
+- A way to change the default output format to something other than WEBP.
+- Persistence through arbitrary stores, not just the Astro build cache.
 
 ## Installation
+
+Add `astro-image-service-ng` and `sharp` to your Astro project:
 
 ```sh
 # pnpm
@@ -46,24 +34,131 @@ yarn add @jcayzac/astro-image-service-ng sharp
 deno add npm:@jcayzac/astro-image-service-ng npm:sharp
 ```
 
-## Usage
+Then, just add the integration to your [Astro configuration](https://docs.astro.build/guides/configuring-astro/):
 
-1. In your Astro project, replace the built-in image service with this one in your [configuration file](https://docs.astro.build/guides/configuring-astro/):
+```ts
+import { defineConfig } from 'astro/config'
+import image from '@jcayzac/astro-image-service-ng'
 
-   ```ts
-   import { defineConfig } from 'astro/config'
+export default defineConfig({
+  integrations: [
+    image({ /* options */ }),
+  ],
+  // …other options
+})
+```
 
-   export default defineConfig({
-     image: {
-       service: {
-         entrypoint: '@jcayzac/astro-image-service-ng',
-       },
-     },
-     // …other options
-   })
-   ```
+## Features
 
-2. Use Astro's `<Image />` component, the `getImage()` function from `astro:assets` or the `_image` API endpoint as usual.
+### Cropping
+
+Astro's built-in image service is great, but **it lacks support for cropping.** When the service receives a transformation request with both the `width` and `height` parameters provided, it ignores the `height` parameter and preserves the aspect ratio of the input image.
+
+This is unfortunate for a number of use cases, including social images —for example for the [Open Graph protocol](https://ogp.me/) or for an [`ImageObject`](https://schema.org/ImageObject) inside [JSON-LD](https://json-ld.org/) embedded in your pages. [Facebook recommends a `40:21` (aka `1.91:1`) aspect ratio](https://developers.facebook.com/docs/sharing/webmasters/images/) for the former while [Google recommends `16:9`, `4:3` and `1:1`](https://developers.google.com/search/docs/appearance/structured-data/article#article-types) for the latter.
+
+Our image service does things differently: when both the `width` and `height` parameters are provided, the result image will have the requested dimensions. You can specify the fitting strategy using the `fit` parameter, which defaults to `cover`. Other values are `contain`, `fill`, `inside` and `outside`. When `contain` is used, bands around the image are filled with the dominant color (for opaque images) or left transparent (for images with an alpha channel). See [here](https://sharp.pixelplumbing.com/api-resize) for more information.
+
+Since this is all using Astro's image service API, you can continue using Astro's `<Image />` component, the `getImage()` function from `astro:assets` or the `_image` API endpoint as usual. Note that you can now use the new `fit` parameter to specify the fitting strategy:
+
+```astro
+<Image src="/path/to/image.jpg" width={1200} height={630} fit="cover" />
+```
+
+```ts
+const img = await getImage('/path/to/image.jpg', { width: 1200, height: 630, fit: 'cover' })
+```
+
+```astro
+<img src={`/_image?href=http://localhost:4321/path/to/image.jpg&w=1200&h=630&fit=cover`} />
+```
+
+> [!NOTE]
+> I might implement an alternative band-filling method for the `contain` strategy in the future, where a blurred, low-resolution version of the image fills the background as if `cover` was used before the actual image is drawn on top of it. Yes, you've seen it elsewhere already, and it looks much nicer than a solid color or transparency. Let me know if you'd like that open and **[consider supporting my work!](https://github.com/jcayzac/copepod-modules/tree/main/packages/astro-image-service#like-it-buy-me-a-coffee)**
+
+### Default output format
+
+Astro doesn't let you change the default output format of the image service. It always outputs images in WEBP format, which used to be great but is now becoming obsolete as AVIF compresses much better and is supported in every major browser.
+
+Using this image service, you can change the default image format in the options passed to the integration. The default format is already `avif`, but you can change it back to `webp`, or even use `jpeg` if you prefer.
+
+```ts
+import { defineConfig } from 'astro/config'
+import image from '@jcayzac/astro-image-service-ng'
+
+export default defineConfig({
+  integrations: [
+    image({
+      // let's get retro!
+      defaultFormat: 'jpeg',
+    }),
+  ],
+  // …other options
+})
+```
+
+### Persistence
+
+When you build your site, Astro's built-in image service generates images on the fly and caches them in the build cache that resides under `node_modules/.astro`. This folder is usually picked up by build pipelines and cached between runs, so that you don't have to rebuild the same variants of your images the next time.
+
+It's great, except when the build cache gets invalidated for whatever reason. This sometimes happens when the build pipeline uses the current branch or the operating system it executes on as a key for the build cache. Invalidating the build cache manually may also be the only way to solve some completely unrelated issues. Lastly, some people like to just wipe out `node_modules` entirely before building something locally, just to make sure they have a _"clean"_ install. All in all, tying your asset cache to your build cache might not be the best strategy for everybody.
+
+And this is just for caching assets on the disk. But what if you want to cache them somewhere else, for instance in some S3 bucket? Or use some of the transform parameters in the file names, so that you know which file represents each variant? This may be useful if you want to migrate out of Astro at some point in the future and want to reuse those images without going through all the transforms again —there's no guarantee the software then will still support specific image transforms you did 10 years before.
+
+This module supports peristence through arbitrary stores by leveraging [`@copepod/kv`](https://www.npmjs.com/package/@copepod/kv), which lets you configure named stores statically. For instance, using the built-in `@copepod/kv/fs-composite` store backend, it's trivial to implement an on-disk persistent store where file names include an image's dimensions:
+
+```ts
+// kv.config.ts
+import { defineConfig } from '@copepod/kv/types'
+
+export default defineConfig({
+  stores: [
+    {
+      id: 'generated-images',
+      use: '@copepod/kv/fs-composite',
+      with: {
+        path: 'generated',
+        pattern: '{name}[{width}x{height}].{__hash}.{format}',
+      },
+    },
+  ],
+})
+
+// astro.config.ts
+import { defineConfig } from 'astro/config'
+import image from '@jcayzac/astro-image-service-ng'
+
+export default defineConfig({
+  integrations: [
+    image({
+      // use whatever kv store is defined for this identifier
+      kv: 'generated-images',
+    }),
+  ],
+  // …other options
+})
+```
+
+`{name}`, `{width}`, etc are interpolators. The image service passes a composite key with the following fields:
+
+```ts
+// All the parameters of the resolved transform are included
+interface Key extends Omit<ResolvedTransform, 'src'> {
+  // The base name of the image, without any extension.
+  name: string
+
+  // The source metadata.
+  src: sharp.Metadata
+
+  // The format of the image, detected from the source metadata.
+  format: string
+
+  // The digest of the entire key, excluding this field.
+  digest: string
+}
+```
+
+> [!TIP]
+> Creating and publishing new store backends for `@copepod/kv` is easy —you just need to implement a small interface. [Have a look at the built-in `fs-simple` and `fs-composite` backends here](https://github.com/jcayzac/copepod-modules/tree/main/packages/kv/src) for some example.
 
 ## Like it? Buy me a coffee!
 

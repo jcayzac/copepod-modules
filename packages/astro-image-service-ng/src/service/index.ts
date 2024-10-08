@@ -331,18 +331,23 @@ const service: LocalImageService<PrivateConfig> = {
 		}))
 
 		// Resize, allowing the image ratio to change if requested.
+		// Note the actual call to sharp.resize() is deferred, since we may
+		// need to call the expensive stats() method first.
+		let resizeOptions: sharp.ResizeOptions | undefined
 		if (typeof transform.width === 'number' || typeof transform.height === 'number') {
-			const params: sharp.ResizeOptions = {}
+			resizeOptions = {}
+
 			if (typeof transform.width === 'number') {
-				params.width = Math.round(transform.width)
+				resizeOptions.width = Math.round(transform.width)
 			}
+
 			if (typeof transform.height === 'number') {
-				params.height = Math.round(transform.height)
+				resizeOptions.height = Math.round(transform.height)
 			}
+
 			if (transform.fit !== undefined) {
-				params.fit = transform.fit
+				resizeOptions.fit = transform.fit
 			}
-			result.resize(params)
 		}
 
 		// Convert to the requested format.
@@ -422,6 +427,15 @@ const service: LocalImageService<PrivateConfig> = {
 					format: descriptor.format,
 				}
 			}
+		}
+
+		// Apply the resize operation if needed.
+		if (resizeOptions) {
+			if (resizeOptions.fit === 'contain') {
+				const { dominant, isOpaque } = await result.stats()
+				resizeOptions.background = isOpaque ? { ...dominant, alpha: 1 } : { r: 0, g: 0, b: 0, alpha: 0 }
+			}
+			result.resize(resizeOptions)
 		}
 
 		const data = await result.toBuffer()
