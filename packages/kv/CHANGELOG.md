@@ -1,5 +1,11 @@
 # @copepod/kv
 
+## 0.0.2
+
+### Patch Changes
+
+- [#140](https://github.com/jcayzac/copepod-modules/pull/140) [`533bcd7`](https://github.com/jcayzac/copepod-modules/commit/533bcd79419fc2800803f1dcdf90829b8611083c) Thanks [@jcayzac](https://github.com/jcayzac)! - Filenames were not interpolated correctly in **fs-composite**.
+
 ## 0.0.2-dev.0
 
 ### Patch Changes
