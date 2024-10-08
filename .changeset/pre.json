@@ -1,0 +1,26 @@
+{
+  "mode": "pre",
+  "tag": "dev",
+  "initialVersions": {
+    "@jcayzac/astro-build-cache": "0.1.10",
+    "@jcayzac/astro-classlist": "0.1.9",
+    "@jcayzac/astro-image-service-ng": "0.4.0",
+    "@jcayzac/astro-markdown-tree-dump": "0.1.2",
+    "@jcayzac/astro-minify-html": "1.0.1",
+    "@jcayzac/astro-rehype-frontmatter-reading-stats": "0.1.0",
+    "@jcayzac/atom-feeds": "0.0.2",
+    "@jcayzac/image-information": "1.1.1",
+    "@copepod/kv": "0.0.1",
+    "@jcayzac/rehype-wrap-all": "0.0.2",
+    "@jcayzac/shiki-highlighter": "0.3.0",
+    "@jcayzac/shiki-theme-token": "0.1.8",
+    "@jcayzac/shiki-transformer-autolinks": "0.2.11",
+    "@jcayzac/shiki-transformer-token": "0.1.8",
+    "@copepod/unified-plugins": "0.8.0",
+    "@jcayzac/utils-digest": "0.1.11",
+    "@jcayzac/utils-sorters": "1.1.0",
+    "@jcayzac/utils-text": "0.2.11",
+    "@jcayzac/utils-xml": "0.1.13"
+  },
+  "changesets": []
+}
