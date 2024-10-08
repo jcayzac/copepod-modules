@@ -1,5 +1,5 @@
 {
-  "mode": "pre",
+  "mode": "exit",
   "tag": "dev",
   "initialVersions": {
     "@jcayzac/astro-build-cache": "0.1.10",
