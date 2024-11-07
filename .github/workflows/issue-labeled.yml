@@ -12,6 +12,9 @@ defaults:
 env:
   FORCE_COLOR: true
 
+permissions:
+  contents: read
+
 jobs:
   reply-labeled:
     if: github.repository == 'jcayzac/copepod-modules'
@@ -19,9 +22,14 @@ jobs:
     permissions:
       issues: write
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@91182cccc01eb5e619899d80e4e971d6181294a7 # v2.10.1
+        with:
+          egress-policy: audit
+
       - name: remove triage
         if: contains(github.event.label.description, '(priority)') && contains(github.event.issue.labels.*.name, 'needs triage')
-        uses: actions-cool/issues-helper@v3
+        uses: actions-cool/issues-helper@a610082f8ac0cf03e357eb8dd0d5e2ba075e017e # v3.6.0
         with:
           actions: remove-labels
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -30,7 +38,7 @@ jobs:
 
       - name: needs repro
         if: github.event.label.name == 'needs repro'
-        uses: actions-cool/issues-helper@v3
+        uses: actions-cool/issues-helper@a610082f8ac0cf03e357eb8dd0d5e2ba075e017e # v3.6.0
         with:
           actions: 'create-comment, remove-labels'
           token: ${{ secrets.GITHUB_TOKEN }}
