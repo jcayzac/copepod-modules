@@ -1,0 +1,106 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/astro-build-cache
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/astro-classlist
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/astro-image-service-ng
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/astro-markdown-tree-dump
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/astro-minify-html
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/astro-rehype-frontmatter-reading-stats
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/atom-feeds
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/image-information
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/kv
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/rehype-wrap-all
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/shiki-highlighter
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/shiki-theme-token
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/shiki-transformer-autolinks
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/shiki-transformer-token
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/unified-plugins
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/utils-digest
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/utils-sorters
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/utils-text
+    schedule:
+      interval: daily
+
+  - package-ecosystem: npm
+    directory: /packages/utils-xml
+    schedule:
+      interval: daily
