@@ -21,6 +21,8 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.head_ref || github.ref }}
   cancel-in-progress: true
 
+permissions: read-all
+
 jobs:
   no-pre:
     if: github.repository == 'jcayzac/copepod-modules'
