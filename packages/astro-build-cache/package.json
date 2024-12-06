@@ -40,7 +40,7 @@
 		"build": "pnpm exec tsup"
 	},
 	"dependencies": {
-		"@deno/kv": "^0.8.3",
+		"@deno/kv": "^0.8.4",
 		"@jcayzac/utils-digest": "workspace:^"
 	}
 }
