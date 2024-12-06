@@ -12,6 +12,8 @@ defaults:
 env:
   FORCE_COLOR: true
 
+permissions: read-all
+
 jobs:
   reply-labeled:
     if: github.repository == 'jcayzac/copepod-modules'
