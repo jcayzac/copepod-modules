@@ -1,5 +1,11 @@
 # @jcayzac/atom-feeds
 
+## 0.0.3-dev.0
+
+### Patch Changes
+
+- [#148](https://github.com/jcayzac/copepod-modules/pull/148) [`70d6703`](https://github.com/jcayzac/copepod-modules/commit/70d67032de561a4b2daf36f3fa9b70a6d0ba39e8) Thanks [@jcayzac](https://github.com/jcayzac)! - Add rel=alternate links to feeds and feed items, as well as the ability to set a feed's language and add a preview image/thumbnail to each feed item.
+
 ## 0.0.2
 
 ### Patch Changes
