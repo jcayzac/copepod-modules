@@ -23,6 +23,7 @@
     "@jcayzac/utils-xml": "0.1.13"
   },
   "changesets": [
+    "brown-ducks-drum",
     "good-meals-wave"
   ]
 }
