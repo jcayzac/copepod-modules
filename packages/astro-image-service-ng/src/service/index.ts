@@ -262,8 +262,8 @@ const service: LocalImageService<PrivateConfig> = {
 		}
 
 		const {
-			width: _ignoredWidth,
-			height: _ignoredHeight,
+			width,
+			height,
 			...transformWithoutDimensions
 		} = options
 
@@ -273,11 +273,10 @@ const service: LocalImageService<PrivateConfig> = {
 			if (maxTargetWidth !== imageWidth) {
 				srcSetTransform.width = maxTargetWidth
 			}
-			else {
-				if (options.width && options.height) {
-					srcSetTransform.width = options.width
-					srcSetTransform.height = options.height
-				}
+
+			if (width && height) {
+				srcSetTransform.width = srcSetTransform.width ?? width
+				srcSetTransform.height = Math.round(srcSetTransform.width * height / width)
 			}
 
 			srcSet.push({
