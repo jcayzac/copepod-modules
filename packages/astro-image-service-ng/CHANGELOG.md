@@ -1,5 +1,11 @@
 # @jcayzac/astro-image-service-ng
 
+## 0.4.2-dev.0
+
+### Patch Changes
+
+- [#151](https://github.com/jcayzac/copepod-modules/pull/151) [`60f79b2`](https://github.com/jcayzac/copepod-modules/commit/60f79b2548f5bbd51f84035f07409dc026a03710) Thanks [@jcayzac](https://github.com/jcayzac)! - Fix a bug where an image's aspect ratio would be lost for srcsets
+
 ## 0.4.1
 
 ### Patch Changes
