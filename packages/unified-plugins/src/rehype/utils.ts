@@ -1,9 +1,8 @@
 import type * as hast from 'hast'
 
 export function nodeToString(node: hast.Node): string {
-	if (node.type === 'text') {
-		const literal = node as hast.Text
-		return literal.value.trim()
+	if ('value' in node && typeof node.value === 'string') {
+		return node.value.trim()
 	}
 
 	if (isParent(node)) {
