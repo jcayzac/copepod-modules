@@ -4,9 +4,8 @@ import type { MdxJsxFlowElement, MdxJsxTextElement } from 'mdast-util-mdx-jsx'
 export interface AnyData { data?: { [key: string]: any } }
 
 export function nodeToString(node: mdast.Node): string {
-	if (node.type === 'text') {
-		const literal = node as mdast.Text
-		return literal.value.trim()
+	if ('value' in node && typeof node.value === 'string') {
+		return node.value.trim()
 	}
 
 	if (isParent(node)) {
