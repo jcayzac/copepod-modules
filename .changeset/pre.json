@@ -23,6 +23,7 @@
     "@jcayzac/utils-xml": "0.1.13"
   },
   "changesets": [
+    "blue-forks-sip",
     "brown-ducks-drum",
     "good-meals-wave"
   ]
