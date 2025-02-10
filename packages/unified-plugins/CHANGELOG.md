@@ -1,5 +1,11 @@
 # @copepod/unified-plugins
 
+## 0.8.1-dev.0
+
+### Patch Changes
+
+- [#154](https://github.com/jcayzac/copepod-modules/pull/154) [`e6712a7`](https://github.com/jcayzac/copepod-modules/commit/e6712a78ec868cc36474406c8268524a9a75972d) Thanks [@jcayzac](https://github.com/jcayzac)! - Fix stringification of nodes, which should fix the slugs of headings with inline code.
+
 ## 0.8.0
 
 ### Minor Changes
