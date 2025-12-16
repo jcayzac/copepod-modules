@@ -1,2 +1,7 @@
+shellEmulator: true
 packages:
   - 'packages/*'
+onlyBuiltDependencies:
+  - esbuild
+  - sharp
+  - unrs-resolver
