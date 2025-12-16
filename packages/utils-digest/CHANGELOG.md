@@ -1,5 +1,11 @@
 # @jcayzac/utils-digest
 
+## 0.1.12-dev.0
+
+### Patch Changes
+
+- [#157](https://github.com/jcayzac/copepod-modules/pull/157) [`cea999a`](https://github.com/jcayzac/copepod-modules/commit/cea999a03742b7383b3afa041a06cd16be00cb9c) Thanks [@jcayzac](https://github.com/jcayzac)! - Fix Uint8Array typing
+
 ## 0.1.11
 
 ### Patch Changes
