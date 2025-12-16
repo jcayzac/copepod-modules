@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises'
 import paths from 'node:path'
 
-export async function digest(data: Uint8Array): Promise<string> {
+export async function digest(data: Uint8Array<ArrayBuffer>): Promise<string> {
 	return Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', data)))
 		.map(b => b.toString(16).padStart(2, '0'))
 		.join('')
