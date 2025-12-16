@@ -415,7 +415,7 @@ const service: LocalImageService<PrivateConfig> = {
 			result.keepIccProfile()
 		}
 
-		const digest = new Uint8Array(await crypto.subtle.digest('sha-256', inputBuffer))
+		const digest = new Uint8Array(await crypto.subtle.digest('sha-256', inputBuffer as Uint8Array<ArrayBuffer>))
 		descriptor.digest = btoa(String.fromCharCode(...digest))
 
 		if (store) {
