@@ -7,6 +7,11 @@ import { onlyParents } from './utils'
 
 export interface FencesOptions {
 	/**
+	 * Default component name if no route is found.
+	 */
+	readonly defaultComponent?: string | undefined
+
+	/**
 	 * A map of language to MDX component name.
 	 */
 	readonly componentRoutes?: Record<string, string> | undefined
@@ -18,6 +23,7 @@ export interface FencesOptions {
 }
 
 export function fences(options: FencesOptions = {}) {
+	const { defaultComponent } = options
 	const componentRoutes = options.componentRoutes ?? {}
 	const breakpoints = (options.breakpoints ?? []).toSorted((a, b) => b[0] - a[0])
 
@@ -36,7 +42,7 @@ export function fences(options: FencesOptions = {}) {
 				const { lang, meta, data: oldData = {}, value } = child as Code
 
 				// If no component is registered for the language, skip.
-				const component = lang && componentRoutes[lang]
+				const component = lang ? componentRoutes[lang] : defaultComponent
 				if (!component) {
 					continue
 				}
