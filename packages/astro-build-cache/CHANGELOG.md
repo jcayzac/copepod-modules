@@ -1,5 +1,12 @@
 # @jcayzac/astro-build-cache
 
+## 0.1.11-dev.0
+
+### Patch Changes
+
+- Updated dependencies [[`cea999a`](https://github.com/jcayzac/copepod-modules/commit/cea999a03742b7383b3afa041a06cd16be00cb9c)]:
+  - @jcayzac/utils-digest@0.1.12-dev.0
+
 ## 0.1.10
 
 ### Patch Changes
