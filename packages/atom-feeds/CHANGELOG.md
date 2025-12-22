@@ -1,5 +1,11 @@
 # @jcayzac/atom-feeds
 
+## 0.1.0-dev.1
+
+### Minor Changes
+
+- [#159](https://github.com/jcayzac/copepod-modules/pull/159) [`250aa76`](https://github.com/jcayzac/copepod-modules/commit/250aa76790b64b2fd020fd3d821a533ae0c12b4f) Thanks [@jcayzac](https://github.com/jcayzac)! - Add support for categories in feed entries
+
 ## 0.0.3-dev.0
 
 ### Patch Changes
