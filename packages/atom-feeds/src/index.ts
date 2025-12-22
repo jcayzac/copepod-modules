@@ -9,9 +9,20 @@ export interface Image {
 	caption?: string | null | undefined
 }
 
+export interface Category {
+	/// Category term.
+	term: string
+
+	/// Category label.
+	label: string
+}
+
 export interface AtomEntry {
 	/// Entry title.
 	title: string
+
+	/// Entry category.
+	category?: Category | null | undefined
 
 	/// Entry URL. Can be relative to the site URL.
 	href: string | URL
@@ -86,7 +97,7 @@ interface AtomEntrySerializeOptions {
 }
 
 function serializeEntry(entry: AtomEntry, options: AtomEntrySerializeOptions) {
-	const { title, published, description, image } = entry
+	const { title, category, published, description, image } = entry
 	const { site, readMoreLabel = 'Read More' } = options
 	const href = new URL(entry.href, site).href
 	const updated = entry.updated ?? published
@@ -98,6 +109,9 @@ function serializeEntry(entry: AtomEntry, options: AtomEntrySerializeOptions) {
 <id>${escape(href)}</id>
 <published>${published.toISOString()}</published>
 <updated>${updated.toISOString()}</updated>
+${(category && `
+	<category term="${escape(category.term)}" label="${escape(category.label)}" />
+`) ?? ''}
 ${(description && `
 	<content type="html">${escape(`
 		${(image && `
