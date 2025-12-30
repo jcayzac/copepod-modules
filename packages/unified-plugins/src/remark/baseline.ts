@@ -22,7 +22,6 @@ export function baseline(options: BaselineOptions = {}) {
 		while (parent = queue.shift()) {
 			transforms.asides(parent)
 			transforms.captions(parent)
-			transforms.headings(parent, SLUGGER)
 			transforms.loners(parent, options.links ?? {})
 			queue.push(...utils.onlyParents(parent.children))
 		}
