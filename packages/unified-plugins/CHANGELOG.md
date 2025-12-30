@@ -1,5 +1,11 @@
 # @copepod/unified-plugins
 
+## 0.9.0-dev.2
+
+### Minor Changes
+
+- [#161](https://github.com/jcayzac/copepod-modules/pull/161) [`3681cd5`](https://github.com/jcayzac/copepod-modules/commit/3681cd5178965ac4ca3322dfd139e4bbc14b01ab) Thanks [@jcayzac](https://github.com/jcayzac)! - The baseline plugin doesn't transform headings anymore
+
 ## 0.9.0-dev.1
 
 ### Minor Changes
