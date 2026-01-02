@@ -1,5 +1,11 @@
 # @copepod/unified-plugins
 
+## 0.9.0-dev.5
+
+### Patch Changes
+
+- [`09a3ba5`](https://github.com/jcayzac/copepod-modules/commit/09a3ba5d43df5fa66bae63d6ac52abf86b1be704) Thanks [@jcayzac](https://github.com/jcayzac)! - Another other try
+
 ## 0.9.0-dev.4
 
 ### Patch Changes
