@@ -1,5 +1,11 @@
 # @copepod/unified-plugins
 
+## 0.9.0-dev.3
+
+### Patch Changes
+
+- [#163](https://github.com/jcayzac/copepod-modules/pull/163) [`ffc74fd`](https://github.com/jcayzac/copepod-modules/commit/ffc74fdc0f20773205de099f1fab92ac7728c603) Thanks [@jcayzac](https://github.com/jcayzac)! - Fix breakpoints not being passed to components
+
 ## 0.9.0-dev.2
 
 ### Minor Changes
