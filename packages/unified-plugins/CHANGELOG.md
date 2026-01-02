@@ -1,5 +1,11 @@
 # @copepod/unified-plugins
 
+## 0.9.0-dev.4
+
+### Patch Changes
+
+- [#165](https://github.com/jcayzac/copepod-modules/pull/165) [`f65c311`](https://github.com/jcayzac/copepod-modules/commit/f65c311a49d82b8b7e6a4b9f5cbb7be261aaf588) Thanks [@jcayzac](https://github.com/jcayzac)! - Another try
+
 ## 0.9.0-dev.3
 
 ### Patch Changes
