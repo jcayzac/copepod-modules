@@ -69,18 +69,20 @@ export function fences(options: FencesOptions = {}) {
 
 					// Count characters per line and set breakpoints
 					const maxLength = value.split('\n').map(line => line.length).reduce((max, len) => Math.max(max, len), 0)
-					let match = 0
+					let found: string | null = null
 					for (const [length, breakpoint] of breakpoints) {
-						if (maxLength >= length && length > match) {
-							match = length
-							child.data = {
-								...data,
-								hProperties: {
-									...data?.hProperties,
-									'data-breakpoint': breakpoint,
-								},
-							}
+						if (maxLength >= length) {
+							found = breakpoint
+							break
 						}
+					}
+					if (found) {
+						data.hProperties = {
+							...(data.hProperties ?? {}),
+							'data-breakpoint': found,
+						}
+						child.data = data
+						child.meta = [child.meta, found && `breakpoint:${found}`].filter(Boolean).join(' ') || null
 					}
 				}
 				queue.push(...onlyParents(parent.children))
@@ -100,7 +102,7 @@ export function fences(options: FencesOptions = {}) {
 				const breakpoint = hProperties['data-breakpoint'] as string | null ?? null
 
 				// If no component is registered for the language, skip.
-				const component = lang ? componentRoutes[lang] : defaultComponent
+				const component = (lang && componentRoutes[lang]) || defaultComponent
 				if (!component) {
 					continue
 				}
