@@ -113,9 +113,8 @@ export function fences(options: FencesOptions = {}) {
 				}
 
 				const mdx = makeElement(child, component, {
-					meta: meta ?? '',
+					meta: [meta, breakpoint && `.${breakpoint}`].filter(Boolean).join(' ') || null,
 					source: value,
-					breakpoint,
 				})
 				parent.children[index] = mdx
 			}
