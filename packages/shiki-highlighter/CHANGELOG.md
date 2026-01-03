@@ -1,5 +1,11 @@
 # @jcayzac/shiki-highlighter
 
+## 0.3.1-dev.0
+
+### Patch Changes
+
+- [`4fed495`](https://github.com/jcayzac/copepod-modules/commit/4fed4958eb447201d328814b5da1ca8a6dbad0ba) Thanks [@jcayzac](https://github.com/jcayzac)! - Fix plaintext handling
+
 ## 0.3.0
 
 ### Minor Changes
