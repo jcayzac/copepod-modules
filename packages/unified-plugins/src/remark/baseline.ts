@@ -1,10 +1,7 @@
 import type { Parent, Root } from 'mdast'
 import type { LinkOptions } from './transforms/loners/links'
-import GithubSlugger from 'github-slugger'
 import * as transforms from './transforms'
 import * as utils from './utils'
-
-const SLUGGER = new GithubSlugger()
 
 export interface BaselineOptions {
 	links?: LinkOptions | undefined
@@ -12,8 +9,6 @@ export interface BaselineOptions {
 
 export function baseline(options: BaselineOptions = {}) {
 	return function plugin(root: Root) {
-		SLUGGER.reset()
-
 		const queue: Array<Parent> = []
 		let parent: Parent | undefined
 
