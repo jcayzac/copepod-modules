@@ -32,7 +32,7 @@ export function processLink(link: Link, options: LinkOptions) {
 
 		const args = match.slice(1) as Array<string | undefined>
 
-		// Links utually don't have a title, only child nodes.
+		// Links usually don't have a title, only child nodes.
 		if (!link.title) {
 			const title = nodeToString(link).trim()
 			if (title) {
